@@ -1,0 +1,1102 @@
+{
+  "generated_at": "2026-02-18T06:50:42.841483",
+  "total_articles": 51,
+  "categories": [
+    "GPU",
+    "Houdini",
+    "Indie",
+    "UE",
+    "VEX",
+    "年度",
+    "通用"
+  ],
+  "category_map": {
+    "Houdini": [
+      {
+        "id": "f6e62897-604c-4c19-92e1-4cbbcfcb64a3",
+        "slug": "houdini最小二乘法顶点烘焙",
+        "title": "Houdini最小二乘法顶点烘焙",
+        "date": "2024-01-17",
+        "description": "",
+        "filename": "houdini最小二乘法顶点烘焙.md",
+        "category_slug": "houdini"
+      },
+      {
+        "id": "049483a0-4ef9-4ca0-abc2-4813a9042f7b",
+        "slug": "黑客帝国-processor-road",
+        "title": "黑客帝国-processor-Road ",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "黑客帝国-processor-road.md",
+        "category_slug": "houdini"
+      },
+      {
+        "id": "0d1537ad-716a-4dc5-8ad7-893a79a537be",
+        "slug": "houdini实时焦散与无缝动画无缝序列帧的烘焙",
+        "title": "Houdini实时焦散与无缝动画无缝序列帧的烘焙",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "houdini实时焦散与无缝动画无缝序列帧的烘焙.md",
+        "category_slug": "houdini"
+      },
+      {
+        "id": "10f9f98e-c99c-4dac-bddd-27bc9ef76abb",
+        "slug": "vscode调试houdinipython",
+        "title": "VSCode调试HoudiniPython",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "vscode调试houdinipython.md",
+        "category_slug": "houdini"
+      },
+      {
+        "id": "422189fd-7abe-40ac-8389-05d116f7cb0e",
+        "slug": "黑客帝国-layout",
+        "title": "黑客帝国-Layout ",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "黑客帝国-layout.md",
+        "category_slug": "houdini"
+      },
+      {
+        "id": "52680dc6-f310-458c-b12d-22a8ae90a537",
+        "slug": "heightfield-scatter解析",
+        "title": "Heightfield Scatter解析",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "heightfield-scatter解析.md",
+        "category_slug": "houdini"
+      },
+      {
+        "id": "6f9f4de1-4cbf-41ee-a0f0-171e3db91f96",
+        "slug": "lake",
+        "title": "Lake ",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "lake.md",
+        "category_slug": "houdini"
+      },
+      {
+        "id": "79cfbb8b-ee12-40c3-8e81-895c7cd08718",
+        "slug": "houdiniwaterfall",
+        "title": "HoudiniWaterFall ",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "houdiniwaterfall.md",
+        "category_slug": "houdini"
+      },
+      {
+        "id": "8cf486d6-c18b-4baa-a1d2-2164f5943566",
+        "slug": "river",
+        "title": "River ",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "river.md",
+        "category_slug": "houdini"
+      },
+      {
+        "id": "8dc1e5e1-5734-423e-b4c9-ae2705d4fd82",
+        "slug": "combinemesh",
+        "title": "CombineMesh",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "combinemesh.md",
+        "category_slug": "houdini"
+      },
+      {
+        "id": "a3205d1d-3331-40d2-9e1e-a09d0aeb823d",
+        "slug": "houdini添加自定义扫描路径",
+        "title": "Houdini添加自定义扫描路径",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "houdini添加自定义扫描路径.md",
+        "category_slug": "houdini"
+      },
+      {
+        "id": "a33a8c13-4dac-4c7a-9172-fbb562302e0f",
+        "slug": "黑客帝国-lots",
+        "title": "黑客帝国-LOTS ",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "黑客帝国-lots.md",
+        "category_slug": "houdini"
+      },
+      {
+        "id": "c0bb5562-3313-4e00-b576-22da264ee81c",
+        "slug": "splitwatermesh",
+        "title": "SplitWaterMesh ",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "splitwatermesh.md",
+        "category_slug": "houdini"
+      },
+      {
+        "id": "c15f6982-cab5-4327-9a36-3dff300c4391",
+        "slug": "草苔藓atlas小片houdini自动生成模型",
+        "title": "草、苔藓、Atlas小片houdini自动生成模型",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "草苔藓atlas小片houdini自动生成模型.md",
+        "category_slug": "houdini"
+      },
+      {
+        "id": "cc0f6a28-030a-4ebf-9381-da7cef38e7e9",
+        "slug": "riverbranch",
+        "title": "RiverBranch ",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "riverbranch.md",
+        "category_slug": "houdini"
+      },
+      {
+        "id": "d855b334-39a6-4b34-9e60-19b67d994b1e",
+        "slug": "houdinitree",
+        "title": "HoudiniTree",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "houdinitree.md",
+        "category_slug": "houdini"
+      },
+      {
+        "id": "d881ca59-3d3b-4dfd-b73b-fdd3ab75280f",
+        "slug": "黑客帝国-building_generator",
+        "title": "黑客帝国-building_generator ",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "黑客帝国-building_generator.md",
+        "category_slug": "houdini"
+      },
+      {
+        "id": "e7685b37-1ffe-4ee4-bc10-a9f28228efd1",
+        "slug": "houdini烘焙贴图的几种方式与原理",
+        "title": "houdini烘焙贴图的几种方式与原理",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "houdini烘焙贴图的几种方式与原理.md",
+        "category_slug": "houdini"
+      },
+      {
+        "id": "efb1d71b-0c4d-4550-bccf-e13b84e90f84",
+        "slug": "flowmap",
+        "title": "Flowmap",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "flowmap.md",
+        "category_slug": "houdini"
+      }
+    ],
+    "GPU": [
+      {
+        "id": "2d06ea4b-b457-47f7-81e5-21aabf5860f5",
+        "slug": "架构简单刨析与原理",
+        "title": "架构简单刨析与原理",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "架构简单刨析与原理.md",
+        "category_slug": "gpu"
+      },
+      {
+        "id": "c0cf4957-432a-45f0-8f0b-5e4ec2e9bda1",
+        "slug": "架构",
+        "title": "架构",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "架构.md",
+        "category_slug": "gpu"
+      },
+      {
+        "id": "db162e7c-9838-41d7-9ac1-6af55c9a26a2",
+        "slug": "cuda和计算着色器",
+        "title": "CUDA和计算着色器 ",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "cuda和计算着色器.md",
+        "category_slug": "gpu"
+      }
+    ],
+    "通用": [
+      {
+        "id": "1fe8a399-3330-41a0-b178-76a856978aa0",
+        "slug": "speedtree-st格式数据",
+        "title": "speedtree   ST格式数据",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "speedtree-st格式数据.md",
+        "category_slug": "通用"
+      },
+      {
+        "id": "4a0a1c2c-9d8c-447f-85c4-641a6b5082cd",
+        "slug": "植被规律",
+        "title": "植被规律",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "植被规律.md",
+        "category_slug": "通用"
+      },
+      {
+        "id": "7923b2ba-a81f-4814-b376-f8a0bb61fbd8",
+        "slug": "各种变换到矩阵-位移-旋转欧拉四元数-缩放-剪切-到矩阵公式",
+        "title": "各种变换到矩阵 位移 旋转(欧拉四元数) 缩放 剪切 到矩阵公式",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "各种变换到矩阵-位移-旋转欧拉四元数-缩放-剪切-到矩阵公式.md",
+        "category_slug": "通用"
+      },
+      {
+        "id": "9a10c406-7355-482b-9c37-b68a3b98a8ee",
+        "slug": "图片压缩",
+        "title": "图片压缩",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "图片压缩.md",
+        "category_slug": "通用"
+      },
+      {
+        "id": "a3ac46e5-3eb2-4f0a-9fbc-1d377c28cf31",
+        "slug": "矩阵拆解",
+        "title": "矩阵拆解 ",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "矩阵拆解.md",
+        "category_slug": "通用"
+      },
+      {
+        "id": "df678cd8-f2c5-45e9-b61b-bc679c10ffd8",
+        "slug": "统计学中的均值方差偏差标准差期望正态分布等概率相关的词汇",
+        "title": "统计学中的均值，方差，偏差，标准差，期望，正态分布等概率相关的词汇",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "统计学中的均值方差偏差标准差期望正态分布等概率相关的词汇.md",
+        "category_slug": "通用"
+      },
+      {
+        "id": "f20aad6f-7e73-478e-951b-9779b9861e13",
+        "slug": "图形学中常见噪声生成算法综述",
+        "title": "图形学中常见噪声生成算法综述",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "图形学中常见噪声生成算法综述.md",
+        "category_slug": "通用"
+      },
+      {
+        "id": "fb28a5c9-2df6-4bd4-a437-011da95f5464",
+        "slug": "物体光线构成",
+        "title": "物体光线构成 ",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "物体光线构成.md",
+        "category_slug": "通用"
+      }
+    ],
+    "VEX": [
+      {
+        "id": "0322103d-7e20-4dec-9dbc-b2cca095d9e7",
+        "slug": "tex2d和sample",
+        "title": "tex2D和Sample",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "tex2d和sample.md",
+        "category_slug": "vex"
+      },
+      {
+        "id": "3bea83ab-5863-4a65-b691-388f5267b7b9",
+        "slug": "renderdocdebugunity",
+        "title": "RenderDocDebugUnity",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "renderdocdebugunity.md",
+        "category_slug": "vex"
+      },
+      {
+        "id": "40a16ec8-3b9e-4ab8-b266-e00735227003",
+        "slug": "unity_pbr",
+        "title": "Unity_PBR",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "unity_pbr.md",
+        "category_slug": "vex"
+      },
+      {
+        "id": "5dbc9b2e-130a-439a-8000-5670c4b010b2",
+        "slug": "unity破碎",
+        "title": "Unity破碎",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "unity破碎.md",
+        "category_slug": "vex"
+      },
+      {
+        "id": "ca0770a3-cbdc-498a-9235-b73594523c04",
+        "slug": "ao需要与fresnel有关联",
+        "title": "AO需要与Fresnel有关联",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "ao需要与fresnel有关联.md",
+        "category_slug": "vex"
+      },
+      {
+        "id": "f942a0f0-0130-449b-95dc-da88a9041b7f",
+        "slug": "开启gpu-instancing",
+        "title": "开启GPU instancing",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "开启gpu-instancing.md",
+        "category_slug": "vex"
+      }
+    ],
+    "UE": [
+      {
+        "id": "5283a059-5cae-4f42-b88b-2552302427e4",
+        "slug": "高级水面白沫涟漪or海浪",
+        "title": "高级水面白沫涟漪OR海浪",
+        "date": "2024-01-17",
+        "description": "",
+        "filename": "高级水面白沫涟漪or海浪.md",
+        "category_slug": "ue"
+      },
+      {
+        "id": "74207fdb-5fbd-46be-828f-df3bd20a8bb3",
+        "slug": "houdini中岩石任意形变矩阵到ue还原",
+        "title": "Houdini中岩石任意形变矩阵到UE还原",
+        "date": "2024-01-17",
+        "description": "",
+        "filename": "houdini中岩石任意形变矩阵到ue还原.md",
+        "category_slug": "ue"
+      },
+      {
+        "id": "0ecfb646-d555-4bdc-ab33-e1a859c3d5f6",
+        "slug": "watermaterial",
+        "title": "WaterMaterial",
+        "date": "2023-11-21",
+        "description": "",
+        "filename": "watermaterial.md",
+        "category_slug": "ue"
+      },
+      {
+        "id": "7001f98d-3bb1-43ff-b252-184e92270451",
+        "slug": "ue-高级地形材质",
+        "title": "UE-高级地形材质",
+        "date": "2023-11-21",
+        "description": "",
+        "filename": "ue-高级地形材质.md",
+        "category_slug": "ue"
+      },
+      {
+        "id": "8f0c8a7e-866b-41cb-8185-2a0d93cf3732",
+        "slug": "地表技术总结",
+        "title": "地表技术总结",
+        "date": "2023-11-21",
+        "description": "",
+        "filename": "地表技术总结.md",
+        "category_slug": "ue"
+      },
+      {
+        "id": "cb53b503-c67c-40c1-9150-0048ffa5863a",
+        "slug": "volume-raymarch-云",
+        "title": "Volume-RayMarch 云",
+        "date": "2023-11-21",
+        "description": "",
+        "filename": "volume-raymarch-云.md",
+        "category_slug": "ue"
+      },
+      {
+        "id": "ae80def6-9399-4452-b621-8730252d922a",
+        "slug": "unreal中搭建houdini自动化流程",
+        "title": "Unreal中搭建Houdini自动化流程",
+        "date": "2023-07-23",
+        "description": "",
+        "filename": "unreal中搭建houdini自动化流程.md",
+        "category_slug": "ue"
+      },
+      {
+        "id": "c0329f72-f6c3-47f3-b29c-efb4d9568648",
+        "slug": "ue-使用deitr做一次采样的三项映射",
+        "title": "UE-使用Deitr做一次采样的三项映射",
+        "date": "2023-07-10",
+        "description": "",
+        "filename": "ue-使用deitr做一次采样的三项映射.md",
+        "category_slug": "ue"
+      },
+      {
+        "id": "88c54733-3fa0-480b-8acc-ca43c4a785d7",
+        "slug": "renderdoc_debugue",
+        "title": "RenderDoc_DebugUE",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "renderdoc_debugue.md",
+        "category_slug": "ue"
+      },
+      {
+        "id": "c7eb1869-a1f8-4275-bd74-1cf92ced41ab",
+        "slug": "导出unreal自定义属性到houdini",
+        "title": "导出Unreal自定义属性到Houdini",
+        "date": "2023-07-07",
+        "description": "",
+        "filename": "导出unreal自定义属性到houdini.md",
+        "category_slug": "ue"
+      }
+    ],
+    "Indie": [
+      {
+        "id": "edebf260-2b9b-48cd-934a-00992055f98b",
+        "slug": "indie-engine",
+        "title": "    Indie Engine",
+        "date": "2023-07-08",
+        "description": "",
+        "filename": "indie-engine.md",
+        "category_slug": "indie"
+      }
+    ],
+    "年度": [
+      {
+        "id": "1bd5c9b5-9414-80a6-9e5c-f6b85a4b8990",
+        "slug": "2024年终",
+        "title": "2024年终",
+        "date": "2025-03-21",
+        "description": "",
+        "filename": "2024年终.md",
+        "category_slug": "年度"
+      },
+      {
+        "id": "6c058323-36dc-4128-a392-b93336d49194",
+        "slug": "2023年终总结",
+        "title": "2023年终总结",
+        "date": "2024-05-05",
+        "description": "",
+        "filename": "2023年终总结.md",
+        "category_slug": "年度"
+      },
+      {
+        "id": "5892a180-fa06-43e9-8318-2c3113b40dd2",
+        "slug": "2021年终总结",
+        "title": "2021年终总结",
+        "date": "2023-07-08",
+        "description": "",
+        "filename": "2021年终总结.md",
+        "category_slug": "年度"
+      },
+      {
+        "id": "add89124-ed6e-459e-98b3-1d148fa9542c",
+        "slug": "2022年终总结",
+        "title": "2022年终总结",
+        "date": "2023-07-08",
+        "description": "",
+        "filename": "2022年终总结.md",
+        "category_slug": "年度"
+      }
+    ]
+  },
+  "articles": [
+    {
+      "id": "1bd5c9b5-9414-80a6-9e5c-f6b85a4b8990",
+      "slug": "2024年终",
+      "title": "2024年终",
+      "categories": [
+        "年度"
+      ],
+      "date": "2025-03-21",
+      "description": "",
+      "filename": "2024年终.md",
+      "category_slug": "年度"
+    },
+    {
+      "id": "6c058323-36dc-4128-a392-b93336d49194",
+      "slug": "2023年终总结",
+      "title": "2023年终总结",
+      "categories": [
+        "年度"
+      ],
+      "date": "2024-05-05",
+      "description": "",
+      "filename": "2023年终总结.md",
+      "category_slug": "年度"
+    },
+    {
+      "id": "5283a059-5cae-4f42-b88b-2552302427e4",
+      "slug": "高级水面白沫涟漪or海浪",
+      "title": "高级水面白沫涟漪OR海浪",
+      "categories": [
+        "UE"
+      ],
+      "date": "2024-01-17",
+      "description": "",
+      "filename": "高级水面白沫涟漪or海浪.md",
+      "category_slug": "ue"
+    },
+    {
+      "id": "74207fdb-5fbd-46be-828f-df3bd20a8bb3",
+      "slug": "houdini中岩石任意形变矩阵到ue还原",
+      "title": "Houdini中岩石任意形变矩阵到UE还原",
+      "categories": [
+        "UE"
+      ],
+      "date": "2024-01-17",
+      "description": "",
+      "filename": "houdini中岩石任意形变矩阵到ue还原.md",
+      "category_slug": "ue"
+    },
+    {
+      "id": "f6e62897-604c-4c19-92e1-4cbbcfcb64a3",
+      "slug": "houdini最小二乘法顶点烘焙",
+      "title": "Houdini最小二乘法顶点烘焙",
+      "categories": [
+        "Houdini"
+      ],
+      "date": "2024-01-17",
+      "description": "",
+      "filename": "houdini最小二乘法顶点烘焙.md",
+      "category_slug": "houdini"
+    },
+    {
+      "id": "0ecfb646-d555-4bdc-ab33-e1a859c3d5f6",
+      "slug": "watermaterial",
+      "title": "WaterMaterial",
+      "categories": [
+        "UE"
+      ],
+      "date": "2023-11-21",
+      "description": "",
+      "filename": "watermaterial.md",
+      "category_slug": "ue"
+    },
+    {
+      "id": "7001f98d-3bb1-43ff-b252-184e92270451",
+      "slug": "ue-高级地形材质",
+      "title": "UE-高级地形材质",
+      "categories": [
+        "UE"
+      ],
+      "date": "2023-11-21",
+      "description": "",
+      "filename": "ue-高级地形材质.md",
+      "category_slug": "ue"
+    },
+    {
+      "id": "8f0c8a7e-866b-41cb-8185-2a0d93cf3732",
+      "slug": "地表技术总结",
+      "title": "地表技术总结",
+      "categories": [
+        "UE"
+      ],
+      "date": "2023-11-21",
+      "description": "",
+      "filename": "地表技术总结.md",
+      "category_slug": "ue"
+    },
+    {
+      "id": "cb53b503-c67c-40c1-9150-0048ffa5863a",
+      "slug": "volume-raymarch-云",
+      "title": "Volume-RayMarch 云",
+      "categories": [
+        "UE"
+      ],
+      "date": "2023-11-21",
+      "description": "",
+      "filename": "volume-raymarch-云.md",
+      "category_slug": "ue"
+    },
+    {
+      "id": "ae80def6-9399-4452-b621-8730252d922a",
+      "slug": "unreal中搭建houdini自动化流程",
+      "title": "Unreal中搭建Houdini自动化流程",
+      "categories": [
+        "UE"
+      ],
+      "date": "2023-07-23",
+      "description": "",
+      "filename": "unreal中搭建houdini自动化流程.md",
+      "category_slug": "ue"
+    },
+    {
+      "id": "c0329f72-f6c3-47f3-b29c-efb4d9568648",
+      "slug": "ue-使用deitr做一次采样的三项映射",
+      "title": "UE-使用Deitr做一次采样的三项映射",
+      "categories": [
+        "UE"
+      ],
+      "date": "2023-07-10",
+      "description": "",
+      "filename": "ue-使用deitr做一次采样的三项映射.md",
+      "category_slug": "ue"
+    },
+    {
+      "id": "5892a180-fa06-43e9-8318-2c3113b40dd2",
+      "slug": "2021年终总结",
+      "title": "2021年终总结",
+      "categories": [
+        "年度"
+      ],
+      "date": "2023-07-08",
+      "description": "",
+      "filename": "2021年终总结.md",
+      "category_slug": "年度"
+    },
+    {
+      "id": "add89124-ed6e-459e-98b3-1d148fa9542c",
+      "slug": "2022年终总结",
+      "title": "2022年终总结",
+      "categories": [
+        "年度"
+      ],
+      "date": "2023-07-08",
+      "description": "",
+      "filename": "2022年终总结.md",
+      "category_slug": "年度"
+    },
+    {
+      "id": "edebf260-2b9b-48cd-934a-00992055f98b",
+      "slug": "indie-engine",
+      "title": "    Indie Engine",
+      "categories": [
+        "Indie"
+      ],
+      "date": "2023-07-08",
+      "description": "",
+      "filename": "indie-engine.md",
+      "category_slug": "indie"
+    },
+    {
+      "id": "88c54733-3fa0-480b-8acc-ca43c4a785d7",
+      "slug": "renderdoc_debugue",
+      "title": "RenderDoc_DebugUE",
+      "categories": [
+        "UE"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "renderdoc_debugue.md",
+      "category_slug": "ue"
+    },
+    {
+      "id": "c7eb1869-a1f8-4275-bd74-1cf92ced41ab",
+      "slug": "导出unreal自定义属性到houdini",
+      "title": "导出Unreal自定义属性到Houdini",
+      "categories": [
+        "UE"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "导出unreal自定义属性到houdini.md",
+      "category_slug": "ue"
+    },
+    {
+      "id": "0322103d-7e20-4dec-9dbc-b2cca095d9e7",
+      "slug": "tex2d和sample",
+      "title": "tex2D和Sample",
+      "categories": [
+        "VEX"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "tex2d和sample.md",
+      "category_slug": "vex"
+    },
+    {
+      "id": "3bea83ab-5863-4a65-b691-388f5267b7b9",
+      "slug": "renderdocdebugunity",
+      "title": "RenderDocDebugUnity",
+      "categories": [
+        "VEX"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "renderdocdebugunity.md",
+      "category_slug": "vex"
+    },
+    {
+      "id": "40a16ec8-3b9e-4ab8-b266-e00735227003",
+      "slug": "unity_pbr",
+      "title": "Unity_PBR",
+      "categories": [
+        "VEX"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "unity_pbr.md",
+      "category_slug": "vex"
+    },
+    {
+      "id": "5dbc9b2e-130a-439a-8000-5670c4b010b2",
+      "slug": "unity破碎",
+      "title": "Unity破碎",
+      "categories": [
+        "VEX"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "unity破碎.md",
+      "category_slug": "vex"
+    },
+    {
+      "id": "ca0770a3-cbdc-498a-9235-b73594523c04",
+      "slug": "ao需要与fresnel有关联",
+      "title": "AO需要与Fresnel有关联",
+      "categories": [
+        "VEX"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "ao需要与fresnel有关联.md",
+      "category_slug": "vex"
+    },
+    {
+      "id": "f942a0f0-0130-449b-95dc-da88a9041b7f",
+      "slug": "开启gpu-instancing",
+      "title": "开启GPU instancing",
+      "categories": [
+        "VEX"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "开启gpu-instancing.md",
+      "category_slug": "vex"
+    },
+    {
+      "id": "049483a0-4ef9-4ca0-abc2-4813a9042f7b",
+      "slug": "黑客帝国-processor-road",
+      "title": "黑客帝国-processor-Road ",
+      "categories": [
+        "Houdini"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "黑客帝国-processor-road.md",
+      "category_slug": "houdini"
+    },
+    {
+      "id": "0d1537ad-716a-4dc5-8ad7-893a79a537be",
+      "slug": "houdini实时焦散与无缝动画无缝序列帧的烘焙",
+      "title": "Houdini实时焦散与无缝动画无缝序列帧的烘焙",
+      "categories": [
+        "Houdini"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "houdini实时焦散与无缝动画无缝序列帧的烘焙.md",
+      "category_slug": "houdini"
+    },
+    {
+      "id": "10f9f98e-c99c-4dac-bddd-27bc9ef76abb",
+      "slug": "vscode调试houdinipython",
+      "title": "VSCode调试HoudiniPython",
+      "categories": [
+        "Houdini"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "vscode调试houdinipython.md",
+      "category_slug": "houdini"
+    },
+    {
+      "id": "422189fd-7abe-40ac-8389-05d116f7cb0e",
+      "slug": "黑客帝国-layout",
+      "title": "黑客帝国-Layout ",
+      "categories": [
+        "Houdini"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "黑客帝国-layout.md",
+      "category_slug": "houdini"
+    },
+    {
+      "id": "52680dc6-f310-458c-b12d-22a8ae90a537",
+      "slug": "heightfield-scatter解析",
+      "title": "Heightfield Scatter解析",
+      "categories": [
+        "Houdini"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "heightfield-scatter解析.md",
+      "category_slug": "houdini"
+    },
+    {
+      "id": "6f9f4de1-4cbf-41ee-a0f0-171e3db91f96",
+      "slug": "lake",
+      "title": "Lake ",
+      "categories": [
+        "Houdini"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "lake.md",
+      "category_slug": "houdini"
+    },
+    {
+      "id": "79cfbb8b-ee12-40c3-8e81-895c7cd08718",
+      "slug": "houdiniwaterfall",
+      "title": "HoudiniWaterFall ",
+      "categories": [
+        "Houdini"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "houdiniwaterfall.md",
+      "category_slug": "houdini"
+    },
+    {
+      "id": "8cf486d6-c18b-4baa-a1d2-2164f5943566",
+      "slug": "river",
+      "title": "River ",
+      "categories": [
+        "Houdini"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "river.md",
+      "category_slug": "houdini"
+    },
+    {
+      "id": "8dc1e5e1-5734-423e-b4c9-ae2705d4fd82",
+      "slug": "combinemesh",
+      "title": "CombineMesh",
+      "categories": [
+        "Houdini"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "combinemesh.md",
+      "category_slug": "houdini"
+    },
+    {
+      "id": "a3205d1d-3331-40d2-9e1e-a09d0aeb823d",
+      "slug": "houdini添加自定义扫描路径",
+      "title": "Houdini添加自定义扫描路径",
+      "categories": [
+        "Houdini"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "houdini添加自定义扫描路径.md",
+      "category_slug": "houdini"
+    },
+    {
+      "id": "a33a8c13-4dac-4c7a-9172-fbb562302e0f",
+      "slug": "黑客帝国-lots",
+      "title": "黑客帝国-LOTS ",
+      "categories": [
+        "Houdini"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "黑客帝国-lots.md",
+      "category_slug": "houdini"
+    },
+    {
+      "id": "c0bb5562-3313-4e00-b576-22da264ee81c",
+      "slug": "splitwatermesh",
+      "title": "SplitWaterMesh ",
+      "categories": [
+        "Houdini"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "splitwatermesh.md",
+      "category_slug": "houdini"
+    },
+    {
+      "id": "c15f6982-cab5-4327-9a36-3dff300c4391",
+      "slug": "草苔藓atlas小片houdini自动生成模型",
+      "title": "草、苔藓、Atlas小片houdini自动生成模型",
+      "categories": [
+        "Houdini"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "草苔藓atlas小片houdini自动生成模型.md",
+      "category_slug": "houdini"
+    },
+    {
+      "id": "cc0f6a28-030a-4ebf-9381-da7cef38e7e9",
+      "slug": "riverbranch",
+      "title": "RiverBranch ",
+      "categories": [
+        "Houdini"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "riverbranch.md",
+      "category_slug": "houdini"
+    },
+    {
+      "id": "d855b334-39a6-4b34-9e60-19b67d994b1e",
+      "slug": "houdinitree",
+      "title": "HoudiniTree",
+      "categories": [
+        "Houdini"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "houdinitree.md",
+      "category_slug": "houdini"
+    },
+    {
+      "id": "d881ca59-3d3b-4dfd-b73b-fdd3ab75280f",
+      "slug": "黑客帝国-building_generator",
+      "title": "黑客帝国-building_generator ",
+      "categories": [
+        "Houdini"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "黑客帝国-building_generator.md",
+      "category_slug": "houdini"
+    },
+    {
+      "id": "e7685b37-1ffe-4ee4-bc10-a9f28228efd1",
+      "slug": "houdini烘焙贴图的几种方式与原理",
+      "title": "houdini烘焙贴图的几种方式与原理",
+      "categories": [
+        "Houdini"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "houdini烘焙贴图的几种方式与原理.md",
+      "category_slug": "houdini"
+    },
+    {
+      "id": "efb1d71b-0c4d-4550-bccf-e13b84e90f84",
+      "slug": "flowmap",
+      "title": "Flowmap",
+      "categories": [
+        "Houdini"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "flowmap.md",
+      "category_slug": "houdini"
+    },
+    {
+      "id": "1fe8a399-3330-41a0-b178-76a856978aa0",
+      "slug": "speedtree-st格式数据",
+      "title": "speedtree   ST格式数据",
+      "categories": [
+        "通用"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "speedtree-st格式数据.md",
+      "category_slug": "通用"
+    },
+    {
+      "id": "4a0a1c2c-9d8c-447f-85c4-641a6b5082cd",
+      "slug": "植被规律",
+      "title": "植被规律",
+      "categories": [
+        "通用"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "植被规律.md",
+      "category_slug": "通用"
+    },
+    {
+      "id": "7923b2ba-a81f-4814-b376-f8a0bb61fbd8",
+      "slug": "各种变换到矩阵-位移-旋转欧拉四元数-缩放-剪切-到矩阵公式",
+      "title": "各种变换到矩阵 位移 旋转(欧拉四元数) 缩放 剪切 到矩阵公式",
+      "categories": [
+        "通用"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "各种变换到矩阵-位移-旋转欧拉四元数-缩放-剪切-到矩阵公式.md",
+      "category_slug": "通用"
+    },
+    {
+      "id": "9a10c406-7355-482b-9c37-b68a3b98a8ee",
+      "slug": "图片压缩",
+      "title": "图片压缩",
+      "categories": [
+        "通用"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "图片压缩.md",
+      "category_slug": "通用"
+    },
+    {
+      "id": "a3ac46e5-3eb2-4f0a-9fbc-1d377c28cf31",
+      "slug": "矩阵拆解",
+      "title": "矩阵拆解 ",
+      "categories": [
+        "通用"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "矩阵拆解.md",
+      "category_slug": "通用"
+    },
+    {
+      "id": "df678cd8-f2c5-45e9-b61b-bc679c10ffd8",
+      "slug": "统计学中的均值方差偏差标准差期望正态分布等概率相关的词汇",
+      "title": "统计学中的均值，方差，偏差，标准差，期望，正态分布等概率相关的词汇",
+      "categories": [
+        "通用"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "统计学中的均值方差偏差标准差期望正态分布等概率相关的词汇.md",
+      "category_slug": "通用"
+    },
+    {
+      "id": "f20aad6f-7e73-478e-951b-9779b9861e13",
+      "slug": "图形学中常见噪声生成算法综述",
+      "title": "图形学中常见噪声生成算法综述",
+      "categories": [
+        "通用"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "图形学中常见噪声生成算法综述.md",
+      "category_slug": "通用"
+    },
+    {
+      "id": "fb28a5c9-2df6-4bd4-a437-011da95f5464",
+      "slug": "物体光线构成",
+      "title": "物体光线构成 ",
+      "categories": [
+        "通用"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "物体光线构成.md",
+      "category_slug": "通用"
+    },
+    {
+      "id": "2d06ea4b-b457-47f7-81e5-21aabf5860f5",
+      "slug": "架构简单刨析与原理",
+      "title": "架构简单刨析与原理",
+      "categories": [
+        "GPU"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "架构简单刨析与原理.md",
+      "category_slug": "gpu"
+    },
+    {
+      "id": "c0cf4957-432a-45f0-8f0b-5e4ec2e9bda1",
+      "slug": "架构",
+      "title": "架构",
+      "categories": [
+        "GPU"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "架构.md",
+      "category_slug": "gpu"
+    },
+    {
+      "id": "db162e7c-9838-41d7-9ac1-6af55c9a26a2",
+      "slug": "cuda和计算着色器",
+      "title": "CUDA和计算着色器 ",
+      "categories": [
+        "GPU"
+      ],
+      "date": "2023-07-07",
+      "description": "",
+      "filename": "cuda和计算着色器.md",
+      "category_slug": "gpu"
+    }
+  ]
+}
