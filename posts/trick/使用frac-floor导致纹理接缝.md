@@ -1,0 +1,36 @@
+
+**起因**：
+
+
+使用世界坐标做贴图UV时，使用了Frac函数使世界空间UV转换到0到1平铺。发现出现uv 0-1跳转，出现接缝。
+
+
+![v2-a0c8c94a7039ffb9f48ae2c151cc22c2_720w.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/17535f34-302f-404f-92e3-d21e957f1644/v2-a0c8c94a7039ffb9f48ae2c151cc22c2_720w.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466S2D2DNWO%2F20260219%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260219T091103Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIGJ1kYJQnIsYQ9s%2FQoxJa0SN%2FPu0AIACRXcMjXD4BRuTAiASxGtHbpq3DHOdyzsxWpddi0R9tM0X87NnCDttzsqbiyr%2FAwh5EAAaDDYzNzQyMzE4MzgwNSIMGe8YLShXVBaa6u%2FuKtwDuvQhbs1wucxd1NKtZ859ozZ8gneY3gO03QePNN1%2BXlascRk%2FuKjSIbJvpuEkhTpbqhlsDaDtVD5WCAHox%2F3dFlKLd%2Bp9w5QvJmMPb2dsgFmTBuNHA1fs4XBSWY9hAN1vxKIHZlPpbFFOXt0pYxp7WHDPCZQmAOw38d8l35gUE0q9297NY%2BKAtwye4%2BmhnSv9v1VVgZKIcmavwaJNbqXGfmC3QOwufy1K6Mlnd3d7z5z485qup9wjCYunDAgjtt5Qsva57m7zo1B%2F3h08qcuI6YaWqCVJ9mY20XLVRqor27D25xsfHDRFzwKFxiO0cROLsNeLpHP3w61uBwt88XBsEeOnw0eA7gOspdOT9gNndsDKzixWAMN4XwDNSBf5AM5fC4xkf1VBq1bnP4L9OlwrTZEPAQMnYX0lhdOwNxS1hvISWDJC4hdBQq%2BTfSmb4BmpKHVAwbxmeiNmpClrj3NNGoHddTYoNIuKThuPh7P06kDhsN1suT%2FIrrQ%2BqkAFLkKQ7cErVaFdNcZxOkRhr%2FLf8VHDE1y1hL6EaVSoemCFak%2BBGDZfuLmuTnocLvdMGwq3gam8dxW7VmwTG%2FtPGg1maY%2FyN3ctUudavyIcWNF3PobIeGweY2%2FQtlZF8FMw5obbzAY6pgEEXcdFV%2FmzdGGNfzNW1eWHLoYuXXn8Y%2FfZ1%2B9ISmTulOyF6wCmV7Yuh10QSDvTLzdRwA3mb35nbOExIVMIwOBzDEXkZUL%2BZdVSWy5yud36NGMM7kRLznDIq30g72XQ2lvdyHizj4MvedAw7iT1bMbMWZzrqZxX5sXvThw8hbJcuecgbosNlbS9vDpl8ykiXCNyhxePWwyEGgxJ0%2Fkuw2bobtJrV8N4&X-Amz-Signature=1c2fbad5f8ef529355c703e8df18a9f1b466c41321c085f2b7f3b79ac43e1dd0&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+**原因：**
+
+
+通常，接缝会由于两种原因造成，一方面是由于没有Padding，采样时纹理会做线性插值，导致图集边缘处像素模糊，而计算UV时没注意就会采样到邻界像素。解决办法一是需要处理Padding，二是计算UV时需要进行收缩处理。
+
+
+另一种像锯齿一样的接缝是由于Frac导致。如图做了简单测试Shader，为了规避Padding导致的接缝，纹理的FillterModel为Point。
+
+
+Frac算法计算Tilling时，在边界处会采样另一侧像素，GPU计算ddx ddy的时候会当成非常大的跨度计算，得到非常大的mip值，很多时候就是最模糊的那层，结果边界像素就出现“硬边”问题。
+
+
+**解决方法：**
+
+
+解决方法有两种，一种是通过计算像素到相机的距离得到想要的miplevel（不推荐），
+
+
+另一种是通过传入原贴图的uv，让硬件算原贴图ddx ddy。
+
+
+uv为frac后0-1的平铺uv，uv1为frac前连续uv
+
+
+`return Tex.SampleGrad(TexSampler,UV,ddx(UV1),ddy(UV1));`
+
