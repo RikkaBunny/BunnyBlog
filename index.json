@@ -1,14 +1,17 @@
 {
-  "generated_at": "2026-02-19T09:06:00.014Z",
-  "total_articles": 51,
+  "generated_at": "2026-02-19T09:11:56.498Z",
+  "total_articles": 78,
   "categories": [
     "Indie",
     "UE Technical",
+    "Unity Technical",
     "Houdini Technical",
     "Houdini Notes",
     "年度总结",
     "Common Technical",
-    "GPU Notes"
+    "GPU Notes",
+    "Trick Notes",
+    "Show Notes"
   ],
   "category_map": {
     "Indie": [
@@ -114,7 +117,71 @@
         "category_slug": "ue"
       }
     ],
-    "Unity": [],
+    "Unity": [
+      {
+        "id": "48f8ed93c356",
+        "slug": "ao需要与fresnel有关联",
+        "title": "ao需要与fresnel有关联",
+        "date": "2026-02-19",
+        "description": "因为AO表示为物体表面的 遮挡关系或者说是裂缝处阴影 ，当我们视角为掠视角时候，这时候遮挡关系会被遮挡(就是看不见裂缝)，AO效果将被减弱 ， 注意要用 顶点法线与视向量。",
+        "filename": "ao需要与fresnel有关联.md",
+        "category_slug": "unity"
+      },
+      {
+        "id": "f184a28f21c6",
+        "slug": "renderdocdebugunity",
+        "title": "renderdocdebugunity",
+        "date": "2026-02-19",
+        "description": "下载完RenderDoc之后，unity Game视图自动有LoadRenderDoc菜单，",
+        "filename": "renderdocdebugunity.md",
+        "category_slug": "unity"
+      },
+      {
+        "id": "08cf6101416f",
+        "slug": "test",
+        "title": "test",
+        "date": "2026-02-19",
+        "description": "test content",
+        "filename": "test.md",
+        "category_slug": "unity"
+      },
+      {
+        "id": "45f0ad06ae91",
+        "slug": "tex2d和sample",
+        "title": "tex2d和sample",
+        "date": "2026-02-19",
+        "description": "和Unreal的 贴图 与 贴图采样器概念一样。",
+        "filename": "tex2d和sample.md",
+        "category_slug": "unity"
+      },
+      {
+        "id": "7f19ab5b9c38",
+        "slug": "unity-pbr",
+        "title": "unity pbr",
+        "date": "2026-02-19",
+        "description": "基于物理的渲染（PBR）已经是很成熟的东西了，两大商业引擎（Unity，虚幻）里很早之前就有了完善的实现，使用OpenGL实现pbr有完备的教程，链接如下：",
+        "filename": "unity-pbr.md",
+        "category_slug": "unity"
+      },
+      {
+        "id": "3110e1c7d9db",
+        "slug": "unity破碎",
+        "title": "unity破碎",
+        "date": "2026-02-19",
+        "description": "通常破碎类型我们分为3类，分别是 刚体 、木头 、玻璃，三者有所不同所以一般分开讨论，破碎的使用上分为 实时(Chaos) 、预烘培(VAT) 、 混合 三种方案。",
+        "filename": "unity破碎.md",
+        "category_slug": "unity"
+      },
+      {
+        "id": "28a8d7c0dca2",
+        "slug": "开启gpu-instancing",
+        "title": "开启gpu instancing",
+        "date": "2026-02-19",
+        "description": "`#pragma multi_compile_instancing`",
+        "filename": "开启gpu-instancing.md",
+        "category_slug": "unity"
+      }
+    ],
     "Houdini": [
       {
         "id": "3fd2defb6b9c",
@@ -485,8 +552,190 @@
         "category_slug": "gpu"
       }
     ],
-    "Trick": [],
-    "Show": []
+    "Trick": [
+      {
+        "id": "2704c31f2047",
+        "slug": "frac函数坑",
+        "title": "frac函数坑",
+        "date": "2026-02-19",
+        "description": "Frac函数在正数部分正常，在负数部分， frac(-0.3) == 0.7  fract的返回值的值域是0-1",
+        "filename": "frac函数坑.md",
+        "category_slug": "trick"
+      },
+      {
+        "id": "119c205a44a9",
+        "slug": "houdini黑盒创建",
+        "title": "houdini黑盒创建",
+        "date": "2026-02-19",
+        "description": "",
+        "filename": "houdini黑盒创建.md",
+        "category_slug": "trick"
+      },
+      {
+        "id": "0eb562b5e7bb",
+        "slug": "shader宏分支",
+        "title": "shader宏分支",
+        "date": "2026-02-19",
+        "description": "在unity包中的CGIncludes\\HLSLSupport.cginc中可以找到定义：",
+        "filename": "shader宏分支.md",
+        "category_slug": "trick"
+      },
+      {
+        "id": "38fbebbac361",
+        "slug": "ue-命令行画面处理",
+        "title": "ue 命令行画面处理",
+        "date": "2026-02-19",
+        "description": "",
+        "filename": "ue-命令行画面处理.md",
+        "category_slug": "trick"
+      },
+      {
+        "id": "416bd56946dc",
+        "slug": "使用frac-floor导致纹理接缝",
+        "title": "使用frac floor导致纹理接缝",
+        "date": "2026-02-19",
+        "description": "使用世界坐标做贴图UV时，使用了Frac函数使世界空间UV转换到0到1平铺。发现出现uv 0-1跳转，出现接缝。",
+        "filename": "使用frac-floor导致纹理接缝.md",
+        "category_slug": "trick"
+      },
+      {
+        "id": "00c3442fa783",
+        "slug": "地形制作",
+        "title": "地形制作",
+        "date": "2026-02-19",
+        "description": "提前在制作时，就使用两种接近的地表材质做noise打乱混合。",
+        "filename": "地形制作.md",
+        "category_slug": "trick"
+      },
+      {
+        "id": "2d81a988908d",
+        "slug": "地表去除重复感",
+        "title": "地表去除重复感",
+        "date": "2026-02-19",
+        "description": "对于地表纹理的重复度，我们可以通过三步来解决大部分问题。",
+        "filename": "地表去除重复感.md",
+        "category_slug": "trick"
+      },
+      {
+        "id": "5ee94a729bb7",
+        "slug": "复杂场景处理的一个思路",
+        "title": "复杂场景处理的一个思路",
+        "date": "2026-02-19",
+        "description": "复杂场景为了吃满带宽，",
+        "filename": "复杂场景处理的一个思路.md",
+        "category_slug": "trick"
+      },
+      {
+        "id": "f03681721c6d",
+        "slug": "烟雾or流体or火焰简单思路",
+        "title": "烟雾or流体or火焰简单思路",
+        "date": "2026-02-19",
+        "description": "[https://twitter.com/SoerbGames/status/1270766023139119104](https://twitter.com/SoerbGames/status/12",
+        "filename": "烟雾or流体or火焰简单思路.md",
+        "category_slug": "trick"
+      },
+      {
+        "id": "aa7303fad1f5",
+        "slug": "破碎",
+        "title": "破碎",
+        "date": "2026-02-19",
+        "description": "断裂面加钢筋等内部杂物",
+        "filename": "破碎.md",
+        "category_slug": "trick"
+      },
+      {
+        "id": "4b6fb3c7be81",
+        "slug": "草运动rotateaboutaxis",
+        "title": "草运动rotateaboutaxis",
+        "date": "2026-02-19",
+        "description": "要想草好看 必须用绕轴做圆周 ，这样才有起起伏伏的质感",
+        "filename": "草运动rotateaboutaxis.md",
+        "category_slug": "trick"
+      },
+      {
+        "id": "65d724d58a36",
+        "slug": "高度图转化为法线",
+        "title": "高度图转化为法线",
+        "date": "2026-02-19",
+        "description": "",
+        "filename": "高度图转化为法线.md",
+        "category_slug": "trick"
+      }
+    ],
+    "Show": [
+      {
+        "id": "5c253de30b76",
+        "slug": "broken",
+        "title": "broken",
+        "date": "2026-02-19",
+        "description": "[bookmark](https://www.bilibili.com/video/BV1M94y1U7ry/?spm_id_from=333.999.0.0)",
+        "filename": "broken.md",
+        "category_slug": "show"
+      },
+      {
+        "id": "cc7898046d50",
+        "slug": "d",
+        "title": "d",
+        "date": "2026-02-19",
+        "description": "",
+        "filename": "d.md",
+        "category_slug": "show"
+      },
+      {
+        "id": "75dab12b769a",
+        "slug": "f",
+        "title": "f",
+        "date": "2026-02-19",
+        "description": "[Untitled.mp4](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f4964",
+        "filename": "f.md",
+        "category_slug": "show"
+      },
+      {
+        "id": "66bbe0562426",
+        "slug": "mandelbrot-fractal",
+        "title": "mandelbrot fractal",
+        "date": "2026-02-19",
+        "description": "",
+        "filename": "mandelbrot-fractal.md",
+        "category_slug": "show"
+      },
+      {
+        "id": "642f4b28743f",
+        "slug": "p",
+        "title": "p",
+        "date": "2026-02-19",
+        "description": "[%E6%9E%81%E5%A4%9C.mp4](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b70",
+        "filename": "p.md",
+        "category_slug": "show"
+      },
+      {
+        "id": "3f306357f836",
+        "slug": "river",
+        "title": "river",
+        "date": "2026-02-19",
+        "description": "[River.mp4](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c",
+        "filename": "river.md",
+        "category_slug": "show"
+      },
+      {
+        "id": "a77f45e5ab29",
+        "slug": "snow",
+        "title": "snow",
+        "date": "2026-02-19",
+        "description": "",
+        "filename": "snow.md",
+        "category_slug": "show"
+      },
+      {
+        "id": "552ff45f5827",
+        "slug": "toys",
+        "title": "toys",
+        "date": "2026-02-19",
+        "description": "",
+        "filename": "toys.md",
+        "category_slug": "show"
+      }
+    ]
   },
   "articles": [
     {
@@ -587,6 +836,69 @@
       "description": "title: \"高级水面白沫涟漪OR海浪\"",
       "filename": "高级水面白沫涟漪or海浪.md",
       "category_slug": "ue"
+    },
+    {
+      "id": "48f8ed93c356",
+      "slug": "ao需要与fresnel有关联",
+      "title": "ao需要与fresnel有关联",
+      "date": "2026-02-19",
+      "description": "因为AO表示为物体表面的 遮挡关系或者说是裂缝处阴影 ，当我们视角为掠视角时候，这时候遮挡关系会被遮挡(就是看不见裂缝)，AO效果将被减弱 ， 注意要用 顶点法线与视向量。",
+      "filename": "ao需要与fresnel有关联.md",
+      "category_slug": "unity"
+    },
+    {
+      "id": "f184a28f21c6",
+      "slug": "renderdocdebugunity",
+      "title": "renderdocdebugunity",
+      "date": "2026-02-19",
+      "description": "下载完RenderDoc之后，unity Game视图自动有LoadRenderDoc菜单，",
+      "filename": "renderdocdebugunity.md",
+      "category_slug": "unity"
+    },
+    {
+      "id": "08cf6101416f",
+      "slug": "test",
+      "title": "test",
+      "date": "2026-02-19",
+      "description": "test content",
+      "filename": "test.md",
+      "category_slug": "unity"
+    },
+    {
+      "id": "45f0ad06ae91",
+      "slug": "tex2d和sample",
+      "title": "tex2d和sample",
+      "date": "2026-02-19",
+      "description": "和Unreal的 贴图 与 贴图采样器概念一样。",
+      "filename": "tex2d和sample.md",
+      "category_slug": "unity"
+    },
+    {
+      "id": "7f19ab5b9c38",
+      "slug": "unity-pbr",
+      "title": "unity pbr",
+      "date": "2026-02-19",
+      "description": "基于物理的渲染（PBR）已经是很成熟的东西了，两大商业引擎（Unity，虚幻）里很早之前就有了完善的实现，使用OpenGL实现pbr有完备的教程，链接如下：",
+      "filename": "unity-pbr.md",
+      "category_slug": "unity"
+    },
+    {
+      "id": "3110e1c7d9db",
+      "slug": "unity破碎",
+      "title": "unity破碎",
+      "date": "2026-02-19",
+      "description": "通常破碎类型我们分为3类，分别是 刚体 、木头 、玻璃，三者有所不同所以一般分开讨论，破碎的使用上分为 实时(Chaos) 、预烘培(VAT) 、 混合 三种方案。",
+      "filename": "unity破碎.md",
+      "category_slug": "unity"
+    },
+    {
+      "id": "28a8d7c0dca2",
+      "slug": "开启gpu-instancing",
+      "title": "开启gpu instancing",
+      "date": "2026-02-19",
+      "description": "`#pragma multi_compile_instancing`",
+      "filename": "开启gpu-instancing.md",
+      "category_slug": "unity"
     },
     {
       "id": "3fd2defb6b9c",
@@ -947,6 +1259,186 @@
       "description": "title: \"架构简单刨析与原理\"",
       "filename": "架构简单刨析与原理.md",
       "category_slug": "gpu"
+    },
+    {
+      "id": "2704c31f2047",
+      "slug": "frac函数坑",
+      "title": "frac函数坑",
+      "date": "2026-02-19",
+      "description": "Frac函数在正数部分正常，在负数部分， frac(-0.3) == 0.7  fract的返回值的值域是0-1",
+      "filename": "frac函数坑.md",
+      "category_slug": "trick"
+    },
+    {
+      "id": "119c205a44a9",
+      "slug": "houdini黑盒创建",
+      "title": "houdini黑盒创建",
+      "date": "2026-02-19",
+      "description": "",
+      "filename": "houdini黑盒创建.md",
+      "category_slug": "trick"
+    },
+    {
+      "id": "0eb562b5e7bb",
+      "slug": "shader宏分支",
+      "title": "shader宏分支",
+      "date": "2026-02-19",
+      "description": "在unity包中的CGIncludes\\HLSLSupport.cginc中可以找到定义：",
+      "filename": "shader宏分支.md",
+      "category_slug": "trick"
+    },
+    {
+      "id": "38fbebbac361",
+      "slug": "ue-命令行画面处理",
+      "title": "ue 命令行画面处理",
+      "date": "2026-02-19",
+      "description": "",
+      "filename": "ue-命令行画面处理.md",
+      "category_slug": "trick"
+    },
+    {
+      "id": "416bd56946dc",
+      "slug": "使用frac-floor导致纹理接缝",
+      "title": "使用frac floor导致纹理接缝",
+      "date": "2026-02-19",
+      "description": "使用世界坐标做贴图UV时，使用了Frac函数使世界空间UV转换到0到1平铺。发现出现uv 0-1跳转，出现接缝。",
+      "filename": "使用frac-floor导致纹理接缝.md",
+      "category_slug": "trick"
+    },
+    {
+      "id": "00c3442fa783",
+      "slug": "地形制作",
+      "title": "地形制作",
+      "date": "2026-02-19",
+      "description": "提前在制作时，就使用两种接近的地表材质做noise打乱混合。",
+      "filename": "地形制作.md",
+      "category_slug": "trick"
+    },
+    {
+      "id": "2d81a988908d",
+      "slug": "地表去除重复感",
+      "title": "地表去除重复感",
+      "date": "2026-02-19",
+      "description": "对于地表纹理的重复度，我们可以通过三步来解决大部分问题。",
+      "filename": "地表去除重复感.md",
+      "category_slug": "trick"
+    },
+    {
+      "id": "5ee94a729bb7",
+      "slug": "复杂场景处理的一个思路",
+      "title": "复杂场景处理的一个思路",
+      "date": "2026-02-19",
+      "description": "复杂场景为了吃满带宽，",
+      "filename": "复杂场景处理的一个思路.md",
+      "category_slug": "trick"
+    },
+    {
+      "id": "f03681721c6d",
+      "slug": "烟雾or流体or火焰简单思路",
+      "title": "烟雾or流体or火焰简单思路",
+      "date": "2026-02-19",
+      "description": "[https://twitter.com/SoerbGames/status/1270766023139119104](https://twitter.com/SoerbGames/status/12",
+      "filename": "烟雾or流体or火焰简单思路.md",
+      "category_slug": "trick"
+    },
+    {
+      "id": "aa7303fad1f5",
+      "slug": "破碎",
+      "title": "破碎",
+      "date": "2026-02-19",
+      "description": "断裂面加钢筋等内部杂物",
+      "filename": "破碎.md",
+      "category_slug": "trick"
+    },
+    {
+      "id": "4b6fb3c7be81",
+      "slug": "草运动rotateaboutaxis",
+      "title": "草运动rotateaboutaxis",
+      "date": "2026-02-19",
+      "description": "要想草好看 必须用绕轴做圆周 ，这样才有起起伏伏的质感",
+      "filename": "草运动rotateaboutaxis.md",
+      "category_slug": "trick"
+    },
+    {
+      "id": "65d724d58a36",
+      "slug": "高度图转化为法线",
+      "title": "高度图转化为法线",
+      "date": "2026-02-19",
+      "description": "",
+      "filename": "高度图转化为法线.md",
+      "category_slug": "trick"
+    },
+    {
+      "id": "5c253de30b76",
+      "slug": "broken",
+      "title": "broken",
+      "date": "2026-02-19",
+      "description": "[bookmark](https://www.bilibili.com/video/BV1M94y1U7ry/?spm_id_from=333.999.0.0)",
+      "filename": "broken.md",
+      "category_slug": "show"
+    },
+    {
+      "id": "cc7898046d50",
+      "slug": "d",
+      "title": "d",
+      "date": "2026-02-19",
+      "description": "",
+      "filename": "d.md",
+      "category_slug": "show"
+    },
+    {
+      "id": "75dab12b769a",
+      "slug": "f",
+      "title": "f",
+      "date": "2026-02-19",
+      "description": "[Untitled.mp4](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f4964",
+      "filename": "f.md",
+      "category_slug": "show"
+    },
+    {
+      "id": "66bbe0562426",
+      "slug": "mandelbrot-fractal",
+      "title": "mandelbrot fractal",
+      "date": "2026-02-19",
+      "description": "",
+      "filename": "mandelbrot-fractal.md",
+      "category_slug": "show"
+    },
+    {
+      "id": "642f4b28743f",
+      "slug": "p",
+      "title": "p",
+      "date": "2026-02-19",
+      "description": "[%E6%9E%81%E5%A4%9C.mp4](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b70",
+      "filename": "p.md",
+      "category_slug": "show"
+    },
+    {
+      "id": "3f306357f836",
+      "slug": "river",
+      "title": "river",
+      "date": "2026-02-19",
+      "description": "[River.mp4](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c",
+      "filename": "river.md",
+      "category_slug": "show"
+    },
+    {
+      "id": "a77f45e5ab29",
+      "slug": "snow",
+      "title": "snow",
+      "date": "2026-02-19",
+      "description": "",
+      "filename": "snow.md",
+      "category_slug": "show"
+    },
+    {
+      "id": "552ff45f5827",
+      "slug": "toys",
+      "title": "toys",
+      "date": "2026-02-19",
+      "description": "",
+      "filename": "toys.md",
+      "category_slug": "show"
     }
   ]
 }
