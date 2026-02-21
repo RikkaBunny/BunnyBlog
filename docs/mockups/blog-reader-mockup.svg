@@ -1,0 +1,23 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="900" fill="#F6F3EA"/>
+  <rect x="30" y="30" width="980" height="840" rx="20" fill="#FFFDF6" stroke="#D6D0C0"/>
+  <rect x="1030" y="0" width="410" height="900" fill="#FFFCF5" stroke="#D6D0C0"/>
+  <rect x="1048" y="20" width="374" height="96" rx="14" fill="#FFFFFF" stroke="#D6D0C0"/>
+  <text x="1070" y="56" font-size="14" fill="#69708D">🐰 UE Technical · 2024-01-17</text>
+  <text x="1070" y="90" font-size="28" fill="#1F2440" font-weight="700">Houdini中岩石任意形变矩阵到UE还原</text>
+  <rect x="1392" y="36" width="22" height="22" rx="8" fill="#FFFFFF" stroke="#D6D0C0"/>
+  <text x="1398" y="53" font-size="14" fill="#69708D">×</text>
+
+  <rect x="1048" y="134" width="374" height="744" rx="14" fill="#FFF" stroke="#D6D0C0"/>
+  <rect x="1070" y="176" width="330" height="220" rx="14" fill="#F4F8FF" stroke="#D6D0C0"/>
+  <rect x="1070" y="420" width="330" height="18" rx="8" fill="#E2ECFF"/>
+  <rect x="1070" y="450" width="300" height="18" rx="8" fill="#F2E8D5"/>
+  <rect x="1070" y="480" width="330" height="18" rx="8" fill="#E2ECFF"/>
+  <rect x="1070" y="520" width="330" height="120" rx="12" fill="#20263F"/>
+  <rect x="1070" y="660" width="280" height="18" rx="8" fill="#F2E8D5"/>
+  <rect x="1070" y="690" width="330" height="18" rx="8" fill="#E2ECFF"/>
+
+  <text x="60" y="86" font-size="40" fill="#1F2440" font-weight="700">文章列表区域</text>
+  <text x="60" y="130" font-size="20" fill="#69708D">左侧保持分类和列表，右侧抽屉式阅读，移动端自动全屏。</text>
+  <text x="60" y="850" font-size="16" fill="#69708D">阅读页设计稿 · 抽屉式阅读器 + Markdown 渲染</text>
+</svg>

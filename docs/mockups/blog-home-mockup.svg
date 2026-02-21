@@ -1,0 +1,41 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="900" fill="#F6F3EA"/>
+  <rect x="30" y="30" width="1380" height="190" rx="26" fill="#FFFFFF" stroke="#D6D0C0"/>
+  <text x="70" y="82" font-size="14" fill="#69708D">RikkaBunny · Personal Knowledge Garden</text>
+  <text x="70" y="130" font-size="52" fill="#1F2440" font-weight="700">Bunny Blog</text>
+  <text x="70" y="170" font-size="21" fill="#69708D">把 Notion 技术笔记、年度复盘与作品记录同步成可检索的个人博客</text>
+  <rect x="980" y="68" width="140" height="120" rx="16" fill="#F4F8FF" stroke="#D6D0C0"/>
+  <rect x="1135" y="68" width="140" height="120" rx="16" fill="#F4F8FF" stroke="#D6D0C0"/>
+  <rect x="1290" y="68" width="90" height="120" rx="16" fill="#F4F8FF" stroke="#D6D0C0"/>
+  <text x="1022" y="115" font-size="34" fill="#1F2440">109</text>
+  <text x="1168" y="115" font-size="34" fill="#1F2440">10</text>
+  <text x="1312" y="115" font-size="24" fill="#1F2440">2026</text>
+  <text x="1025" y="150" font-size="14" fill="#69708D">文章</text>
+  <text x="1168" y="150" font-size="14" fill="#69708D">分类</text>
+  <text x="1302" y="150" font-size="14" fill="#69708D">同步</text>
+
+  <rect x="30" y="240" width="320" height="630" rx="20" fill="#FFFDF6" stroke="#D6D0C0"/>
+  <text x="60" y="280" font-size="24" fill="#1F2440" font-weight="700">分类导航</text>
+  <rect x="60" y="300" width="120" height="36" rx="18" fill="#E2ECFF" stroke="#3868B0"/>
+  <rect x="190" y="300" width="120" height="36" rx="18" fill="#FFF" stroke="#D6D0C0"/>
+  <rect x="60" y="346" width="120" height="36" rx="18" fill="#FFF" stroke="#D6D0C0"/>
+  <rect x="190" y="346" width="120" height="36" rx="18" fill="#FFF" stroke="#D6D0C0"/>
+
+  <rect x="370" y="240" width="1040" height="74" rx="16" fill="#FFFDF6" stroke="#D6D0C0"/>
+  <rect x="392" y="259" width="760" height="38" rx="12" fill="#FFF" stroke="#D6D0C0"/>
+  <rect x="1168" y="259" width="220" height="38" rx="12" fill="#FFF" stroke="#D6D0C0"/>
+
+  <text x="372" y="350" font-size="30" fill="#1F2440" font-weight="700">全部文章</text>
+  <text x="1330" y="350" font-size="18" fill="#69708D">109 篇</text>
+
+  <rect x="370" y="370" width="240" height="180" rx="16" fill="#FFFFFF" stroke="#D6D0C0"/>
+  <rect x="624" y="370" width="240" height="180" rx="16" fill="#FFFFFF" stroke="#D6D0C0"/>
+  <rect x="878" y="370" width="240" height="180" rx="16" fill="#FFFFFF" stroke="#D6D0C0"/>
+  <rect x="1132" y="370" width="240" height="180" rx="16" fill="#FFFFFF" stroke="#D6D0C0"/>
+  <rect x="370" y="566" width="240" height="180" rx="16" fill="#FFFFFF" stroke="#D6D0C0"/>
+  <rect x="624" y="566" width="240" height="180" rx="16" fill="#FFFFFF" stroke="#D6D0C0"/>
+  <rect x="878" y="566" width="240" height="180" rx="16" fill="#FFFFFF" stroke="#D6D0C0"/>
+  <rect x="1132" y="566" width="240" height="180" rx="16" fill="#FFFFFF" stroke="#D6D0C0"/>
+
+  <text x="380" y="865" font-size="16" fill="#69708D">首页设计稿 · 分类筛选 + 搜索 + 卡片流式布局</text>
+</svg>
