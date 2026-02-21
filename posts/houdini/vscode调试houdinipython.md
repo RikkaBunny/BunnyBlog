@@ -6,9 +6,8 @@ created: "2023-07-07T16:30:00.000Z"
 updated: "2023-07-07T16:30:00.000Z"
 notion_url: "https://www.notion.so/VSCode-HoudiniPython-10f9f98ec99c4dacbddd27bc9ef76abb"
 database: "Houdini Technical"
+source: "notion-sync"
 ---
-
-
 调试 Houdini Python 代码官方默认只能使用 print 等原始方法调试，无法设置断点，如 果使用 pdb 将导致整个 
 Houdini 软件无响应，这里讲述了如何在 VSCode 中使用 debugpy 库远程调试 Houdini Python 
 代码。这里说的"远程"是指VSCode和Houdini软件可以不在同 
@@ -19,80 +18,106 @@ Houdini 软件无响应，这里讲述了如何在 VSCode 中使用 debugpy 库�
 
 说明: 本文所讲的远程调试只能调试 Houdini "落地"的 Python 脚本，不能调试直接在 Houdini 编辑器里面些的 inline 脚本，也就是脚本必须保存在磁盘上，在Houdini软件里 面 import 的那些脚本文件。
 
+
 ## 1 准备工作
 
 1. 安装好 VSCode 并且安装上 Python 扩展插件。
-1. 下载安装一个标准版 Python27 (这是只是为了安装 debugpy 这个 Python 库用的，装完就没用了)
+2. 下载安装一个标准版 Python27 (这是只是为了安装 debugpy 这个 Python 库用的，装完就没用了)
+
 ## 2 Houdini 端配置
+
 
 1. 下载 debugpy
 
+
 先用 pip 命令下载 debugpy，下面假定你Python27安装在c:盘根目录。
 
->cd C:\Python27
->python.exe -m pip install debugpy
+
+`>cd C:\Python27
+>python.exe -m pip install debugpy`
+
 
 安装完成后 `c:\Python27\Lib\site-packages\debugpy` 这个目录应该出现了。
 
-关键性的修改
+
+**关键性的修改**
+
 
 debugpy(本文制作是版本为:
  1.4.1)在判断Python执行程序时用了 `sys.executable` 来判 断，而 Houdini 使用 Python 的方式为 
 Embeded 方式，最外层启动程序不是 Python.exe， 为了修复这个问题这里需要 Hack debugpy 的一行代码。
 
+
 打开 debugpy\server\api.py 修改 "python" 处为你Houdini的Python执行程序:
 
-_config = {
+
+`_config = {
     "qt": "none",
     "subProcess": True,
     # "python": sys.executable,
     "python" : r"c:\Program Files\Side Effects Software\Houdini 18.0.499\python27\python.exe"
-}
+}`
+
 
 好了，debugpy 准备完成。
 
+
 2. 让 Houdini Python 可以使用 debugpy
+
 
 在
  Houdini Python 库目录下创建一个名叫 local.pth 的文本文件，一般位置是 `c:\Program Files\Side 
 Effects Software\Houdini 18.0.499\python27\lib\site-packages\local.pth` 
 ，文件内容如下:
 
-C:\Python27\Lib\site-packages
+
+`C:\Python27\Lib\site-packages`
+
 
 完成这一步后在 Houdini 里面应该可以 "import debupy" 了，下面开始配置下 VSCode。
 
+
 ## 3 VSCode 端配置
+
 
 VSCode 里面创建好 Workspace 后给你的工作空间按下图方式设置远程 Python 调试配置
 
-![](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/ed755497-73e9-4901-8f19-9b24b7a6294b/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4663H2LNWJQ%2F20260218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260218T055007Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIB79Men8iLmF5jK7FlUsLC9sKrZKc5RxbJWKI6WqMkKaAiBAQchjLItzXJpo4KjbqryEmiRW9YQGvLUcEEbSasvrKCr%2FAwheEAAaDDYzNzQyMzE4MzgwNSIMwBKwETZQaF19P1ETKtwD243NjSFyNiJI9pxMHvKg2ZBgiz1mRggtqht7ynXvvbinS%2BgtKWCukN0pZ9uGRrbwtsdlqqdAK8sVoiqDDnQQvSr4vBvLfOE2pWoGkbhoMAd8osXExnhgr5bYTDPee960sVOyFJBckYDa%2BxeApUz0WtIiWuggCNXLvoWnhyiMm0y1H%2FrNOF9sDSDc3yVYSJLiQiCapg0PgRdRs2OgBF61f909FvY6oVUURiLC8BdYLOy1TfkPjmmgYgR8aQcfdnKDEeNy771nw6CqTFrzrL5aaPv8iKAu3CeJdYQevt3IVl%2BUZD8Hi2vXCTyajoPjOnyqMkb%2FLxp%2BUDIPUTeJFn8DWIn0Qggnhn3m0FZTI8VqFCYs%2FjfEVd8yjM0fMr2wU7d7hSMMGrTFiGi7l1NycM%2Fu1PdbLnD%2FYXRVLwsEDN%2B25hkW10qDUejZb8mbXmEikjSbX21cWyTqsbEHH8Dh1NTCAPhaF9ZJla7UuNTzg%2F9%2BgpzUwTwDa7g12RIMxhxUL4%2BW7voAf69HMWC249uom3PBdZkGOPyV3LEtZUoGGgNuummRrFOhYnfhqy5LEwPGe6qTpGzW40l3JbraLxkDizXmuASIoFxOViMEtKL0Yzkd5dvDADKNvFkrShTCmOww8ZXVzAY6pgH8yHK%2BJO3FsWvCI9yHNEyAtWhA0bLNJCxYcHxykYbr6atU8o7rIkDUNr5c%2FQo1%2BltiR%2BhvyvTG8WCqidkQAOz9G%2FciUByhjMYRFOMq64dsTjfn%2BhzcR5E6dCGbH%2Fhvs4klb0HMc8ZQjcJ7RNo3NoYd6jO0Sl7FMPOrNa6oMGCHJsGsfnoANFOHMov7wEO%2Bwkd%2F26729pbgCFwRRbqkUyusRWJa3Vg8&X-Amz-Signature=520c7982eebb651cb8f86ef1cb7676e017a2b9d93cfa0090241422cc8efd6a82&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+![Untitled.png](assets/vscode调试houdinipython/001-b8ad6bf4.png)
+
 
 配置文件内容如下:
 
-![](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/32f3ed05-cbd2-4e4c-adb9-04171409e16a/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4663H2LNWJQ%2F20260218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260218T055007Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIB79Men8iLmF5jK7FlUsLC9sKrZKc5RxbJWKI6WqMkKaAiBAQchjLItzXJpo4KjbqryEmiRW9YQGvLUcEEbSasvrKCr%2FAwheEAAaDDYzNzQyMzE4MzgwNSIMwBKwETZQaF19P1ETKtwD243NjSFyNiJI9pxMHvKg2ZBgiz1mRggtqht7ynXvvbinS%2BgtKWCukN0pZ9uGRrbwtsdlqqdAK8sVoiqDDnQQvSr4vBvLfOE2pWoGkbhoMAd8osXExnhgr5bYTDPee960sVOyFJBckYDa%2BxeApUz0WtIiWuggCNXLvoWnhyiMm0y1H%2FrNOF9sDSDc3yVYSJLiQiCapg0PgRdRs2OgBF61f909FvY6oVUURiLC8BdYLOy1TfkPjmmgYgR8aQcfdnKDEeNy771nw6CqTFrzrL5aaPv8iKAu3CeJdYQevt3IVl%2BUZD8Hi2vXCTyajoPjOnyqMkb%2FLxp%2BUDIPUTeJFn8DWIn0Qggnhn3m0FZTI8VqFCYs%2FjfEVd8yjM0fMr2wU7d7hSMMGrTFiGi7l1NycM%2Fu1PdbLnD%2FYXRVLwsEDN%2B25hkW10qDUejZb8mbXmEikjSbX21cWyTqsbEHH8Dh1NTCAPhaF9ZJla7UuNTzg%2F9%2BgpzUwTwDa7g12RIMxhxUL4%2BW7voAf69HMWC249uom3PBdZkGOPyV3LEtZUoGGgNuummRrFOhYnfhqy5LEwPGe6qTpGzW40l3JbraLxkDizXmuASIoFxOViMEtKL0Yzkd5dvDADKNvFkrShTCmOww8ZXVzAY6pgH8yHK%2BJO3FsWvCI9yHNEyAtWhA0bLNJCxYcHxykYbr6atU8o7rIkDUNr5c%2FQo1%2BltiR%2BhvyvTG8WCqidkQAOz9G%2FciUByhjMYRFOMq64dsTjfn%2BhzcR5E6dCGbH%2Fhvs4klb0HMc8ZQjcJ7RNo3NoYd6jO0Sl7FMPOrNa6oMGCHJsGsfnoANFOHMov7wEO%2Bwkd%2F26729pbgCFwRRbqkUyusRWJa3Vg8&X-Amz-Signature=7d0288c787ba63c22498e80cafa9d5fd1154ea6003a6e372677c5aad4bbb4044&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+![Untitled.png](assets/vscode调试houdinipython/002-542f323b.png)
+
 
 端口号和IP可根据自己情况配置。
 
+
 ## 4 开始调试
 
+
 Houdini Python 控制台执行如下脚本:
+
 
 ```plain text
 import debugpy
 debugpy.listen(3000)
 debugpy.wait_for_client()
-
 ```
+
 
 执行 `wait_for_client` 后 Python 将卡死等待调试器 Attach，这时候就可以在 VSCode 里面 F5 了。如果VSCode里面设置有断点，断点将起效果:
 
-![](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/86f822ae-7e39-4519-aa7f-61bf866760eb/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4663H2LNWJQ%2F20260218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260218T055007Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIB79Men8iLmF5jK7FlUsLC9sKrZKc5RxbJWKI6WqMkKaAiBAQchjLItzXJpo4KjbqryEmiRW9YQGvLUcEEbSasvrKCr%2FAwheEAAaDDYzNzQyMzE4MzgwNSIMwBKwETZQaF19P1ETKtwD243NjSFyNiJI9pxMHvKg2ZBgiz1mRggtqht7ynXvvbinS%2BgtKWCukN0pZ9uGRrbwtsdlqqdAK8sVoiqDDnQQvSr4vBvLfOE2pWoGkbhoMAd8osXExnhgr5bYTDPee960sVOyFJBckYDa%2BxeApUz0WtIiWuggCNXLvoWnhyiMm0y1H%2FrNOF9sDSDc3yVYSJLiQiCapg0PgRdRs2OgBF61f909FvY6oVUURiLC8BdYLOy1TfkPjmmgYgR8aQcfdnKDEeNy771nw6CqTFrzrL5aaPv8iKAu3CeJdYQevt3IVl%2BUZD8Hi2vXCTyajoPjOnyqMkb%2FLxp%2BUDIPUTeJFn8DWIn0Qggnhn3m0FZTI8VqFCYs%2FjfEVd8yjM0fMr2wU7d7hSMMGrTFiGi7l1NycM%2Fu1PdbLnD%2FYXRVLwsEDN%2B25hkW10qDUejZb8mbXmEikjSbX21cWyTqsbEHH8Dh1NTCAPhaF9ZJla7UuNTzg%2F9%2BgpzUwTwDa7g12RIMxhxUL4%2BW7voAf69HMWC249uom3PBdZkGOPyV3LEtZUoGGgNuummRrFOhYnfhqy5LEwPGe6qTpGzW40l3JbraLxkDizXmuASIoFxOViMEtKL0Yzkd5dvDADKNvFkrShTCmOww8ZXVzAY6pgH8yHK%2BJO3FsWvCI9yHNEyAtWhA0bLNJCxYcHxykYbr6atU8o7rIkDUNr5c%2FQo1%2BltiR%2BhvyvTG8WCqidkQAOz9G%2FciUByhjMYRFOMq64dsTjfn%2BhzcR5E6dCGbH%2Fhvs4klb0HMc8ZQjcJ7RNo3NoYd6jO0Sl7FMPOrNa6oMGCHJsGsfnoANFOHMov7wEO%2Bwkd%2F26729pbgCFwRRbqkUyusRWJa3Vg8&X-Amz-Signature=d79b748eabfe77ab87c07a16dc79dff49821a134be8677b2f4edf3b3f27b6e43&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+![Untitled.png](assets/vscode调试houdinipython/003-d71f4aa8.png)
+
 
 ## 5 一些说明
+
 
 1. `listen` 和 `wait_for_client` 只需要执行一次，一旦和 VSCode 链接上后就不用在 执行了，所以把这两个代码放到HDA或者Script这样的节点里面可能会出问题，因为这些 地方脚本可能会被执行多次。
 2. 如果你试图绕过
  local.pth 文件而是直接把 debugpy 目录copy到 Houdini 目录，使用 时会遇到一个 "c:\Program 
 Files.." 文件夹中间有空格的一个错，这应该是 debugpy 的 bug，如果官方修正后应该就没问题了。
-

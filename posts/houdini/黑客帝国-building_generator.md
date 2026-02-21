@@ -1,44 +1,60 @@
 ---
-title: "黑客帝国-building_generator "
+title: "黑客帝国-building_generator"
 categories: ["Houdini"]
 date: "2023-07-07"
 created: "2023-07-07T15:24:00.000Z"
 updated: "2023-07-07T16:51:00.000Z"
 notion_url: "https://www.notion.so/building_generator-d881ca593d3b4dfdb73bfdd3ab75280f"
 database: "Houdini Technical"
+source: "notion-sync"
 ---
-
 building_generator这部分算是最多，也是最重要的一部分，因为内容比较多，这次主要讲关键部分。
 
-![](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/5297349f-1393-41f7-9bf0-83fa7c03a40d/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466R4ZZ37OF%2F20260218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260218T055017Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIBoeF3UsNlNBQ6HINdlQNFr%2Fro77ig5%2FoFqToqoH%2BWwRAiEAwCoTROAGvvGkDTVdTBMY6%2F0b04cb5e%2FN6Q2Hvy3wUGIq%2FwMIXhAAGgw2Mzc0MjMxODM4MDUiDH7L2GG0mwoZUj3PLCrcA8UXjiysKBb3K2IyxppP8WjaxBj%2FQVwkxEaYJp9tNrNc6XIyLVF1XTL4a85x00b02Fxy4yEkNmkSQ1kKHhvxwnhB61qubMOqYCMvmPEnweGpiu3%2FPKqdZK0BOu0dTznEFLJ0lAXtkQ5Im8WL2nDu1oRb3LSWURvy1eUHLOqc77YfWAUmamwz27FWjs4f9vgNnFJCYQfHOoH2qMkO3beLXLpgr5IlvSSX7DbnG329COhlj8bGCXYkbCm4olmCv0QCCf0wfpNTpiVIRkrrjS47TXig3FVug2xJ2t8rODgEYNb6xN3JoQ2BRqDLIVZeIbyhKmqdGPaRt72xwjoyM%2BOJXTw9skwWWdfHDzjufKZKQsXZrlOy3tMsYWKUAh1Ca0VoYbBUSU%2BZU4laxd%2BkOkNcWvs7q%2FH6dSoJCFEmjp6TIT4shajZcD9KkvOVsJLPMHDGBF6Vp5yLbtkmpE1VnJ%2FMnkFceVDV%2Fxa03CbSd%2Bv19IhDSkIvbP6JPXlADvzsnsBwlaeAcfqqd796niE%2F5WUupQ9G6ICxvaqv4YT66HMMqBKGH5ft2tyDcFclnaKsE22Xjk8cqZaGiqv2IgGAZDO1jnAbPgrpfgBCBhxRbCECDsh9jORVvnaJOKF0asdrMJ2W1cwGOqUB07OUbuzoOISkfnRf6buQalLqLhIvPaJddLojy%2FF54d66%2B2rp4ImSDYVChBnt6fqkrUlEPNE9RgeDmDS9xfPKpRrW4O9wxgdYHrgWqIiv2K1jj6VujSPmWYuTWiw2bECxsstVb69LRfGXoPcW6tkYdC5f%2F6LdrS567poGWW9WgGUd2crCnItMtLK69D0OrJge%2FzIqKaDnf%2FN27IEjehwTfTKv71ES&X-Amz-Signature=93a2f8c50636422eb01dd5c4cc0cd09429f63a2a689eb66cac6cd5f08eb22d68&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+![Untitled.png](assets/黑客帝国-building_generator/001-53432927.png)
+
 
 首先进入building_generator这个HDA，一开始这部分是参数选择出来，我们可以直接到debug3这个节点，重点逻辑就是我们下面的循环。
 
-![](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/dacc47b3-a6b3-4d15-9d97-a9284ce4e0f2/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466R4ZZ37OF%2F20260218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260218T055017Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIBoeF3UsNlNBQ6HINdlQNFr%2Fro77ig5%2FoFqToqoH%2BWwRAiEAwCoTROAGvvGkDTVdTBMY6%2F0b04cb5e%2FN6Q2Hvy3wUGIq%2FwMIXhAAGgw2Mzc0MjMxODM4MDUiDH7L2GG0mwoZUj3PLCrcA8UXjiysKBb3K2IyxppP8WjaxBj%2FQVwkxEaYJp9tNrNc6XIyLVF1XTL4a85x00b02Fxy4yEkNmkSQ1kKHhvxwnhB61qubMOqYCMvmPEnweGpiu3%2FPKqdZK0BOu0dTznEFLJ0lAXtkQ5Im8WL2nDu1oRb3LSWURvy1eUHLOqc77YfWAUmamwz27FWjs4f9vgNnFJCYQfHOoH2qMkO3beLXLpgr5IlvSSX7DbnG329COhlj8bGCXYkbCm4olmCv0QCCf0wfpNTpiVIRkrrjS47TXig3FVug2xJ2t8rODgEYNb6xN3JoQ2BRqDLIVZeIbyhKmqdGPaRt72xwjoyM%2BOJXTw9skwWWdfHDzjufKZKQsXZrlOy3tMsYWKUAh1Ca0VoYbBUSU%2BZU4laxd%2BkOkNcWvs7q%2FH6dSoJCFEmjp6TIT4shajZcD9KkvOVsJLPMHDGBF6Vp5yLbtkmpE1VnJ%2FMnkFceVDV%2Fxa03CbSd%2Bv19IhDSkIvbP6JPXlADvzsnsBwlaeAcfqqd796niE%2F5WUupQ9G6ICxvaqv4YT66HMMqBKGH5ft2tyDcFclnaKsE22Xjk8cqZaGiqv2IgGAZDO1jnAbPgrpfgBCBhxRbCECDsh9jORVvnaJOKF0asdrMJ2W1cwGOqUB07OUbuzoOISkfnRf6buQalLqLhIvPaJddLojy%2FF54d66%2B2rp4ImSDYVChBnt6fqkrUlEPNE9RgeDmDS9xfPKpRrW4O9wxgdYHrgWqIiv2K1jj6VujSPmWYuTWiw2bECxsstVb69LRfGXoPcW6tkYdC5f%2F6LdrS567poGWW9WgGUd2crCnItMtLK69D0OrJge%2FzIqKaDnf%2FN27IEjehwTfTKv71ES&X-Amz-Signature=64fbfd2cd8e1d469ff5b171ca920fd12b51cee7efd9efa33842eb60bbf867f76&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+![Untitled.png](assets/黑客帝国-building_generator/002-ffb89883.png)
+
 
 进入之后，我们选择某次循环来分析其中逻辑，首先得到我们单个建筑之后，我们需要分离出建筑的附加消防梯，将建筑本身独立出来，将建筑上的LotID和ClassID从Prim属性 转到Detail属性，将自身的BoundMin和BondMax记录到detail属性，选择是否需要从Volume中提前UV和是否从Volume中得到颜色，这里我们可以直接不用。
 
+
 选择是否从Volume中提取BDF，这里我们选择为是，我们将Prim的bdf路径提取出来放到detail上，对single bdf 与 mulit bdf做差异化处理，在生成LOTS时建筑BDF是有单层与多层的区分，一个Volume(vol)就是一层，多层最多支持3层。然后记录每个prim所在的vol。
+
 
 这里有个有意思的点，这里作者用了硬编码去取一个josn，而且看作者的文件命名感觉作者以前是寒霜的人。
 
-![](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/6d070ce7-120c-45a1-b03d-e7c25f730020/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466R4ZZ37OF%2F20260218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260218T055017Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIBoeF3UsNlNBQ6HINdlQNFr%2Fro77ig5%2FoFqToqoH%2BWwRAiEAwCoTROAGvvGkDTVdTBMY6%2F0b04cb5e%2FN6Q2Hvy3wUGIq%2FwMIXhAAGgw2Mzc0MjMxODM4MDUiDH7L2GG0mwoZUj3PLCrcA8UXjiysKBb3K2IyxppP8WjaxBj%2FQVwkxEaYJp9tNrNc6XIyLVF1XTL4a85x00b02Fxy4yEkNmkSQ1kKHhvxwnhB61qubMOqYCMvmPEnweGpiu3%2FPKqdZK0BOu0dTznEFLJ0lAXtkQ5Im8WL2nDu1oRb3LSWURvy1eUHLOqc77YfWAUmamwz27FWjs4f9vgNnFJCYQfHOoH2qMkO3beLXLpgr5IlvSSX7DbnG329COhlj8bGCXYkbCm4olmCv0QCCf0wfpNTpiVIRkrrjS47TXig3FVug2xJ2t8rODgEYNb6xN3JoQ2BRqDLIVZeIbyhKmqdGPaRt72xwjoyM%2BOJXTw9skwWWdfHDzjufKZKQsXZrlOy3tMsYWKUAh1Ca0VoYbBUSU%2BZU4laxd%2BkOkNcWvs7q%2FH6dSoJCFEmjp6TIT4shajZcD9KkvOVsJLPMHDGBF6Vp5yLbtkmpE1VnJ%2FMnkFceVDV%2Fxa03CbSd%2Bv19IhDSkIvbP6JPXlADvzsnsBwlaeAcfqqd796niE%2F5WUupQ9G6ICxvaqv4YT66HMMqBKGH5ft2tyDcFclnaKsE22Xjk8cqZaGiqv2IgGAZDO1jnAbPgrpfgBCBhxRbCECDsh9jORVvnaJOKF0asdrMJ2W1cwGOqUB07OUbuzoOISkfnRf6buQalLqLhIvPaJddLojy%2FF54d66%2B2rp4ImSDYVChBnt6fqkrUlEPNE9RgeDmDS9xfPKpRrW4O9wxgdYHrgWqIiv2K1jj6VujSPmWYuTWiw2bECxsstVb69LRfGXoPcW6tkYdC5f%2F6LdrS567poGWW9WgGUd2crCnItMtLK69D0OrJge%2FzIqKaDnf%2FN27IEjehwTfTKv71ES&X-Amz-Signature=a554aa7a547bb592083bf5d3c8dafe4ae53e33608fe99717c887b99ad0db4a03&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+![Untitled.png](assets/黑客帝国-building_generator/003-bc32200e.png)
+
 
 做完bdf相关预处理之后，我们还得清理一下volme模型，我们将vol的数量存储在detail，再通过法线找到面向Y轴的模型，将模型分为两部分处理。
 
+
 之后也会这样。法线向上的面我们称为顶面，反之称为侧面或者墙面。
+
 
 顶面的处理操作为清除顶面内部点。
 
+
 侧面的处理操作为清除面内部的线。
+
 
 处理完之后将两者Merge起来即可。
 
+
 预先将我们的BDF属性处理一下，分为一个bdf_full  和  dbf，就是一个为简称，一个为全称。
 
-![](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/873aaccb-934c-4157-b72d-1f9d86e0ce2e/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466R4ZZ37OF%2F20260218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260218T055017Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIBoeF3UsNlNBQ6HINdlQNFr%2Fro77ig5%2FoFqToqoH%2BWwRAiEAwCoTROAGvvGkDTVdTBMY6%2F0b04cb5e%2FN6Q2Hvy3wUGIq%2FwMIXhAAGgw2Mzc0MjMxODM4MDUiDH7L2GG0mwoZUj3PLCrcA8UXjiysKBb3K2IyxppP8WjaxBj%2FQVwkxEaYJp9tNrNc6XIyLVF1XTL4a85x00b02Fxy4yEkNmkSQ1kKHhvxwnhB61qubMOqYCMvmPEnweGpiu3%2FPKqdZK0BOu0dTznEFLJ0lAXtkQ5Im8WL2nDu1oRb3LSWURvy1eUHLOqc77YfWAUmamwz27FWjs4f9vgNnFJCYQfHOoH2qMkO3beLXLpgr5IlvSSX7DbnG329COhlj8bGCXYkbCm4olmCv0QCCf0wfpNTpiVIRkrrjS47TXig3FVug2xJ2t8rODgEYNb6xN3JoQ2BRqDLIVZeIbyhKmqdGPaRt72xwjoyM%2BOJXTw9skwWWdfHDzjufKZKQsXZrlOy3tMsYWKUAh1Ca0VoYbBUSU%2BZU4laxd%2BkOkNcWvs7q%2FH6dSoJCFEmjp6TIT4shajZcD9KkvOVsJLPMHDGBF6Vp5yLbtkmpE1VnJ%2FMnkFceVDV%2Fxa03CbSd%2Bv19IhDSkIvbP6JPXlADvzsnsBwlaeAcfqqd796niE%2F5WUupQ9G6ICxvaqv4YT66HMMqBKGH5ft2tyDcFclnaKsE22Xjk8cqZaGiqv2IgGAZDO1jnAbPgrpfgBCBhxRbCECDsh9jORVvnaJOKF0asdrMJ2W1cwGOqUB07OUbuzoOISkfnRf6buQalLqLhIvPaJddLojy%2FF54d66%2B2rp4ImSDYVChBnt6fqkrUlEPNE9RgeDmDS9xfPKpRrW4O9wxgdYHrgWqIiv2K1jj6VujSPmWYuTWiw2bECxsstVb69LRfGXoPcW6tkYdC5f%2F6LdrS567poGWW9WgGUd2crCnItMtLK69D0OrJge%2FzIqKaDnf%2FN27IEjehwTfTKv71ES&X-Amz-Signature=cd57f84dc42931f7f6d4eff82c003deed7d46bb8341f388382fc19c38e239b91&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+![Untitled.png](assets/黑客帝国-building_generator/004-fad89687.png)
+
 
 根据不同prim所在的vol不同，给不同的vol不同的颜色去标记它们，循环处理当前建筑的每一个vol。
+
 
 ```python
 @Cd = 0;
@@ -46,111 +62,156 @@ vector colors[] = {{1,0,0}, {0,1,0}, {0,0,1}};
 @Cd = set(colors[i@vol]);
 ```
 
+
 进入处理楼层高度的循环，这部分最重要的节点为：
+
 
     Dct_Building_Volume_Slicing，也就是先计算一些体积相关信息，主要就是得到高度和由多少块(体或者bdf)构成的，通过输入1的bdf信息、以及vol(由多少bdf构成)信息，取到输入2中对应的bdf点上的信息，然后生成，因为是生成高度，这个简单介绍一下逻辑：
 取到Dct_Levels中的Repeat数组代表是否可以重复此楼层，与height数组代表此楼层高度，楼层数量是通过Dct_LevelsGrammar得到的，比如 楼层为7，那么会把7层楼高相加起来  与 生成体积的高度相减，得到的差就为重复楼层的高度，然后我们便可以通过repeat数组知道那些楼层可以重复，用重复的楼层去填补与生成体积之间的高度差。最后在每个楼层处生成一个点云，将相应属性附着上去。得到：
 
-![](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/215670d2-3039-44e6-96b0-4c3cffb0ec25/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466R4ZZ37OF%2F20260218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260218T055017Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIBoeF3UsNlNBQ6HINdlQNFr%2Fro77ig5%2FoFqToqoH%2BWwRAiEAwCoTROAGvvGkDTVdTBMY6%2F0b04cb5e%2FN6Q2Hvy3wUGIq%2FwMIXhAAGgw2Mzc0MjMxODM4MDUiDH7L2GG0mwoZUj3PLCrcA8UXjiysKBb3K2IyxppP8WjaxBj%2FQVwkxEaYJp9tNrNc6XIyLVF1XTL4a85x00b02Fxy4yEkNmkSQ1kKHhvxwnhB61qubMOqYCMvmPEnweGpiu3%2FPKqdZK0BOu0dTznEFLJ0lAXtkQ5Im8WL2nDu1oRb3LSWURvy1eUHLOqc77YfWAUmamwz27FWjs4f9vgNnFJCYQfHOoH2qMkO3beLXLpgr5IlvSSX7DbnG329COhlj8bGCXYkbCm4olmCv0QCCf0wfpNTpiVIRkrrjS47TXig3FVug2xJ2t8rODgEYNb6xN3JoQ2BRqDLIVZeIbyhKmqdGPaRt72xwjoyM%2BOJXTw9skwWWdfHDzjufKZKQsXZrlOy3tMsYWKUAh1Ca0VoYbBUSU%2BZU4laxd%2BkOkNcWvs7q%2FH6dSoJCFEmjp6TIT4shajZcD9KkvOVsJLPMHDGBF6Vp5yLbtkmpE1VnJ%2FMnkFceVDV%2Fxa03CbSd%2Bv19IhDSkIvbP6JPXlADvzsnsBwlaeAcfqqd796niE%2F5WUupQ9G6ICxvaqv4YT66HMMqBKGH5ft2tyDcFclnaKsE22Xjk8cqZaGiqv2IgGAZDO1jnAbPgrpfgBCBhxRbCECDsh9jORVvnaJOKF0asdrMJ2W1cwGOqUB07OUbuzoOISkfnRf6buQalLqLhIvPaJddLojy%2FF54d66%2B2rp4ImSDYVChBnt6fqkrUlEPNE9RgeDmDS9xfPKpRrW4O9wxgdYHrgWqIiv2K1jj6VujSPmWYuTWiw2bECxsstVb69LRfGXoPcW6tkYdC5f%2F6LdrS567poGWW9WgGUd2crCnItMtLK69D0OrJge%2FzIqKaDnf%2FN27IEjehwTfTKv71ES&X-Amz-Signature=3b5f1d276e63ea8e2f8bd2754f0ce9de7e41384c29ddc122f530724bab96b509&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+![Untitled.png](assets/黑客帝国-building_generator/005-f47619a0.png)
+
 
 给每个点上 上一个i@FloorNum 属性，代表自己为当前vol的第几层。
 
+
 通过volume_slicer这个subnetwork节点对每个点都对包围形状做切割，保留切割面的边缘线。给每个prim都给上对应属性包括，当前层数，是否为顶层，当前层的顶层为谁等。
 
-![](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/9ff26c7c-0db5-4648-aaa5-7abccfa52d8b/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466R4ZZ37OF%2F20260218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260218T055017Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIBoeF3UsNlNBQ6HINdlQNFr%2Fro77ig5%2FoFqToqoH%2BWwRAiEAwCoTROAGvvGkDTVdTBMY6%2F0b04cb5e%2FN6Q2Hvy3wUGIq%2FwMIXhAAGgw2Mzc0MjMxODM4MDUiDH7L2GG0mwoZUj3PLCrcA8UXjiysKBb3K2IyxppP8WjaxBj%2FQVwkxEaYJp9tNrNc6XIyLVF1XTL4a85x00b02Fxy4yEkNmkSQ1kKHhvxwnhB61qubMOqYCMvmPEnweGpiu3%2FPKqdZK0BOu0dTznEFLJ0lAXtkQ5Im8WL2nDu1oRb3LSWURvy1eUHLOqc77YfWAUmamwz27FWjs4f9vgNnFJCYQfHOoH2qMkO3beLXLpgr5IlvSSX7DbnG329COhlj8bGCXYkbCm4olmCv0QCCf0wfpNTpiVIRkrrjS47TXig3FVug2xJ2t8rODgEYNb6xN3JoQ2BRqDLIVZeIbyhKmqdGPaRt72xwjoyM%2BOJXTw9skwWWdfHDzjufKZKQsXZrlOy3tMsYWKUAh1Ca0VoYbBUSU%2BZU4laxd%2BkOkNcWvs7q%2FH6dSoJCFEmjp6TIT4shajZcD9KkvOVsJLPMHDGBF6Vp5yLbtkmpE1VnJ%2FMnkFceVDV%2Fxa03CbSd%2Bv19IhDSkIvbP6JPXlADvzsnsBwlaeAcfqqd796niE%2F5WUupQ9G6ICxvaqv4YT66HMMqBKGH5ft2tyDcFclnaKsE22Xjk8cqZaGiqv2IgGAZDO1jnAbPgrpfgBCBhxRbCECDsh9jORVvnaJOKF0asdrMJ2W1cwGOqUB07OUbuzoOISkfnRf6buQalLqLhIvPaJddLojy%2FF54d66%2B2rp4ImSDYVChBnt6fqkrUlEPNE9RgeDmDS9xfPKpRrW4O9wxgdYHrgWqIiv2K1jj6VujSPmWYuTWiw2bECxsstVb69LRfGXoPcW6tkYdC5f%2F6LdrS567poGWW9WgGUd2crCnItMtLK69D0OrJge%2FzIqKaDnf%2FN27IEjehwTfTKv71ES&X-Amz-Signature=47b68a67a9987931cd397cc85e3e39a29f7bd1fbc28590ca2f3c20cd969d1874&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+![Untitled.png](assets/黑客帝国-building_generator/006-2eeff62d.png)
+
 
 拿到结果后，我们需要把顶层和墙面分离开来处理。
 
+
 拿到墙面数据之后，我们需要记录下是否为底层住宅 还有再次记录当前vol，分别处理vol为0、1、2的块，每个vol都存储对应线框顶层高度和体积的BoundYmin。
+
 
 计算每个体积的offset，现在支持3个vol，vol0不用计算，用数组存一个每个vol的offset，offset = 上一级的线框顶层高度-当前体积的boundYmin。
 
+
 将vol的属性从prim转到point，根据点上vol属性确定自己的vol，根据voloffset去@P.y+=offset[volindex]，注意第二层再还得加上第一层的offset
+
 
     因为移动过BDF所有每根线都会重新测试一下确定线框顶层。所以我们还需要处理线框顶层同样根据点上vol属性确定自己的vol，根据voloffset去@P.y+=offset[volindex]，注意第二层再还得加上第一层的offset。
 
+
 这回我们先关注线框顶层这条逻辑线，拿到偏移后的线框顶层之后我们需要通过BDF_Index找到对应的Dct_Roof，保存里面的对应属性，顶层的偏移以及缩放。通过Y轴高度来排序prim的顺序，越高的prim序号为0。标记出最高的顶层，要么Pos.y=maxRoofY，要么@primnum=0；将标记的顶层偏移对应BDF里面的Roof_Offset。
+
 
 选择性是否输出没有缩放过的顶层，作为碰撞使用。
 
+
 如果是被标记为最高顶层的Roof，那么将会沿着prim向内缩放Inset的值。根据BDF的subRoot中的Inset和offset做Y轴的偏移和向内缩放，合并Roof的模型与碰撞体便可以输出顶层啦。
 
-![](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/002b9845-0f3c-4db5-912e-8ffe13a43e19/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466R4ZZ37OF%2F20260218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260218T055019Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIBoeF3UsNlNBQ6HINdlQNFr%2Fro77ig5%2FoFqToqoH%2BWwRAiEAwCoTROAGvvGkDTVdTBMY6%2F0b04cb5e%2FN6Q2Hvy3wUGIq%2FwMIXhAAGgw2Mzc0MjMxODM4MDUiDH7L2GG0mwoZUj3PLCrcA8UXjiysKBb3K2IyxppP8WjaxBj%2FQVwkxEaYJp9tNrNc6XIyLVF1XTL4a85x00b02Fxy4yEkNmkSQ1kKHhvxwnhB61qubMOqYCMvmPEnweGpiu3%2FPKqdZK0BOu0dTznEFLJ0lAXtkQ5Im8WL2nDu1oRb3LSWURvy1eUHLOqc77YfWAUmamwz27FWjs4f9vgNnFJCYQfHOoH2qMkO3beLXLpgr5IlvSSX7DbnG329COhlj8bGCXYkbCm4olmCv0QCCf0wfpNTpiVIRkrrjS47TXig3FVug2xJ2t8rODgEYNb6xN3JoQ2BRqDLIVZeIbyhKmqdGPaRt72xwjoyM%2BOJXTw9skwWWdfHDzjufKZKQsXZrlOy3tMsYWKUAh1Ca0VoYbBUSU%2BZU4laxd%2BkOkNcWvs7q%2FH6dSoJCFEmjp6TIT4shajZcD9KkvOVsJLPMHDGBF6Vp5yLbtkmpE1VnJ%2FMnkFceVDV%2Fxa03CbSd%2Bv19IhDSkIvbP6JPXlADvzsnsBwlaeAcfqqd796niE%2F5WUupQ9G6ICxvaqv4YT66HMMqBKGH5ft2tyDcFclnaKsE22Xjk8cqZaGiqv2IgGAZDO1jnAbPgrpfgBCBhxRbCECDsh9jORVvnaJOKF0asdrMJ2W1cwGOqUB07OUbuzoOISkfnRf6buQalLqLhIvPaJddLojy%2FF54d66%2B2rp4ImSDYVChBnt6fqkrUlEPNE9RgeDmDS9xfPKpRrW4O9wxgdYHrgWqIiv2K1jj6VujSPmWYuTWiw2bECxsstVb69LRfGXoPcW6tkYdC5f%2F6LdrS567poGWW9WgGUd2crCnItMtLK69D0OrJge%2FzIqKaDnf%2FN27IEjehwTfTKv71ES&X-Amz-Signature=c633b2f3134a0b983f0d890c5aa2dd61f48e1b3b9cfba56fa40600d18d5213b8&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+![Untitled.png](assets/黑客帝国-building_generator/007-356a49e2.png)
 
 
 回到偏移过后的墙面线框。
 
+
 通过BDFIndex找到对应的BDF，再通过每一层的LevelNum，去BDF中找到对应每一层的CornerCap，也就是每一层的角落是否使用角帽墙。将每条边的中点、以及指向的方向写入当前边所在的点属性中。
+
 
 找到所有为Topper的prim，遍历第一个点周围5米内还有比他高的点，并且两个点所在的Prim中点相差距离不大，就移除当前Topper，其实就是找最高层。因为是分vol操作的，每个vol都会有一个Topper，当vol合并在一起的时候Topper也应该只剩一个。
 
 
 之后我们需要找到每个角落的类型，所以我们分为两部分来处理，顶层墙面与非顶层墙面。
 
-![](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/bf76d810-49c1-4901-a545-951d15d274f9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466R4ZZ37OF%2F20260218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260218T055019Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIBoeF3UsNlNBQ6HINdlQNFr%2Fro77ig5%2FoFqToqoH%2BWwRAiEAwCoTROAGvvGkDTVdTBMY6%2F0b04cb5e%2FN6Q2Hvy3wUGIq%2FwMIXhAAGgw2Mzc0MjMxODM4MDUiDH7L2GG0mwoZUj3PLCrcA8UXjiysKBb3K2IyxppP8WjaxBj%2FQVwkxEaYJp9tNrNc6XIyLVF1XTL4a85x00b02Fxy4yEkNmkSQ1kKHhvxwnhB61qubMOqYCMvmPEnweGpiu3%2FPKqdZK0BOu0dTznEFLJ0lAXtkQ5Im8WL2nDu1oRb3LSWURvy1eUHLOqc77YfWAUmamwz27FWjs4f9vgNnFJCYQfHOoH2qMkO3beLXLpgr5IlvSSX7DbnG329COhlj8bGCXYkbCm4olmCv0QCCf0wfpNTpiVIRkrrjS47TXig3FVug2xJ2t8rODgEYNb6xN3JoQ2BRqDLIVZeIbyhKmqdGPaRt72xwjoyM%2BOJXTw9skwWWdfHDzjufKZKQsXZrlOy3tMsYWKUAh1Ca0VoYbBUSU%2BZU4laxd%2BkOkNcWvs7q%2FH6dSoJCFEmjp6TIT4shajZcD9KkvOVsJLPMHDGBF6Vp5yLbtkmpE1VnJ%2FMnkFceVDV%2Fxa03CbSd%2Bv19IhDSkIvbP6JPXlADvzsnsBwlaeAcfqqd796niE%2F5WUupQ9G6ICxvaqv4YT66HMMqBKGH5ft2tyDcFclnaKsE22Xjk8cqZaGiqv2IgGAZDO1jnAbPgrpfgBCBhxRbCECDsh9jORVvnaJOKF0asdrMJ2W1cwGOqUB07OUbuzoOISkfnRf6buQalLqLhIvPaJddLojy%2FF54d66%2B2rp4ImSDYVChBnt6fqkrUlEPNE9RgeDmDS9xfPKpRrW4O9wxgdYHrgWqIiv2K1jj6VujSPmWYuTWiw2bECxsstVb69LRfGXoPcW6tkYdC5f%2F6LdrS567poGWW9WgGUd2crCnItMtLK69D0OrJge%2FzIqKaDnf%2FN27IEjehwTfTKv71ES&X-Amz-Signature=23382058341a1081c4475d0384a967e498e64fabd1c46a8a9a48c0be41e83b88&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+![Untitled.png](assets/黑客帝国-building_generator/008-21293229.png)
+
 
 非顶层：
 
+
 遍历每一个Prim上的每一个point，将prim的primnum和法线存储到point上，查找每一个点周围0.1m范围内是否还有其他点，如果有其他点那么cornerNormal为两点法线相加/2，如果没有cornerNormal为自身将cornerNormal属性存储在点上，每一个周围0.05m范围内还有其他prim，把周围是否有其他点，周围是否有其他prim都存在点上，如果不是顶层，那么primNormal = @N；
+
 
 通过上面得到的每个点相邻prim数组，来判读当前点周围prim数量是否大于等于2，如果是，那么记录下每个prim[0]和prim[1]的中心点。如果小于2，那么根据这个点周边更远处是否有prim来决定当前点的CornerType。剩余的点就通过拿到自己上一个prim的中点以及下一个prim的中点，来根据
 vector d1 = normalize(v@P - prev_p);
 vector d2 = normalize( next_p - v@P);
 d1与d2的夹角与CornerCap的值判断使用那种类型角落墙。
 
+
 如果当前CornerType不为空的话，拿到当前点的相邻Prim，根据相邻prim的FacadeType属性决定当前点的CornerFacade的优先级。
 
 
 顶层：
 
+
 每条边和其他边做角度判断，删除不合格的边。将primId和pt顺序id存入点上，根据点旁边是否有其他点，如果有存下其他点的primid与pointid，如果没有都是-1，
+
 
 也是通过上面得到的每个点相邻prim数组，来判读当前点周围prim数量是否大于等于2，如果是，那么记录下每个prim[0]和prim[1]的中心点。如果小于2，那么根据这个点周边更远处是否有prim来决定当前点的CornerType。剩余的点就通过拿到自己上一个prim的中点以及下一个prim的中点，来根据
 vector d1 = normalize(v@P - prev_p);
 vector d2 = normalize( next_p - v@P);
 d1与d2的夹角与CornerCap的值判断使用那种类型角落墙。
 
+
 如果当前CornerType不为空的话，拿到当前点的相邻Prim，根据相邻prim的FacadeType属性决定当前点的CornerFacade的优先级。
+
 
 删除边上两点roofEdge都为0的prim
 
+
 如果prim上只有两个点，那么将这两点的相互朝向NTM记录下来，还有两点的距离。
+
 
 拿到当前点相邻prim，如果只有一个相邻prim的话，取得那个prim里面离当前点第二近的点上的NTM属性与当前点的NTM属性点乘判断方向，如果点乘结果小于-0.95，判断两prim的 长度如果当前prim长度>=相邻prim长度那么当前点位置为相邻prim上同序号点位置，否则就删除当前点与当前prim
 
-![](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/8ec6fd90-1dbd-4d7c-b82f-1109c9932d54/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466R4ZZ37OF%2F20260218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260218T055019Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIBoeF3UsNlNBQ6HINdlQNFr%2Fro77ig5%2FoFqToqoH%2BWwRAiEAwCoTROAGvvGkDTVdTBMY6%2F0b04cb5e%2FN6Q2Hvy3wUGIq%2FwMIXhAAGgw2Mzc0MjMxODM4MDUiDH7L2GG0mwoZUj3PLCrcA8UXjiysKBb3K2IyxppP8WjaxBj%2FQVwkxEaYJp9tNrNc6XIyLVF1XTL4a85x00b02Fxy4yEkNmkSQ1kKHhvxwnhB61qubMOqYCMvmPEnweGpiu3%2FPKqdZK0BOu0dTznEFLJ0lAXtkQ5Im8WL2nDu1oRb3LSWURvy1eUHLOqc77YfWAUmamwz27FWjs4f9vgNnFJCYQfHOoH2qMkO3beLXLpgr5IlvSSX7DbnG329COhlj8bGCXYkbCm4olmCv0QCCf0wfpNTpiVIRkrrjS47TXig3FVug2xJ2t8rODgEYNb6xN3JoQ2BRqDLIVZeIbyhKmqdGPaRt72xwjoyM%2BOJXTw9skwWWdfHDzjufKZKQsXZrlOy3tMsYWKUAh1Ca0VoYbBUSU%2BZU4laxd%2BkOkNcWvs7q%2FH6dSoJCFEmjp6TIT4shajZcD9KkvOVsJLPMHDGBF6Vp5yLbtkmpE1VnJ%2FMnkFceVDV%2Fxa03CbSd%2Bv19IhDSkIvbP6JPXlADvzsnsBwlaeAcfqqd796niE%2F5WUupQ9G6ICxvaqv4YT66HMMqBKGH5ft2tyDcFclnaKsE22Xjk8cqZaGiqv2IgGAZDO1jnAbPgrpfgBCBhxRbCECDsh9jORVvnaJOKF0asdrMJ2W1cwGOqUB07OUbuzoOISkfnRf6buQalLqLhIvPaJddLojy%2FF54d66%2B2rp4ImSDYVChBnt6fqkrUlEPNE9RgeDmDS9xfPKpRrW4O9wxgdYHrgWqIiv2K1jj6VujSPmWYuTWiw2bECxsstVb69LRfGXoPcW6tkYdC5f%2F6LdrS567poGWW9WgGUd2crCnItMtLK69D0OrJge%2FzIqKaDnf%2FN27IEjehwTfTKv71ES&X-Amz-Signature=0f9158a52594739ddafcc0c1c0871961f8322d3603c58416632ebaa349e0883a&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+![Untitled.png](assets/黑客帝国-building_generator/009-d680c789.png)
+
 
 确定了角落墙的各个楼层和顶层合并
 
-![](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/0e3a9a08-3c52-48b2-a1ce-2b46107c7a16/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466R4ZZ37OF%2F20260218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260218T055019Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIBoeF3UsNlNBQ6HINdlQNFr%2Fro77ig5%2FoFqToqoH%2BWwRAiEAwCoTROAGvvGkDTVdTBMY6%2F0b04cb5e%2FN6Q2Hvy3wUGIq%2FwMIXhAAGgw2Mzc0MjMxODM4MDUiDH7L2GG0mwoZUj3PLCrcA8UXjiysKBb3K2IyxppP8WjaxBj%2FQVwkxEaYJp9tNrNc6XIyLVF1XTL4a85x00b02Fxy4yEkNmkSQ1kKHhvxwnhB61qubMOqYCMvmPEnweGpiu3%2FPKqdZK0BOu0dTznEFLJ0lAXtkQ5Im8WL2nDu1oRb3LSWURvy1eUHLOqc77YfWAUmamwz27FWjs4f9vgNnFJCYQfHOoH2qMkO3beLXLpgr5IlvSSX7DbnG329COhlj8bGCXYkbCm4olmCv0QCCf0wfpNTpiVIRkrrjS47TXig3FVug2xJ2t8rODgEYNb6xN3JoQ2BRqDLIVZeIbyhKmqdGPaRt72xwjoyM%2BOJXTw9skwWWdfHDzjufKZKQsXZrlOy3tMsYWKUAh1Ca0VoYbBUSU%2BZU4laxd%2BkOkNcWvs7q%2FH6dSoJCFEmjp6TIT4shajZcD9KkvOVsJLPMHDGBF6Vp5yLbtkmpE1VnJ%2FMnkFceVDV%2Fxa03CbSd%2Bv19IhDSkIvbP6JPXlADvzsnsBwlaeAcfqqd796niE%2F5WUupQ9G6ICxvaqv4YT66HMMqBKGH5ft2tyDcFclnaKsE22Xjk8cqZaGiqv2IgGAZDO1jnAbPgrpfgBCBhxRbCECDsh9jORVvnaJOKF0asdrMJ2W1cwGOqUB07OUbuzoOISkfnRf6buQalLqLhIvPaJddLojy%2FF54d66%2B2rp4ImSDYVChBnt6fqkrUlEPNE9RgeDmDS9xfPKpRrW4O9wxgdYHrgWqIiv2K1jj6VujSPmWYuTWiw2bECxsstVb69LRfGXoPcW6tkYdC5f%2F6LdrS567poGWW9WgGUd2crCnItMtLK69D0OrJge%2FzIqKaDnf%2FN27IEjehwTfTKv71ES&X-Amz-Signature=442d99b7877085679109f139e764f6b77946be10ba2bf52f0eb1264ccad46a81&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+![Untitled.png](assets/黑客帝国-building_generator/010-eca1a85a.png)
+
 
 HACKY ：遍历每个prim中的每个点，如果当前层的dct_Levels中包含当前点的CornerFacade，那么当前点的FacadeFound也为CornerFacade，如果没有那么CornerFacade为F0，FacadeFound为notfound。
 
+
 下一个循环为Corner Override相关的操作，当前并没有Complex_Volume_Data所以跳过。
+
 
 下面着几个节点就是整个HDA最重要的几个节点啦。
 
+
 Shape_Grammar_Decomposition4：语法拆解节点，拆解并存储语法信息包括单个模块名称、重复单元、缩放单元、固定单元、单元尺寸信息等。
 
-![](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/af1d769b-5bba-42e8-ae29-5e304649c29b/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466R4ZZ37OF%2F20260218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260218T055019Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIBoeF3UsNlNBQ6HINdlQNFr%2Fro77ig5%2FoFqToqoH%2BWwRAiEAwCoTROAGvvGkDTVdTBMY6%2F0b04cb5e%2FN6Q2Hvy3wUGIq%2FwMIXhAAGgw2Mzc0MjMxODM4MDUiDH7L2GG0mwoZUj3PLCrcA8UXjiysKBb3K2IyxppP8WjaxBj%2FQVwkxEaYJp9tNrNc6XIyLVF1XTL4a85x00b02Fxy4yEkNmkSQ1kKHhvxwnhB61qubMOqYCMvmPEnweGpiu3%2FPKqdZK0BOu0dTznEFLJ0lAXtkQ5Im8WL2nDu1oRb3LSWURvy1eUHLOqc77YfWAUmamwz27FWjs4f9vgNnFJCYQfHOoH2qMkO3beLXLpgr5IlvSSX7DbnG329COhlj8bGCXYkbCm4olmCv0QCCf0wfpNTpiVIRkrrjS47TXig3FVug2xJ2t8rODgEYNb6xN3JoQ2BRqDLIVZeIbyhKmqdGPaRt72xwjoyM%2BOJXTw9skwWWdfHDzjufKZKQsXZrlOy3tMsYWKUAh1Ca0VoYbBUSU%2BZU4laxd%2BkOkNcWvs7q%2FH6dSoJCFEmjp6TIT4shajZcD9KkvOVsJLPMHDGBF6Vp5yLbtkmpE1VnJ%2FMnkFceVDV%2Fxa03CbSd%2Bv19IhDSkIvbP6JPXlADvzsnsBwlaeAcfqqd796niE%2F5WUupQ9G6ICxvaqv4YT66HMMqBKGH5ft2tyDcFclnaKsE22Xjk8cqZaGiqv2IgGAZDO1jnAbPgrpfgBCBhxRbCECDsh9jORVvnaJOKF0asdrMJ2W1cwGOqUB07OUbuzoOISkfnRf6buQalLqLhIvPaJddLojy%2FF54d66%2B2rp4ImSDYVChBnt6fqkrUlEPNE9RgeDmDS9xfPKpRrW4O9wxgdYHrgWqIiv2K1jj6VujSPmWYuTWiw2bECxsstVb69LRfGXoPcW6tkYdC5f%2F6LdrS567poGWW9WgGUd2crCnItMtLK69D0OrJge%2FzIqKaDnf%2FN27IEjehwTfTKv71ES&X-Amz-Signature=30018fdcf6b27bf05a293c35af5de29d02ac2a364b4134523080abbd1c444993&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+![Untitled.png](assets/黑客帝国-building_generator/011-d5a9888f.png)
+
 
 VEX逻辑大致为：
 
+
     先加载当前BDF_index对应的所有dictionaries信息，以及当前prim的所有点和prim的level信息、primFacade信息。使用当前primlevel和primFacade找到对应的形状语法，如果找不到用F0作为默认primFacade得到对应形状语法。将形状语法存储到Grammars，之后我们得解析每个语法得到每个模块的长度，
 
-![](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/be34a9eb-63d9-4a62-9a9e-467d280151f6/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466R4ZZ37OF%2F20260218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260218T055019Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIBoeF3UsNlNBQ6HINdlQNFr%2Fro77ig5%2FoFqToqoH%2BWwRAiEAwCoTROAGvvGkDTVdTBMY6%2F0b04cb5e%2FN6Q2Hvy3wUGIq%2FwMIXhAAGgw2Mzc0MjMxODM4MDUiDH7L2GG0mwoZUj3PLCrcA8UXjiysKBb3K2IyxppP8WjaxBj%2FQVwkxEaYJp9tNrNc6XIyLVF1XTL4a85x00b02Fxy4yEkNmkSQ1kKHhvxwnhB61qubMOqYCMvmPEnweGpiu3%2FPKqdZK0BOu0dTznEFLJ0lAXtkQ5Im8WL2nDu1oRb3LSWURvy1eUHLOqc77YfWAUmamwz27FWjs4f9vgNnFJCYQfHOoH2qMkO3beLXLpgr5IlvSSX7DbnG329COhlj8bGCXYkbCm4olmCv0QCCf0wfpNTpiVIRkrrjS47TXig3FVug2xJ2t8rODgEYNb6xN3JoQ2BRqDLIVZeIbyhKmqdGPaRt72xwjoyM%2BOJXTw9skwWWdfHDzjufKZKQsXZrlOy3tMsYWKUAh1Ca0VoYbBUSU%2BZU4laxd%2BkOkNcWvs7q%2FH6dSoJCFEmjp6TIT4shajZcD9KkvOVsJLPMHDGBF6Vp5yLbtkmpE1VnJ%2FMnkFceVDV%2Fxa03CbSd%2Bv19IhDSkIvbP6JPXlADvzsnsBwlaeAcfqqd796niE%2F5WUupQ9G6ICxvaqv4YT66HMMqBKGH5ft2tyDcFclnaKsE22Xjk8cqZaGiqv2IgGAZDO1jnAbPgrpfgBCBhxRbCECDsh9jORVvnaJOKF0asdrMJ2W1cwGOqUB07OUbuzoOISkfnRf6buQalLqLhIvPaJddLojy%2FF54d66%2B2rp4ImSDYVChBnt6fqkrUlEPNE9RgeDmDS9xfPKpRrW4O9wxgdYHrgWqIiv2K1jj6VujSPmWYuTWiw2bECxsstVb69LRfGXoPcW6tkYdC5f%2F6LdrS567poGWW9WgGUd2crCnItMtLK69D0OrJge%2FzIqKaDnf%2FN27IEjehwTfTKv71ES&X-Amz-Signature=c817ea6c6a88bf6a3686cd59015c76f9bb06128b18e129d82ac11ccf972298d2&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+![Untitled.png](assets/黑客帝国-building_generator/012-4ebe9686.png)
+
 
 
 遍历每个gramEntry，gramEntry=Grammars[i]。创建一系列预先需要的属性包括CornerVariationArr[];repeatElements[];scalingElements[];macroElements[];fixedBlocks[];expandGrammar[];macroGrammar;macroFormat;bucketArray[];等这里主要的就是几个记录数组包括是否可以重复的元素、是否可以缩放的元素、是否固定数量的原始等。
 
+
 一个gramEntry就是一个语法，比如:C | [P1-W1] * | (P2-W2) * | [P2-W1-P1]* | C，通过字符串分割split(gramEntry,"|")可以得到语法中的每一个语法单元C 、 [P1-W1] *、 (P2-W2) *等，也就是每个语法元素单元集合gramElements，语法元素 C、P1、W1、*等。
+
 
 遍历每个语法中的语法单元中，也就是对遍历每个语法元素集合 gramElements。
 
+
 这个gramElements可以分两种情况，一种是为C模块也就是角落模块，一种是墙模块，首先我们看C模块如果gramElements[0]=="C"，这里主要记录C模块的len(gramElements)是否大于1，如果大于1那么记录下C模块的变体数量，CornerVariation=gramElements[-1]，如果不大于1，那么变体为0，再将变体添加到CornerVariationArr中。
+
 
    接下来就是看gramElements是否存在宏元素macroElement，也就是是否有"-"，find(gramElements, "-") > 0，如果有，我们macroElements添加一个为1也就是true的值，bucketArray根据当前有n个"-"字符添加上n+1个当前gramElements的index。 如果没有macroElements添加一个为0的值，bucketArray添加一个当前gramElement的index。
    检测gramElements是否存在重复单元find(gramElements, "(") >= 0，如果有就在当前append(repeatElements, 1);没有就append(repeatElements, 0);，同样检测gramElement是否存在缩放单元find(gramElements, "") >=0，如果有就在当前append(scalingElements, 1);没有就append(scalingElements, 0);检测gramElements是否存在固定单元find(gramElements, "]") >=0，如果有就在当前append(fixedBlocks, index); int index = atoi(split(gramElements,"]")[1]);，“]”后一个元素就是固定循环次数。，没有就append(fixedBlocks, 0);。
+
 
 ```python
 for( int i = 0; i < gramArrLen; i++)
@@ -254,6 +315,7 @@ for( int i = 0; i < gramArrLen; i++)
 ```
 
 
+
     再创建一些预先需要的属性主要是grammarDims[]、 totalDim、module这几个，也就是当前单个模块的尺寸、单个语法总模块的总大小、当前模块名称。使用字符串分割expandGrammar = split(gramEntry, "|()[]-");遍历每一个语法模块。module = strip(expandGrammar[j]);。首先判断当前模块(语法元素)是否为墙角模块if (module[0]=="C" )，如果是，那么判断一下当前是否为第一个墙角模块，如果为第一个，角落模块我们遵循墙角模块的点模块属性优先级大于prim模块属性，所以我们将点属性上的CornerFacade、module给当前模块，判断面上的CornerFacade是否等于点上的CornerFacade，如果不等于，那么我们根据点上的CornerFacade属性去dct_level对应当前level中找到对应的第一个墙角模块，把当前展开的模块替换为点属性对应的模块expandGrammar[j]=cornerFacadeGrammarArr[0];。如果当前不是第一个墙角模块，那么也是一样点属性优先于prim属性不同的是，替换的模块为1号点属性对应的最后一个墙角模块。expandGrammar[j]=cornerFacadeGrammarArr[-1];再根据墙角模块的后缀处理不同的变体。
 之后我们判断当前模块是否在对应level的模块字典中存在isvalidindex(dct_Modules[itoa(primLevel)], module，如果存在我们找到对应模块的尺寸数据Mod_Dim，存入grammarDims数组中，totalDim累加当前尺寸既可。最后在将得到的数据存储到点上。
 
@@ -273,11 +335,15 @@ i@CornerCap = cornerCap;
 
 到这一步，BDF语法的预先处理工作就结束了，我们需要使用Measure节点来测量每一面墙的实际长度，接下来就是要根据墙的实际长度去正式的生成建筑模块点来匹配当前墙面。
 
-![](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/75b93152-d934-43b0-b966-10628225df9c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466R4ZZ37OF%2F20260218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260218T055019Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIBoeF3UsNlNBQ6HINdlQNFr%2Fro77ig5%2FoFqToqoH%2BWwRAiEAwCoTROAGvvGkDTVdTBMY6%2F0b04cb5e%2FN6Q2Hvy3wUGIq%2FwMIXhAAGgw2Mzc0MjMxODM4MDUiDH7L2GG0mwoZUj3PLCrcA8UXjiysKBb3K2IyxppP8WjaxBj%2FQVwkxEaYJp9tNrNc6XIyLVF1XTL4a85x00b02Fxy4yEkNmkSQ1kKHhvxwnhB61qubMOqYCMvmPEnweGpiu3%2FPKqdZK0BOu0dTznEFLJ0lAXtkQ5Im8WL2nDu1oRb3LSWURvy1eUHLOqc77YfWAUmamwz27FWjs4f9vgNnFJCYQfHOoH2qMkO3beLXLpgr5IlvSSX7DbnG329COhlj8bGCXYkbCm4olmCv0QCCf0wfpNTpiVIRkrrjS47TXig3FVug2xJ2t8rODgEYNb6xN3JoQ2BRqDLIVZeIbyhKmqdGPaRt72xwjoyM%2BOJXTw9skwWWdfHDzjufKZKQsXZrlOy3tMsYWKUAh1Ca0VoYbBUSU%2BZU4laxd%2BkOkNcWvs7q%2FH6dSoJCFEmjp6TIT4shajZcD9KkvOVsJLPMHDGBF6Vp5yLbtkmpE1VnJ%2FMnkFceVDV%2Fxa03CbSd%2Bv19IhDSkIvbP6JPXlADvzsnsBwlaeAcfqqd796niE%2F5WUupQ9G6ICxvaqv4YT66HMMqBKGH5ft2tyDcFclnaKsE22Xjk8cqZaGiqv2IgGAZDO1jnAbPgrpfgBCBhxRbCECDsh9jORVvnaJOKF0asdrMJ2W1cwGOqUB07OUbuzoOISkfnRf6buQalLqLhIvPaJddLojy%2FF54d66%2B2rp4ImSDYVChBnt6fqkrUlEPNE9RgeDmDS9xfPKpRrW4O9wxgdYHrgWqIiv2K1jj6VujSPmWYuTWiw2bECxsstVb69LRfGXoPcW6tkYdC5f%2F6LdrS567poGWW9WgGUd2crCnItMtLK69D0OrJge%2FzIqKaDnf%2FN27IEjehwTfTKv71ES&X-Amz-Signature=f320d2f33ce0ba069cc8adf6e3a4868a2cd921575115a0c459a4a900a62da5ee&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+![Untitled.png](assets/黑客帝国-building_generator/013-76676f8a.png)
+
 
 重点VEX节点：Add_Module_Types
 
+
 首先定义两个函数CheckFit和PlacedLength，CheckFit主要是给一个模块长度数组(记录单个模块的尺寸)，每个模块数量数组，和一个长度值，返回值为长度值-（所有模块数量对应模块长度）。PlacedLength则是直接输出总的模块长度（所有模块数量对应模块长度）
+
 
 ```javascript
 function float CheckFit(float BucketDims[]; int TempBuckets[]; float faceLength)
@@ -305,25 +371,36 @@ function float PlacedLength(float BucketDims[]; int TempBuckets[])
 }
 ```
 
+
     之后从节点属性中取得并创建我们需要的一系列变量###
 
-![](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/2a96376f-cc84-4a30-9707-7a321b3caded/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466R4ZZ37OF%2F20260218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260218T055020Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIBoeF3UsNlNBQ6HINdlQNFr%2Fro77ig5%2FoFqToqoH%2BWwRAiEAwCoTROAGvvGkDTVdTBMY6%2F0b04cb5e%2FN6Q2Hvy3wUGIq%2FwMIXhAAGgw2Mzc0MjMxODM4MDUiDH7L2GG0mwoZUj3PLCrcA8UXjiysKBb3K2IyxppP8WjaxBj%2FQVwkxEaYJp9tNrNc6XIyLVF1XTL4a85x00b02Fxy4yEkNmkSQ1kKHhvxwnhB61qubMOqYCMvmPEnweGpiu3%2FPKqdZK0BOu0dTznEFLJ0lAXtkQ5Im8WL2nDu1oRb3LSWURvy1eUHLOqc77YfWAUmamwz27FWjs4f9vgNnFJCYQfHOoH2qMkO3beLXLpgr5IlvSSX7DbnG329COhlj8bGCXYkbCm4olmCv0QCCf0wfpNTpiVIRkrrjS47TXig3FVug2xJ2t8rODgEYNb6xN3JoQ2BRqDLIVZeIbyhKmqdGPaRt72xwjoyM%2BOJXTw9skwWWdfHDzjufKZKQsXZrlOy3tMsYWKUAh1Ca0VoYbBUSU%2BZU4laxd%2BkOkNcWvs7q%2FH6dSoJCFEmjp6TIT4shajZcD9KkvOVsJLPMHDGBF6Vp5yLbtkmpE1VnJ%2FMnkFceVDV%2Fxa03CbSd%2Bv19IhDSkIvbP6JPXlADvzsnsBwlaeAcfqqd796niE%2F5WUupQ9G6ICxvaqv4YT66HMMqBKGH5ft2tyDcFclnaKsE22Xjk8cqZaGiqv2IgGAZDO1jnAbPgrpfgBCBhxRbCECDsh9jORVvnaJOKF0asdrMJ2W1cwGOqUB07OUbuzoOISkfnRf6buQalLqLhIvPaJddLojy%2FF54d66%2B2rp4ImSDYVChBnt6fqkrUlEPNE9RgeDmDS9xfPKpRrW4O9wxgdYHrgWqIiv2K1jj6VujSPmWYuTWiw2bECxsstVb69LRfGXoPcW6tkYdC5f%2F6LdrS567poGWW9WgGUd2crCnItMtLK69D0OrJge%2FzIqKaDnf%2FN27IEjehwTfTKv71ES&X-Amz-Signature=96e92570ca1cc1f5444515dc860cd6abd29ba0f492539a20b222679a71ddd6df&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+![Untitled.png](assets/黑客帝国-building_generator/014-13ff90e4.png)
+
 
     因为之前使用Measure测量过所有prim的长度，所有我们要做的就是将我们的语法长度与当前墙的实际长度匹配。
 
+
     遍历我们的GrammarLen[]，找到语法长度(GrammarLen[i])<=墙面长度，并且相差最小的一个。如果都不满足语法长度<=墙面长度，那么就用最后一个语法长度。将当前最匹配的GrammarLen[i]的index存储起来，好通过索引去找到对应的语法的其他属性。key=grammarIndex。通过当前所在的@primnum与Key我们可以获得对应图元中对应语法的信息并创建对应的属性变量。
 
-![](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/408d9f4c-18be-40bb-bd71-b0c4a190f06e/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466R4ZZ37OF%2F20260218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260218T055020Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIBoeF3UsNlNBQ6HINdlQNFr%2Fro77ig5%2FoFqToqoH%2BWwRAiEAwCoTROAGvvGkDTVdTBMY6%2F0b04cb5e%2FN6Q2Hvy3wUGIq%2FwMIXhAAGgw2Mzc0MjMxODM4MDUiDH7L2GG0mwoZUj3PLCrcA8UXjiysKBb3K2IyxppP8WjaxBj%2FQVwkxEaYJp9tNrNc6XIyLVF1XTL4a85x00b02Fxy4yEkNmkSQ1kKHhvxwnhB61qubMOqYCMvmPEnweGpiu3%2FPKqdZK0BOu0dTznEFLJ0lAXtkQ5Im8WL2nDu1oRb3LSWURvy1eUHLOqc77YfWAUmamwz27FWjs4f9vgNnFJCYQfHOoH2qMkO3beLXLpgr5IlvSSX7DbnG329COhlj8bGCXYkbCm4olmCv0QCCf0wfpNTpiVIRkrrjS47TXig3FVug2xJ2t8rODgEYNb6xN3JoQ2BRqDLIVZeIbyhKmqdGPaRt72xwjoyM%2BOJXTw9skwWWdfHDzjufKZKQsXZrlOy3tMsYWKUAh1Ca0VoYbBUSU%2BZU4laxd%2BkOkNcWvs7q%2FH6dSoJCFEmjp6TIT4shajZcD9KkvOVsJLPMHDGBF6Vp5yLbtkmpE1VnJ%2FMnkFceVDV%2Fxa03CbSd%2Bv19IhDSkIvbP6JPXlADvzsnsBwlaeAcfqqd796niE%2F5WUupQ9G6ICxvaqv4YT66HMMqBKGH5ft2tyDcFclnaKsE22Xjk8cqZaGiqv2IgGAZDO1jnAbPgrpfgBCBhxRbCECDsh9jORVvnaJOKF0asdrMJ2W1cwGOqUB07OUbuzoOISkfnRf6buQalLqLhIvPaJddLojy%2FF54d66%2B2rp4ImSDYVChBnt6fqkrUlEPNE9RgeDmDS9xfPKpRrW4O9wxgdYHrgWqIiv2K1jj6VujSPmWYuTWiw2bECxsstVb69LRfGXoPcW6tkYdC5f%2F6LdrS567poGWW9WgGUd2crCnItMtLK69D0OrJge%2FzIqKaDnf%2FN27IEjehwTfTKv71ES&X-Amz-Signature=85190b740186660548e7669f7634773cd45911a2f31b87661c2b169166bd1852&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+![Untitled.png](assets/黑客帝国-building_generator/015-c244f25d.png)
+
 
     包括当前语法的每个模块尺寸、每个模块是否可扩展、每个模块是否可以重复、是否可以缩放、每个模块是否为固定重复、每个模块的固定重复次数等等。得到对应的语法所有Key之后，我们还需要当前语法中的每个语法单元的长度，根据每个语法单元中的语法元素所在的index，在GramDims[]找到当前语法元素对应的模块长度。
 
+
     接下来就准备填充这个墙面长度，先使用当前语法长度去填充也就是默认每个语法单元数量都为1，这样是有概率成功的，之后的顺序便是先将固定重复语法单元一个一个的添加回来，CheckFit当前墙实际长度减去添加过后的语法长度是否大于等于0,如果小于0也就是超出墙实际长度啦，那么将添加的语法单元减去。之后再到可无限重复单元也是如此操作。通过可重复单元将当前语法长度和实际墙面的距离差压缩到最小，之后的距离填补就需要用到我们的缩放模块啦，通过缩放模块的缩放操作来填满最后的距离差，使得当前语法长度与实际墙面长度一致。
+
 
     创建一个新的变量记录下当前语法长度与实际墙长度差float LengthRemaining = CheckFit(bucketDims, tempBuckets, primLength);，遍历所以语法元素把可当前可缩放的语法元素的长度记录下来作为一个可缩放的总长度(scalableModuleCoverage)，因为缩放的话并不是单独的缩放一个模块，我们会将所以可以缩放的模块统一缩放，使得缩放过后的 可缩放模块总长度 = 原可缩放模块(scalableModuleCoverage) + 剩余长度差( LengthRemaining)，所以我们只需要得到剩余长度缩放比例 scaledelta = LengthRemaining / scalableModuleCoverage; ，最后便是 最终可缩放模块总长度 = 原可缩放模块(scalableModuleCoverage) * (1+ scaledelta)；这样就能完全填充满实际的墙面长度。
 
+
     因为最后需要生成每个点的位置所以需要预先存储一个moduleOffsets，moduleOffsets[i] = grammarDims[i] + (moduleScalesDelta[i] * grammarDims[i]);。接下来我们就先定义一系列生成点需要的属性比如offsetTotal、scale、currentMacro等等就可以开始生成点啦。循环遍历每个语法元素。拿到每个元素的属于那个语法单元，以及当前语法元素的基础长度、当前语法单元的数量等。
 
+
     遍历当前语法元素的所在的语法单元重复的每个单元。记录下当前所在语法单元id，循环遍历 如果当前记录的语法单元id == 当前所在的语法单元id 就继续循环，循环内容为 记录循环次数，当循环超过500就推出避免死循环，记录当前索引指向的语法元素所对应的模块名称，如果名称的第一位字符为“C”，那么modlue变量为C，判断当前是否为第一个放置的模块，如果是那么offset属性为0；如果不是，那么当前offset为预先记录的moduleOffsets[]，索引为前一个语法元素的索引，然后将当前语法元素索引记录在moduleIndexPlaced[]中供一下语法元素使用，记录下当前语法元素的缩放和offsetTotal += offset; offsetTotal就表示上一个语法元素的末尾，也就是当前语法元素的起始位置。将当前语法元素起始位置存储到modDistanceOnPrim[]，新建一个新的point 将这个点添加到当前prim中，设置这个point的属性，这个点就是一个当前语法元素也就是一个模块。
+
 
 ```python
 append(modulePtsAdded, newPtNum);
@@ -366,8 +443,8 @@ setpointattrib(0, "BDF", newPtNum, s@bdf, "set");
 
 拿到生成点之后，我们还需要单纯处理一下一楼的点，遍历每个LevelNum为1的prim，Point上存储离当前点最近的入口的距离，存储离当前点最近的角落的距离。
 
+
 删除重复的90度的角落模块
 
+
 根据当前的模块类型s@ModuleType为C的角落模块，在根据角落类型s@CornerType选择更准确的角落模块类型。
-
-

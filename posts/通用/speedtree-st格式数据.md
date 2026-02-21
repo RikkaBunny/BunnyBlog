@@ -6,139 +6,206 @@ created: "2023-07-07T16:59:00.000Z"
 updated: "2023-07-07T16:59:00.000Z"
 notion_url: "https://www.notion.so/speedtree-ST-1fe8a399333041a0b17876a856978aa0"
 database: "Common Technical"
+source: "notion-sync"
 ---
-
 ## SpeedTree的设置和导出
+
 
 1.SpeedTree导入UE需要使用.st格式,可以包含风场,材质等数据
 
-![](https://yx-prod-resources-shared-1254112465.cos.ap-beijing.myqcloud.com/1/925ed6c184534c04deaabd7c37bcf709-2834)
 
-![](https://yx-prod-resources-shared-1254112465.cos.ap-beijing.myqcloud.com/1/234c5382b04a7aaf8fbea63a7643f573-25586)
+![image](assets/speedtree-st格式数据/001-4769bc1b.bin)
+
+
+![image](assets/speedtree-st格式数据/002-8a4609de.bin)
+
 
 2.SpeedTreeWind 有一些预设的风的质量
 
-![](https://yx-prod-resources-shared-1254112465.cos.ap-beijing.myqcloud.com/1/0142730c2fd637e523f894483d375159-4042)
 
-![](https://yx-prod-resources-shared-1254112465.cos.ap-beijing.myqcloud.com/1/891c526be23cfe9fd5c8e52bab13d1d0-7665)
+![image](assets/speedtree-st格式数据/003-54d84268.bin)
+
+- [x] [x]这些设置是否会影响导出数据 - 会影响导出数据,越好的质量会导出更多的数据,并且可以向下兼容,具体的设置在材质节点中
+- [x] [x]这些设置是否会改变Shader的计算 - 这些设置在shader中以宏的形式定义了不同类型的风场算法,导出数据生成的材质球里包含了模型的类型(树枝?树叶?棕榈叶?)
+
+![image](assets/speedtree-st格式数据/004-51db19f6.bin)
+
 
 ## 数据的分析
 
+
 下文所有UV[Index]都是以max中为准,从1开始
 
-![](https://yx-prod-resources-shared-1254112465.cos.ap-beijing.myqcloud.com/1/529ee28c9adf61b213d951dfa451f79a-26103)
 
-### Fastest
+![image](assets/speedtree-st格式数据/005-6a9dbdf2.bin)
+
+
+### **Fastest**
+
 
 uv3:(0,7.492)
 
+
 uv4:localPos.xy
+
 
 uv5:(localPos.z,1)
 
+
 uv6:(0,0)
+
 
 uv7:(0,0)
 
+
 uv8:(0,0)
 
-### Fast
+
+### **Fast**
+
 
 uv3:(0,7.492)
 
+
 uv4:localPos.xy
+
 
 uv5:(localPos.z,每个叶片有一个值,主干和插片枝干是1,约靠上的叶片这个值越大)
 
+
 uv6: 主干和插片的枝干为(0,0)
+
 
 每一片叶子有一个值,x≠y,y值偏大 y像是当前叶片中心点的高度
 
+
 uv7:主干和插片的枝干为(0,0)
+
 
 x:叶片的渐变,y轴是每个叶片向y的正方向偏移一个值,貌似与高度无关
 
+
 uv8:主干和插片的枝干为(0,0)
+
 
 (x是一个渐变值,从根部到顶部,渐变的过度与叶片大小无关,y都是0)
 
-### Better
+
+### **Better**
+
 
 uv3:(0,7.492)
 
+
 uv4:localPos.xy
+
 
 uv5:(localPos.z,每个叶片有一个值,主干和插片枝干是1,约靠上的叶片这个值越大)
 
+
 uv6: 主干和插片的枝干为(0,0)
 
+
 每一片叶子有一个值,x≠y,y值偏大 y像是当前叶片中心点的高度
+
 
 uv7:主干和插片的枝干为(0,0)
 
+
 x:叶片的渐变,y轴每个叶片向y的正方向偏移一个值,貌似与高度无关
+
 
 uv8:主干和插片的枝干为(0,0)
 
+
 (x是一个渐变值,从根部到顶部,渐变的过度与叶片大小无关,y都是0)
 
-### Best
+
+### **Best**
+
 
 uv3:(0,7.492)
 
+
 uv4:localPos.xy
+
 
 uv5:(localPos.z,每个叶片有一个值,主干和插片枝干是1,约靠上的叶片这个值越大)
 
+
 uv6: 主干和插片的枝干为(0,0)
 
+
 每一片叶子有一个值,x≠y,y值偏大 y像是当前叶片中心点的高度
+
 
 y轴可能减去uv3.y 与x组成一个与位置相关的数据
 
+
 uv7:主干和插片的枝干为(0,0)
+
 
 x:叶片的渐变,y轴每个叶片向y的正方向偏移一个值,貌似与高度无关
 
+
 uv8:主干和插片的枝干为(0,0)
+
 
 (x是一个渐变值,从根部到顶部,渐变的过度与叶片大小无关,y都是0)
 
-### Palm
+
+### **Palm**
+
 
 uv3:(0,7.492)
 
+
 uv4:localPos.xy
+
 
 uv5:(localPos.z,每个叶片有一个值,主干和插片枝干是1,约靠上的叶片这个值越大)
 
+
 uv6:树干是(0,0)
+
 
 插片的树枝是,x方向是感觉是个随机值没啥规律,y反向是(-1或1)
 
+
 叶片的渐变,每个叶片向y的正方向偏移一个值,貌似与高度无关
+
 
 uv7:主干和插片的枝干为(0,0)
 
+
 插片的树枝,x轴感觉是描述左右,y轴为0
+
 
 x:叶片的渐变,y轴是每个叶片向y的正方向偏移一个值,貌似与高度无关
 
+
 uv8:主干和插片的枝干为(0,0)
+
 
 (x是一个渐变值,从根部到顶部,渐变的过度与叶片大小无关,y都是0)
 
+
 ## UE中代码
 
+
 SpeedTree风场代码在MaterialTemplate.ush中调用,具体的方法在SpeedTreeCommon.ush中定义
+
 
 float3 GetSpeedTreeVertexOffsetInner(FMaterialVertexParameters Parameters, int 
 GeometryType, int WindType, int LODType, float BillboardThreshold, bool 
 bExtraBend, float3 ExtraBend, FSpeedTreeData STData)
 
+
 ### SpeedTreeData结构体定义
 
+
 从C++传的参数,与风场相关
+
 
 struct FSpeedTreeData
 {
@@ -163,23 +230,31 @@ struct FSpeedTreeData
        float4 WindAnimation;
 };
 
+
 GetPreviousSpeedTreeData()
 GetCurrentSpeedTreeData()
 
+
 ### RippleFrond
+
 
 ### LeafWind
 
+
 ---
+
 
 ## UV数据
 
 - uv1-采样贴图的uv
 - uv2-LightMap的uv
+
 ### SmoothLod
 
 - (uv4.xy,uv5.x)-是lod的Pos,用来实现Lod切换时顶点的偏移
-![](https://yx-prod-resources-shared-1254112465.cos.ap-beijing.myqcloud.com/1/f3e502fc14522608d4c632ee4ca6b758-15675)
+
+![image](assets/speedtree-st格式数据/006-2f23cd20.bin)
+
 
 ### Branch
 
@@ -188,6 +263,7 @@ GetCurrentSpeedTreeData()
 - 在SpeedTree根据树枝类型区分?
 - uv3.x Weight-树枝分簇的渐变幅度
 - uv3.y Offset 根据该值解码出树枝偏移的方向
+
 float3 UnpackNormalFromFloat(float fValue)
 {
        float3 vDecodeKey = float3(16.0, 1.0, 0.0625);
@@ -199,22 +275,28 @@ float3 UnpackNormalFromFloat(float fValue)
        return (vDecodedValue * 2.0 - 1.0);
 }
 
-![](https://yx-prod-resources-shared-1254112465.cos.ap-beijing.myqcloud.com/1/54438f039165f34215399d05ddafa9b1-12190)
 
-### Frond && Palm
+![image](assets/speedtree-st格式数据/007-731031d6.bin)
+
+
+### **Frond && Palm**
 
 - uv6.x fPackedRippleDir
 - uv6.y fRippleScale
 - uv7.x fLenghtPercent
-![](https://yx-prod-resources-shared-1254112465.cos.ap-beijing.myqcloud.com/1/f578ca05ecc18ee1fb60bcf4e15e68c3-20578)
+
+![image](assets/speedtree-st格式数据/008-5da5628f.bin)
+
 
 ### Leaves
 
 - (uv5.y,uv6.x,uv6.y)-leafAnchor,叶子的轴点
-![](https://yx-prod-resources-shared-1254112465.cos.ap-beijing.myqcloud.com/1/634bd54a106072dc9d5a9f4076e4fb21-18649)
+
+![image](assets/speedtree-st格式数据/009-25563172.bin)
 
 - uv7.x Scale-幅度 就是叶片的渐变,描述叶片运动的幅度
 - uv7.y PackedGrowthDir 生长方向 一个控制树叶翻滚的旋转轴
+
 float3 LeafTumble(FSpeedTreeData STData,
        float3 vPos, 
        inout float3 vDirection, 
@@ -289,6 +371,7 @@ RotationMatrix(vAxis, fAngle));
 }
 
 - uv8.x PackedRippleDir 编码的波浪方向 根据该值解码出树叶偏移的方向
+
 float3 LeafRipple(float3 vPos, 
                              inout float3 vDirection, 
                              float fScale, 
@@ -314,7 +397,9 @@ float3 LeafRipple(float3 vPos,
 }
 
 - uv8.y 标识是否是leaf2,多层树叶的时候的数据
-![](https://yx-prod-resources-shared-1254112465.cos.ap-beijing.myqcloud.com/1/32f23699a90351ecf15ad009e5e59aa6-24266)
+
+![image](assets/speedtree-st格式数据/010-9f234a24.bin)
+
 
 // leaf wind
 if (WindType > SPEEDTREE_WIND_TYPE_FASTEST && WindType != 
@@ -328,23 +413,30 @@ if (WindType > SPEEDTREE_WIND_TYPE_FASTEST && WindType !=
                            LeafWindTrigOffset, WindType);
 }
 
+
 ### GlobalWind
 
 - 树整体的风场
+
 if (bExtraBend || bHasGlobal)
        {
               FinalPosition = GlobalWind(STData, FinalPosition, TreePos, true, bHasGlobal, bExtraBend, ExtraBend);
        }
 
+
 ### Houdini工具(UV从0开始)
+
 
 1.AO数据处理:顶点色R通道的数据传到uv1的G通道
 
+
 2.叶子轴点数据:(uv4.y,uv5.x,uv5.y)传递到(uv2.r,uv2.g,uv3.r)   拥有相同轴点数据的叶子作为一簇  树干的轴点数据都是(0,0,0)
+
 
 3.叶子渐变梯度:计算相同轴点位置的顶点到轴点的距离/最大距离 存在uv3.g 树干的叶子渐变值是0
 
+
 4.树干渐变梯度:计算顶点到树轴点的距离/最大距离,低于轴点的顶点直接给0  存在uv4.r  所有顶点统一计算,树叶也算
 
-5.根据轴点位置计算一个(0,1)随机数 存在uv4.g
 
+5.根据轴点位置计算一个(0,1)随机数 存在uv4.g

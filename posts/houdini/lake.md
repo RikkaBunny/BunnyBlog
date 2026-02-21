@@ -1,18 +1,20 @@
 ---
-title: "Lake "
+title: "Lake"
 categories: ["Houdini"]
 date: "2023-07-07"
 created: "2023-07-07T15:27:00.000Z"
 updated: "2023-07-07T15:45:00.000Z"
 notion_url: "https://www.notion.so/Lake-6f9f4de14cbf41eea0f0171e3db91f96"
 database: "Houdini Technical"
+source: "notion-sync"
 ---
+![Lake.png](assets/lake/001-dc448ff7.png)
 
-![](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/756eec75-a108-4b60-a2d5-da1a14260cf8/Lake.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4663ABEVNQG%2F20260218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260218T055010Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIDK%2BZUFbfup56PL7Y51vw202ze3QdoV6%2FW%2BeQXtxSoLeAiEA5OLSiRILE6dV0hyu3ptLD%2F51T9lDb92dx7EnYwHD48Eq%2FwMIXhAAGgw2Mzc0MjMxODM4MDUiDCYLry2x8i9eg6lEiyrcA6FAyAAHOLtIaA2AVqM%2B1INaUV6JCQ%2BaixjMVNMPOWgF5ELDcEvPi8TqqacJGGOKvEGBHPvcluUat1wcUcj5mYYoPOfmpCmz4cZa7OH%2B%2BfjpoWEGueS1SZbuLsDns95%2FEwlPwJbFiE8AYJWmJZ0ShqrPICv3XadW%2BHvEwbJYn8xVRVO81JF5RRfQIE4FrLvtPehUljyR6EL5kyITkFgNo5mS3jAsXITYietgUlB6nTlKroUf2OI4Q6%2BURSoWNsti0%2FB3EitKV%2Fl153KvWU6PtUnhcLze42hXCUJNByw%2F%2BVLONgeHNGC7peGMokQh4JYsOy0SdHTDO9ywbKwoVSxD%2FKSKTmEvvNC5njlwJ9AlcySRyfn70FdoUNfB95CeujBFqWFI9DQdWR6UdTk47yd2N%2FU46M8Mjy1JgEUYZIv5anGGzpO1WijO7B8P8lpyHX5KEH2Lg2Zmd2a5MRCREWkrrc06RsXsN6jPZv4aveR3LFOKbfaEGfUINzwFthUrUa7kcMq1CtEUaIzMO5qQnBwZWoAK66TtRnPCNQz%2B5tN69fBk1wbquhi1NRA2oPDDiotPxZzD%2BqYXItKaHELyOnKs0srIdvwKITCR1lj4yn8KbKzSeQ2QLUOV2XSGnEqLMOOV1cwGOqUBGa7KnU5l6BUUrHtpxFmB6%2F6lkzN%2Byi2%2BAxFTKWL6O%2F8Dvw%2FGBj5hSkaN4fmxgBO7NIY48tkN92w%2B9cfpQ9kdluErdZJDCE9wysPnOEL91tthWp42EalZ%2BSG7C0rXb9UJ3X6cUXcSalJoUnfjpwna5PT7eL4dzUSnhF8IUNEHbTe9UXPEbj%2BM7jKzskVfFJH8K3r1uNwXm49CQMXv405vacoYJUCh&X-Amz-Signature=16b06cd00f1c3daa09cb2ee9851f581a17390b99950744c86906b9466efbe32e&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
 
-支持最小输入两个、最大输入3个分别为：湖泊闭合曲线、地形、水面Mesh
-支持3个输出分布为：最终结果预览、地形、水面Mesh
+支持最小输入两个、最大输入3个分别为：**湖泊闭合曲线**、**地形、水面Mesh**
+支持3个输出分布为：**最终结果预览、地形、水面Mesh**
 湖泊这里比较简单，首先我们把输入的闭合曲线@P.y=0，然后使用resample细分这个闭合曲线，我们采样曲线上的每一个点对应地形的高度值。
+
 
 vector p = @P;
 p.y = 0.0;
@@ -21,23 +23,28 @@ float h = volumesample(1, "height", p) + ori.y;
 @height = h;
 p.y = @height;
 
+
 通过attribpromote直接把最小值转移到detail，这个最小高度就是作为我们湖泊的最小湖面高度。
 对于湖泊我们还可以做一步是否裁剪超出地形外的操作，使用地形的boundbox与输入的闭合片做boolean裁剪，得到我们真正需要的水面部分。
 
-对于地面部分：
+
+**对于地面部分：**
+
 
 我们可以使用heightfield_maskbyobject节点把水面投影一个mask在地形上，最简单的就是直接一个blur，然后根据参数的深度对地形做一个@height下降既可以，但是这样的地形特别容易与水面脱离，需要手动对水面做高度调节。第二种就是先把地形拍平@height=0;然后同样把水面投影在地形上，使用ConvertVolume提取地形mask的边缘，使用xyzdist获得距离，通过距离做高度下降mask。
 
-![](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/4cbf2a4e-a02a-4c46-bd48-d6f62f66382b/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4663ABEVNQG%2F20260218%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260218T055010Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIDK%2BZUFbfup56PL7Y51vw202ze3QdoV6%2FW%2BeQXtxSoLeAiEA5OLSiRILE6dV0hyu3ptLD%2F51T9lDb92dx7EnYwHD48Eq%2FwMIXhAAGgw2Mzc0MjMxODM4MDUiDCYLry2x8i9eg6lEiyrcA6FAyAAHOLtIaA2AVqM%2B1INaUV6JCQ%2BaixjMVNMPOWgF5ELDcEvPi8TqqacJGGOKvEGBHPvcluUat1wcUcj5mYYoPOfmpCmz4cZa7OH%2B%2BfjpoWEGueS1SZbuLsDns95%2FEwlPwJbFiE8AYJWmJZ0ShqrPICv3XadW%2BHvEwbJYn8xVRVO81JF5RRfQIE4FrLvtPehUljyR6EL5kyITkFgNo5mS3jAsXITYietgUlB6nTlKroUf2OI4Q6%2BURSoWNsti0%2FB3EitKV%2Fl153KvWU6PtUnhcLze42hXCUJNByw%2F%2BVLONgeHNGC7peGMokQh4JYsOy0SdHTDO9ywbKwoVSxD%2FKSKTmEvvNC5njlwJ9AlcySRyfn70FdoUNfB95CeujBFqWFI9DQdWR6UdTk47yd2N%2FU46M8Mjy1JgEUYZIv5anGGzpO1WijO7B8P8lpyHX5KEH2Lg2Zmd2a5MRCREWkrrc06RsXsN6jPZv4aveR3LFOKbfaEGfUINzwFthUrUa7kcMq1CtEUaIzMO5qQnBwZWoAK66TtRnPCNQz%2B5tN69fBk1wbquhi1NRA2oPDDiotPxZzD%2BqYXItKaHELyOnKs0srIdvwKITCR1lj4yn8KbKzSeQ2QLUOV2XSGnEqLMOOV1cwGOqUBGa7KnU5l6BUUrHtpxFmB6%2F6lkzN%2Byi2%2BAxFTKWL6O%2F8Dvw%2FGBj5hSkaN4fmxgBO7NIY48tkN92w%2B9cfpQ9kdluErdZJDCE9wysPnOEL91tthWp42EalZ%2BSG7C0rXb9UJ3X6cUXcSalJoUnfjpwna5PT7eL4dzUSnhF8IUNEHbTe9UXPEbj%2BM7jKzskVfFJH8K3r1uNwXm49CQMXv405vacoYJUCh&X-Amz-Signature=167a443f551c995fd6b000d395d59818e0cf6ed97b5106fa5e03b17e39c4f573&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+![Untitled.png](assets/lake/002-b17c0a3f.png)
+
 
 使用这个拍平过后并高度下降过的地形与原地形做一个height add操作，便可以将下降高度传给原地形。(其实使用原地形下降也可以，这里使用拍平过后的地形主要是可以对地形高度做blur等额外操作)
 接下来就可以对地形投影mask范围内做noise、blur等操作(参数暴露可自行选择控制)，使用生成的水面做mask投影做好湖的layer输出既可。
 
+
 ### 对面水面部分：
+
 
 我们需要把与地形裁剪过的Mesh作为初步的水面，水面的整体高度为我们存在detail里面的最小高度，对于水面我们需要控制他的一些参数。
 水面高度：这里我们直接用@P.y += chf(”waterSurfaceOffset”)就可以控制。
 水面的宽度我们可以使用polyexpand2d节点通过调节Offset来控制。
 之后再通过remesh到我们需要的密度，remesh这里我们可以使用Adaptive功能(旧的可以生成自适应密度的Mesh，新的好像不行了），我们可以均匀remesh之后，通过polyreduce剔除一些重要性较低的顶点。计算向上的法线(判断法线朝向，防止法线向下)，给上UV，打上Tag，就可以pack起来与，输入的水片一起输出啦。同样输入输出口颜色对应改一下养成好习惯。
-
-

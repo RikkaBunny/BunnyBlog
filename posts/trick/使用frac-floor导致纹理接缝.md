@@ -1,11 +1,20 @@
-
+---
+title: "使用Frac/Floor导致纹理接缝"
+categories: ["Trick"]
+date: "2023-07-08"
+created: "2023-07-08T03:48:00.000Z"
+updated: "2023-07-08T03:51:00.000Z"
+notion_url: "https://www.notion.so/Frac-Floor-727d096ef37240aab9f89a37f1c954ac"
+database: "Trick Notes"
+source: "notion-sync"
+---
 **起因**：
 
 
 使用世界坐标做贴图UV时，使用了Frac函数使世界空间UV转换到0到1平铺。发现出现uv 0-1跳转，出现接缝。
 
 
-![v2-a0c8c94a7039ffb9f48ae2c151cc22c2_720w.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/17535f34-302f-404f-92e3-d21e957f1644/v2-a0c8c94a7039ffb9f48ae2c151cc22c2_720w.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466S2D2DNWO%2F20260219%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260219T091103Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIGJ1kYJQnIsYQ9s%2FQoxJa0SN%2FPu0AIACRXcMjXD4BRuTAiASxGtHbpq3DHOdyzsxWpddi0R9tM0X87NnCDttzsqbiyr%2FAwh5EAAaDDYzNzQyMzE4MzgwNSIMGe8YLShXVBaa6u%2FuKtwDuvQhbs1wucxd1NKtZ859ozZ8gneY3gO03QePNN1%2BXlascRk%2FuKjSIbJvpuEkhTpbqhlsDaDtVD5WCAHox%2F3dFlKLd%2Bp9w5QvJmMPb2dsgFmTBuNHA1fs4XBSWY9hAN1vxKIHZlPpbFFOXt0pYxp7WHDPCZQmAOw38d8l35gUE0q9297NY%2BKAtwye4%2BmhnSv9v1VVgZKIcmavwaJNbqXGfmC3QOwufy1K6Mlnd3d7z5z485qup9wjCYunDAgjtt5Qsva57m7zo1B%2F3h08qcuI6YaWqCVJ9mY20XLVRqor27D25xsfHDRFzwKFxiO0cROLsNeLpHP3w61uBwt88XBsEeOnw0eA7gOspdOT9gNndsDKzixWAMN4XwDNSBf5AM5fC4xkf1VBq1bnP4L9OlwrTZEPAQMnYX0lhdOwNxS1hvISWDJC4hdBQq%2BTfSmb4BmpKHVAwbxmeiNmpClrj3NNGoHddTYoNIuKThuPh7P06kDhsN1suT%2FIrrQ%2BqkAFLkKQ7cErVaFdNcZxOkRhr%2FLf8VHDE1y1hL6EaVSoemCFak%2BBGDZfuLmuTnocLvdMGwq3gam8dxW7VmwTG%2FtPGg1maY%2FyN3ctUudavyIcWNF3PobIeGweY2%2FQtlZF8FMw5obbzAY6pgEEXcdFV%2FmzdGGNfzNW1eWHLoYuXXn8Y%2FfZ1%2B9ISmTulOyF6wCmV7Yuh10QSDvTLzdRwA3mb35nbOExIVMIwOBzDEXkZUL%2BZdVSWy5yud36NGMM7kRLznDIq30g72XQ2lvdyHizj4MvedAw7iT1bMbMWZzrqZxX5sXvThw8hbJcuecgbosNlbS9vDpl8ykiXCNyhxePWwyEGgxJ0%2Fkuw2bobtJrV8N4&X-Amz-Signature=1c2fbad5f8ef529355c703e8df18a9f1b466c41321c085f2b7f3b79ac43e1dd0&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+![v2-a0c8c94a7039ffb9f48ae2c151cc22c2_720w.jpg](assets/使用frac-floor导致纹理接缝/001-2a06b3fb.jpg)
 
 
 **原因：**
@@ -33,4 +42,3 @@ uv为frac后0-1的平铺uv，uv1为frac前连续uv
 
 
 `return Tex.SampleGrad(TexSampler,UV,ddx(UV1),ddy(UV1));`
-

@@ -1,4 +1,13 @@
-
+---
+title: "tex2D和Sample"
+categories: ["Unity"]
+date: "2023-07-07"
+created: "2023-07-07T13:24:00.000Z"
+updated: "2023-07-07T13:27:00.000Z"
+notion_url: "https://www.notion.so/tex2D-Sample-0322103d7e204dec9dbcb2cca095d9e7"
+database: "Unity Technical"
+source: "notion-sync"
+---
 和Unreal的 贴图 与 贴图采样器概念一样。
 
 
@@ -60,4 +69,3 @@ color += _ThirdTex.Sample(sampler_MainTex, uv);
 
 
 但是请注意，DX11 风格的 HLSL 语法在某些较旧的平台（例如，OpenGL ES 2.0）上无效，请参阅[在 Unity 中使用 HLSL](https://docs.unity3d.com/cn/current/Manual/SL-ShaderPrograms.html) 以了解详细信息。您可能需要指定 `#pragma target 3.5`（请参阅[着色器编译目标](https://docs.unity3d.com/cn/current/Manual/SL-ShaderCompileTargets.html)）以避免较旧的平台使用着色器
-

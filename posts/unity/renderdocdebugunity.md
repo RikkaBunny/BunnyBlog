@@ -1,18 +1,26 @@
-
+---
+title: "RenderDocDebugUnity"
+categories: ["Unity"]
+date: "2023-07-07"
+created: "2023-07-07T13:24:00.000Z"
+updated: "2023-07-07T13:28:00.000Z"
+notion_url: "https://www.notion.so/RenderDocDebugUnity-3bea83ab58634a65b691388f5267b7b9"
+database: "Unity Technical"
+source: "notion-sync"
+---
 下载完RenderDoc之后，unity Game视图自动有LoadRenderDoc菜单，
 
 
-![Untitled.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/ffa40a7f-7cda-4814-8996-7fa1283650c3/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466ZXVU4KLB%2F20260219%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260219T091045Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIQCH3TVxGNG4zYqti63VEBNhUxECYot4BTmSxLFtgzT9aQIgfOKNK%2BJhRERtq6tpNlSmqzzASOHm5YEQXWBTDL6DxHEq%2FwMIeRAAGgw2Mzc0MjMxODM4MDUiDF%2F5oZ2Pp6P5R76X%2FircA3jkI2wk%2Fmjj8K%2FiTBiBz1e5cw6uHIGL6GM1AJlOy%2BxitLHfIcFXcFVxIuK3%2FmmKw%2BB6zOE3t%2B71LA7xw%2FuJcXd39INE47vIufz9yKWNQhfR%2FNRM3zeytHLLAZgds0mxvumAvlFvcdn9Hf12ZBZCPy3M8tBC08BSy4ulHPUCCvxmS0mzb64vBOxhpoSNuBDH2G2tsODcPFZkZmNTyvnVZNgNgZWoIdGvPnv00%2FmADAzLM5hikB5rVazMOlwA311LZPH7dIXSOfnOL7NtDkycXhoUHyHBq6MRaL%2FZuIkp1gQDlMEdhz%2FHDasc%2BB%2BeSxjTSzjZ9BkDkkAAxiu9ri5%2Fdnp0pBbSb0VIEbqvtlfCBl%2BJFCQO1WXbqDBPe6zQbASH4l826SuDp%2FnS1pMnUf115y%2FzxZnsd24YBk9VZPtJCrmm2tQGLjtWDo2%2Bsriw1qle%2F9apML5Qn4rOXNQrCMELvx3eTFcOJMMWlBSsEdpNzIpEqlYPO38hbaw74bytGxVGUMVQVWmj6y7rXWjMzrpzGGw56AnB5JDyozOKzPpkGyE%2FJRCZb7ZngKOjws4pi739dnDEi85hsuJL9QffGdTDmkh%2BSVHnYbpqjXx8CP5C7Qbl089BYKEjfhIyKoe%2FMNWG28wGOqUBbJqgDrziTycRpuNt4APEFF4vViz7if3cPoCEx%2BBHXDUjH2D3CYc71Q%2F85WDpssZsckcScRLFv%2BeIGOubN%2BSby%2FLoqqVrs4HjBDbWuIr2YapCb3Kbzu2LWo9rp2CfLcbKJBHrZJ0EgGobUNg%2FVVy0tZy6Q7wxeHQ51WqBoXYnVkTfa4XdCq1SAZS08ArXTDzVAxtn73w0w7yeHST6Wfb3CLXBShSr&X-Amz-Signature=2acab25b86b7d8861a06c1418e1febb5fbc3c689b4a80dd7e18d8ad93d5cfe94&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+![Untitled.png](assets/renderdocdebugunity/001-bf2b0851.png)
 
 
 点击加载就可以，加载完成点击截帧就可以啦。
 
 
-![Untitled.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/a3193a5b-b33d-4bb5-8fb2-44104c877695/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466ZXVU4KLB%2F20260219%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260219T091045Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIQCH3TVxGNG4zYqti63VEBNhUxECYot4BTmSxLFtgzT9aQIgfOKNK%2BJhRERtq6tpNlSmqzzASOHm5YEQXWBTDL6DxHEq%2FwMIeRAAGgw2Mzc0MjMxODM4MDUiDF%2F5oZ2Pp6P5R76X%2FircA3jkI2wk%2Fmjj8K%2FiTBiBz1e5cw6uHIGL6GM1AJlOy%2BxitLHfIcFXcFVxIuK3%2FmmKw%2BB6zOE3t%2B71LA7xw%2FuJcXd39INE47vIufz9yKWNQhfR%2FNRM3zeytHLLAZgds0mxvumAvlFvcdn9Hf12ZBZCPy3M8tBC08BSy4ulHPUCCvxmS0mzb64vBOxhpoSNuBDH2G2tsODcPFZkZmNTyvnVZNgNgZWoIdGvPnv00%2FmADAzLM5hikB5rVazMOlwA311LZPH7dIXSOfnOL7NtDkycXhoUHyHBq6MRaL%2FZuIkp1gQDlMEdhz%2FHDasc%2BB%2BeSxjTSzjZ9BkDkkAAxiu9ri5%2Fdnp0pBbSb0VIEbqvtlfCBl%2BJFCQO1WXbqDBPe6zQbASH4l826SuDp%2FnS1pMnUf115y%2FzxZnsd24YBk9VZPtJCrmm2tQGLjtWDo2%2Bsriw1qle%2F9apML5Qn4rOXNQrCMELvx3eTFcOJMMWlBSsEdpNzIpEqlYPO38hbaw74bytGxVGUMVQVWmj6y7rXWjMzrpzGGw56AnB5JDyozOKzPpkGyE%2FJRCZb7ZngKOjws4pi739dnDEi85hsuJL9QffGdTDmkh%2BSVHnYbpqjXx8CP5C7Qbl089BYKEjfhIyKoe%2FMNWG28wGOqUBbJqgDrziTycRpuNt4APEFF4vViz7if3cPoCEx%2BBHXDUjH2D3CYc71Q%2F85WDpssZsckcScRLFv%2BeIGOubN%2BSby%2FLoqqVrs4HjBDbWuIr2YapCb3Kbzu2LWo9rp2CfLcbKJBHrZJ0EgGobUNg%2FVVy0tZy6Q7wxeHQ51WqBoXYnVkTfa4XdCq1SAZS08ArXTDzVAxtn73w0w7yeHST6Wfb3CLXBShSr&X-Amz-Signature=96fd0f51f7bbb30e749e5e05b7c17a0b3383c659b4437727ce3474df0663aad0&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+![Untitled.png](assets/renderdocdebugunity/002-0189fdde.png)
 
 
 调试我们的shader了 ,这时候要注意的一个点就是我们要在我们的shader里面加上一句宏
 
 
  `#pragma enable_d3d11_debug_symbols`
-
