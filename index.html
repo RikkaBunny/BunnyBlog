@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bunny Blog</title>
-    <meta name="description" content="Bunny 技术博客：从 Notion 自动同步到 GitHub 的个人知识库。" />
+    <meta name="description" content="Bunny 技术博客：Notion 同步到 GitHub 的个人知识库。" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Space+Grotesk:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -17,64 +17,64 @@
     <script defer src="app.js"></script>
   </head>
   <body>
-    <div class="bg-orb orb-a"></div>
-    <div class="bg-orb orb-b"></div>
-
-    <header class="hero shell">
-      <p class="kicker">RikkaBunny · Personal Knowledge Garden</p>
-      <h1>Bunny Blog</h1>
-      <p class="hero-copy">把 Notion 技术笔记、年度复盘与作品记录同步成可检索的个人博客。</p>
-      <div class="hero-stats">
-        <div>
-          <span id="stat-articles">0</span>
-          <small>文章</small>
-        </div>
-        <div>
-          <span id="stat-categories">0</span>
-          <small>分类</small>
-        </div>
-        <div>
-          <span id="stat-updated">-</span>
-          <small>最近同步</small>
-        </div>
-      </div>
-    </header>
-
-    <main class="layout shell">
-      <aside class="left-panel">
-        <section class="panel">
-          <h2>分类导航</h2>
-          <div id="category-list" class="chip-grid"></div>
-        </section>
-
-        <section class="panel quick-links">
-          <h2>快捷入口</h2>
-          <a href="https://www.notion.so/64528bdd7f1c446a9f0906b4684ae8ad?pvs=21" target="_blank" rel="noreferrer">🍊 Indie Engine</a>
-          <a href="https://www.notion.so/9cbda9f57f104548bc59f25cd8efb395?pvs=21" target="_blank" rel="noreferrer">🐰 UE Technical</a>
-          <a href="https://github.com/RikkaBunny/BunnyBlog" target="_blank" rel="noreferrer">📦 GitHub 内容仓库</a>
-          <a href="http://chatgpt.bunnytut.top/" target="_blank" rel="noreferrer">🎊 ChatGPT</a>
-        </section>
-      </aside>
-
-      <section class="content-panel">
-        <div class="toolbar panel">
-          <input id="search-input" type="search" placeholder="搜索标题、关键词、描述..." />
+    <div class="noise"></div>
+    <div class="page-shell">
+      <header class="topbar glass">
+        <div class="brand">Bunny Blog</div>
+        <div class="topbar-actions">
+          <input id="search-input" type="search" placeholder="搜索文章" />
           <select id="sort-select" aria-label="排序方式">
             <option value="newest">最新优先</option>
             <option value="oldest">最早优先</option>
             <option value="title">标题 A-Z</option>
           </select>
         </div>
+      </header>
 
-        <div class="list-head">
-          <h2 id="result-title">全部文章</h2>
-          <p id="result-count">0 篇</p>
+      <section class="hero glass">
+        <p class="eyebrow">RikkaBunny · Knowledge Garden</p>
+        <h1>Think in Build Systems.<br />Ship in Real Time.</h1>
+        <p class="hero-copy">把 Notion 技术笔记、年度复盘与作品记录同步成可检索的个人博客。</p>
+        <div class="hero-stats">
+          <article>
+            <span id="stat-articles">0</span>
+            <small>文章</small>
+          </article>
+          <article>
+            <span id="stat-categories">0</span>
+            <small>分类</small>
+          </article>
+          <article>
+            <span id="stat-updated">-</span>
+            <small>最近同步</small>
+          </article>
         </div>
-
-        <div id="article-grid" class="article-grid"></div>
-        <div id="empty-state" class="empty-state hidden">没有匹配结果，试试换个关键词。</div>
       </section>
-    </main>
+
+      <main class="layout">
+        <aside class="sidebar glass">
+          <h2>分类导航</h2>
+          <div id="category-list" class="chip-grid"></div>
+
+          <h3>快捷入口</h3>
+          <nav class="quick-links">
+            <a href="https://www.notion.so/64528bdd7f1c446a9f0906b4684ae8ad?pvs=21" target="_blank" rel="noreferrer">🍊 Indie Engine</a>
+            <a href="https://www.notion.so/9cbda9f57f104548bc59f25cd8efb395?pvs=21" target="_blank" rel="noreferrer">🐰 UE Technical</a>
+            <a href="https://github.com/RikkaBunny/BunnyBlog" target="_blank" rel="noreferrer">📦 GitHub 仓库</a>
+            <a href="http://chatgpt.bunnytut.top/" target="_blank" rel="noreferrer">🎊 ChatGPT</a>
+          </nav>
+        </aside>
+
+        <section class="content">
+          <div class="list-head">
+            <h2 id="result-title">全部文章</h2>
+            <p id="result-count">0 篇</p>
+          </div>
+          <div id="article-grid" class="article-grid"></div>
+          <div id="empty-state" class="empty-state hidden">没有匹配结果，试试换个关键词。</div>
+        </section>
+      </main>
+    </div>
 
     <aside id="reader" class="reader hidden" aria-live="polite">
       <div class="reader-head">
@@ -82,7 +82,7 @@
           <p id="reader-meta"></p>
           <h3 id="reader-title"></h3>
         </div>
-        <button id="close-reader" class="ghost-btn" aria-label="关闭">×</button>
+        <button id="close-reader" class="close-btn" aria-label="关闭">×</button>
       </div>
       <article id="reader-body" class="reader-body"></article>
     </aside>
