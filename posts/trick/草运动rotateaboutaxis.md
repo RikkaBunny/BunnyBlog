@@ -11,7 +11,7 @@ source: "notion-sync"
 要想草好看 必须用绕轴做圆周 ，这样才有起起伏伏的质感
 
 
-![grass0.gif](assets/草运动rotateaboutaxis/001-ecbba3d6.gif)
+![grass0.gif](assets/草运动rotateaboutaxis/001-999f36ff.gif)
 
 
 主要函数 RotateAboutAxis

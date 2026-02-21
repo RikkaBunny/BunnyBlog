@@ -14,10 +14,10 @@ source: "notion-sync"
     首先Heightfield Scatter为最大三个输入，最小一个输入，一个输出的节点，三个输入分别为1：需要撒点的地形、2：撒点所在的Mask或者预先撒好的点、3：需要在点上Instance的图元。
 
 
-![Untitled.png](assets/heightfield-scatter解析/001-8ed30602.png)
+![Untitled.png](assets/heightfield-scatter解析/001-6fb4a6f7.png)
 
 
-![Untitled.png](assets/heightfield-scatter解析/002-db86a98e.png)
+![Untitled.png](assets/heightfield-scatter解析/002-8400d5d7.png)
 
 
 首先一进来就看见 1号输入与2号输入同时都有这部分，也就是分离出没有tag的点(每个Heightfield Scatter撒出来的点都会带Tag)，
@@ -39,7 +39,7 @@ source: "notion-sync"
 然后我们直接使用scatter节点来为mask范围内撒点，密度为计算出的density。
 
 
-![Untitled.png](assets/heightfield-scatter解析/003-14a31af4.png)
+![Untitled.png](assets/heightfield-scatter解析/003-a1e6dac5.png)
 
 
 使用flatten来使用撒来处的点Y轴都为0，
@@ -80,7 +80,7 @@ float rand_val = rand(quant_P + global_seed);
 relax_point 自定义函数，通过pcfind_radius找到一个点附近所有带特定属性的点云，遍历点云中每一个点，拿到其他点相对与当前点的方向与距离，判断距离，如果两点距离特别近，就可以将最终的返回值vector4.w = 1，跳出点云循环。如果两点之间的距离小于 两点各自的内圈距离之和，那么就随机一个0到1之间的值，看看是否小于删除概率，如果小于那么将返回值vector4.w=1跳出点云循环，最后在设置一下返回值vector4.xyz=c_pos + (movement_factor * (avoiddist - diff_len) * (diff_vec / diff_len)); 也就是根据步进值向两点反方向步进。
 
 
-![Untitled.png](assets/heightfield-scatter解析/004-4276581f.png)
+![Untitled.png](assets/heightfield-scatter解析/004-a91ca503.png)
 
 
 属性设置：将的地形的上属性与高度设置给对应xz平面的点云。
@@ -95,7 +95,7 @@ relax_point 自定义函数，通过pcfind_radius找到一个点附近所有带�
 这里再介绍一两个有意思的小技巧吧 Heightfield Scatter节点里面也有用到
 
 
-![Untitled.png](assets/heightfield-scatter解析/005-ce29aaba.png)
+![Untitled.png](assets/heightfield-scatter解析/005-3464ca6e.png)
 
 
 使用Attribute Wrangle里面的Bindings，将自己想要的几何属性绑定上一个自己在VEX里面调用这个属性的名字，相当于指针指向AttributeName,指针的名字是VexParameter。   上面的Autobind by Name就是为每一个AttributeName自动创建一个对应名字的VexParameter，在Vex里面通过@VexParameter就可以调用这个Attribute。
@@ -104,10 +104,10 @@ relax_point 自定义函数，通过pcfind_radius找到一个点附近所有带�
 还有个就是
 
 
-![Untitled.png](assets/heightfield-scatter解析/006-3b5b3abe.png)
+![Untitled.png](assets/heightfield-scatter解析/006-7e44da0b.png)
 
 
 在每个节点创建时候，自动给seed属性给一个随机的值，node.sessionId()是每个节点不同的一个ID值。这个我们还可以给上节点颜色、节点形状、配套节点等等一系列初始化操作而且不只初始化还有很多Event函数。
 
 
-![Untitled.png](assets/heightfield-scatter解析/007-adda8426.png)
+![Untitled.png](assets/heightfield-scatter解析/007-0ce88dea.png)

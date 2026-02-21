@@ -8,7 +8,7 @@ notion_url: "https://www.notion.so/UE-7001f98d3bb143ffb252184e92270451"
 database: "UE Technical"
 source: "notion-sync"
 ---
-![Untitled.png](assets/ue-高级地形材质/001-ee9cf71a.png)
+![Untitled.png](assets/ue-高级地形材质/001-476d7c8d.png)
 
 
 这次的目标是做一个比较3A级别的地形，那么地形的效果上有几点的非常重要的，一个是地表重复度，一个是地表置换高度，一个是地表阴影，一个是地表光感，这也是大多数人做地形常常遇到的问题。
@@ -23,19 +23,19 @@ source: "notion-sync"
 地形的最重要底子之一，这里我们去Quixel里面去找我们需要的地表贴图，这里贴图的导出格式我们需要自定义。
 
 
-![Untitled.png](assets/ue-高级地形材质/002-cf648e65.png)
+![Untitled.png](assets/ue-高级地形材质/002-c5fd2ebb.png)
 
 
 这里我用的格式为 BaseColor + Roughness 为一张，Normal + Specular + Displacement 为一张，总共2张4K贴图，(这里贴图我导出后在SD中再次处理过  主要为两次 翻转法线Y ，因为我发现Quixel里面选择翻转法线Y并没有给我翻转，还有一个处理就是将置换图的色阶自动拉伸一下 ，注意需要在SD的线性空间下处理不然会给你弄成Gamma空间，下方箭头处 )
 
 
-![Untitled.png](assets/ue-高级地形材质/003-7cad64fc.png)
+![Untitled.png](assets/ue-高级地形材质/003-22b567d1.png)
 
 
 下面就是贴图在引擎里面的设置啦，我们可以右键所有贴图Asset Actions → Bulk Editvia Property Matrix  使用批处理来修改贴图设置。
 
 
-![Untitled.png](assets/ue-高级地形材质/004-f1b5de72.png)
+![Untitled.png](assets/ue-高级地形材质/004-42c5df69.png)
 
 
 我们需要把C_R开头的贴图sRGB勾上，N_S_H开头的sRGB去掉。然后所有压缩格式用BC7 ，Mipmap设置为 Sharpen10  锐化度为10(可以自行调整)，这样能让我们在远处也有比较清晰的贴图。
@@ -53,13 +53,13 @@ source: "notion-sync"
 这里VT的基础配置教程，我们就不讲了网上一搜一大堆，这里讲一讲VT设置里面需要注意的地方，有些同学设置完Virtual Heightfield Mesh之后发现地形还存在，这时就会有两个地形同时存在，我们需要找到地形的Draw in Main Pass这个选项，选择FromVirtualTexture，代表我们走VT渲染，本身不渲染。
 
 
-![Untitled.png](assets/ue-高级地形材质/005-c8fd046d.png)
+![Untitled.png](assets/ue-高级地形材质/005-b046ef5b.png)
 
 
-![Untitled.png](assets/ue-高级地形材质/006-835f60ae.png)
+![Untitled.png](assets/ue-高级地形材质/006-b8fedf40.png)
 
 
-![Untitled.png](assets/ue-高级地形材质/007-efd3a8df.png)
+![Untitled.png](assets/ue-高级地形材质/007-eac7cb72.png)
 
 
 当我们Build SVT的时候有时候会直接Build卡死，这时候我们需要调整一下Streaming Levels，0 代表最大，1代表最小 往后 越来越大。
@@ -77,13 +77,13 @@ source: "notion-sync"
 LandScape  Material 
 
 
-![Untitled.png](assets/ue-高级地形材质/008-124230f7.png)
+![Untitled.png](assets/ue-高级地形材质/008-36256d54.png)
 
 
 Virtual Height field Mesh Material
 
 
-![Untitled.png](assets/ue-高级地形材质/009-24136cb6.png)
+![Untitled.png](assets/ue-高级地形材质/009-7f645439.png)
 
 
 注意两边的法线都为世界空间法线。
@@ -92,7 +92,7 @@ Virtual Height field Mesh Material
 我们进入一个NFLayer 内部看看 一步一步的拆解来看
 
 
-![Untitled.png](assets/ue-高级地形材质/010-3fb49c45.png)
+![Untitled.png](assets/ue-高级地形材质/010-793de957.png)
 
 
 这个部分主要分为两个，近处的石头 与 远处的石头，通过一个远近的淡入淡出Mask进行一个过渡，这样做有两个原因，一个是减弱贴图Tile情况，另一个是因为贴图拉远之后 纹素比越来越大，导致看不清细节等情况，对于远处的石头我们可以调节它的UVTile 大小 与 置换高度。对于VT来说 VT其实是独立于Camera的 ，所以远近淡入淡出的Mask，不可以用WorldPosition 与 CameraPositon的距离来控制，所以这里我们需要用另一种思路，那就是Mipmap。因为VT这种技术会根据当前贴图纹素比自动调整Mipmap大小，从而保持场景一个稳定的纹素比。那么我们只需要当Mimap小于某个值就使用近处Rock VT，大于某个值就使用远处Rock VT 中间淡入淡出过渡。
@@ -101,7 +101,7 @@ Virtual Height field Mesh Material
 View Property节点便可以为我们提供当前VT的Mipamp级别。
 
 
-![Untitled.png](assets/ue-高级地形材质/011-59ba7f96.png)
+![Untitled.png](assets/ue-高级地形材质/011-e30cad69.png)
 
 
 通过Mipmap，我们就能达到远近淡入淡出的效果啦。
@@ -110,52 +110,52 @@ View Property节点便可以为我们提供当前VT的Mipamp级别。
 我们再看看RockLayer里面实际逻辑是什么。
 
 
-![Untitled.png](assets/ue-高级地形材质/012-b84e0e77.png)
+![Untitled.png](assets/ue-高级地形材质/012-b4055e23.png)
 
 
 最前面是UV，我们把UVSacle暴露出去。
 
 
-![Untitled.png](assets/ue-高级地形材质/013-d9075459.png)
+![Untitled.png](assets/ue-高级地形材质/013-06c3bb64.png)
 
 
 先看UseCellBomb为false的状态，C_R这里很简单就是将RGB给一个Color Tint 之后直接输入到BaseColor既可，A通道直接给Rougness就可以啦。
 
 
-![Untitled.png](assets/ue-高级地形材质/014-666c153f.png)
+![Untitled.png](assets/ue-高级地形材质/014-02f4def4.png)
 
 
 N_S_H这边也是比较简单，我们只需要把B通道给Specular，RG通道这边通过叉乘得到法线RGB，连入Normal，A通道代表高度，我们需要将A通道单独输出 OUT_Height这个参数控制 地形Layer Blend的高度混合，另一边高度也要连接到Opacity上，这个代表着我们置换的高度。
 
 
-![Untitled.png](assets/ue-高级地形材质/015-3e78f6ab.png)
+![Untitled.png](assets/ue-高级地形材质/015-a1e46e3b.png)
 
 
 Displacement 这里主要控制地形高度的起伏，我们需要让地表的石头有真正的凹凸，所以我们需要控制这个凹凸的强度，这个我们减去了凸起的1/3，这是一个Trick，因为地形如果凸起太高了人物陷入地面太多，这样会使凸起之后整体往下移动一小段距离。
 
 
-![Untitled.png](assets/ue-高级地形材质/016-14d6e542.png)
+![Untitled.png](assets/ue-高级地形材质/016-b9947763.png)
 
 
 对于解析法线 ，我们通常需要将法线从 0 到 1 空间转换到 -1 到 1的空间，然后叉乘计算出Z，我们可以顺带法线增强也一起写了，对于法线增强其实就是增强X 和 Y两个轴，最后将结果归一化基本就可以啦。
 
 
-![Untitled.png](assets/ue-高级地形材质/017-c281cf55.png)
+![Untitled.png](assets/ue-高级地形材质/017-32e5d9a9.png)
 
 
 但是后面发现法线出现不规则黑斑，经过测试发现着部分法线的长度等于任何值，所以我在后面加上了一个法线错误检查，如果法线出现错误，那么输出法线 (0,0,1)。
 
 
-![Untitled.png](assets/ue-高级地形材质/018-f2400f08.png)
+![Untitled.png](assets/ue-高级地形材质/018-40cb876f.png)
 
 
-![Untitled.png](assets/ue-高级地形材质/019-a5d64a1e.png)
+![Untitled.png](assets/ue-高级地形材质/019-832d90fd.png)
 
 
-![Untitled.png](assets/ue-高级地形材质/020-8cd1e083.png)
+![Untitled.png](assets/ue-高级地形材质/020-751f70ac.png)
 
 
-![Untitled.png](assets/ue-高级地形材质/021-10695866.png)
+![Untitled.png](assets/ue-高级地形材质/021-e46fe88d.png)
 
 
 这时候其实效果以及差不多啦。
@@ -164,22 +164,22 @@ Displacement 这里主要控制地形高度的起伏，我们需要让地表的�
 如果要极限的去Tile的话就，可以打开UseCellBomb这个开关。对比一下
 
 
-![Untitled.png](assets/ue-高级地形材质/022-3f7918f5.png)
+![Untitled.png](assets/ue-高级地形材质/022-25a0dfbb.png)
 
 
-![Untitled.png](assets/ue-高级地形材质/023-8cb270ed.png)
+![Untitled.png](assets/ue-高级地形材质/023-73eca12c.png)
 
 
 这个技术的原理就是通过一张贴图来 缩放 、 平移 、 旋转 UV，通过这个旋转过后的UV去采样贴图，就能保证采样的贴图的每一块UV都是不同的，那么每一块不同的采样结果怎么融合在一起了？这时候我们还得用原来的UV在采样一次贴图，当不同采样块的结果将要突变的时候，我们便可以过渡到用原UV采样的结果，这样便可以连续起来啦，控制贴图的Alpha通道便记录了一个淡入淡出的Mask。
 
 
-![Untitled.png](assets/ue-高级地形材质/024-01a27a02.png)
+![Untitled.png](assets/ue-高级地形材质/024-c37a2ab0.png)
 
 
 这里每一块都代表一块UV的缩放、平移、旋转。
 
 
-![Untitled.png](assets/ue-高级地形材质/025-560e9b5f.png)
+![Untitled.png](assets/ue-高级地形材质/025-b8908d44.png)
 
 
 具体方法可以去黑客帝国demo 或者 Quixel出的村庄demo里面搜索 CellBomb  函数方法即可。
@@ -194,7 +194,7 @@ Displacement 这里主要控制地形高度的起伏，我们需要让地表的�
 这套方案算是大世界阴影里面不错的一套，无论远近皆可达到不错的效果，这里我要挨个说明一下，对于近处我们需要高质量的阴影，所以级联阴影是比较好的选择，对于说近处具体的是多少米，那就需要你自己用肉眼去评估啦，这里的级联我们只需要给到两到三级就可以啦。对于中远距离阴影，那就是阴影最多的地方，这时候我们就需要空间换时间啦，用速度最快的距离场阴影来做中远距离就是一个不错的选择或者预烘焙 都是可选的(这里我还是喜欢大世界全动态方案)，对于UE来说距离场阴影就是一个比较好的用的功能，需要注意的是 Foliage要开启距离场阴影需要在Foliage面板下开启Affect Distance Field Lighting
 
 
-![Untitled.png](assets/ue-高级地形材质/026-912a7d3d.png)
+![Untitled.png](assets/ue-高级地形材质/026-0c03c949.png)
 
 
 对于超远距离 Far级联我通常不太用的上，对于需要的同学可以去Light下面的Cascaded Shadow Maps 面板展开 自行测试。
@@ -203,28 +203,28 @@ Displacement 这里主要控制地形高度的起伏，我们需要让地表的�
 对于屏幕空间阴影(Contact Shadow)(主要起到补充阴影的功能 )，屏幕空间阴影有一个好处就是基于深度图来实现，在屏幕上Track固定距离，这个特性就代表 屏幕空间阴影 针对的物体可大 可小，当你屏幕上大部分是细节时候，那么它会提供不错的细节阴影 (比级联更加细致)能大大提高真实度。(物体的自阴影)
 
 
-![Untitled.png](assets/ue-高级地形材质/027-b20f2a67.png)
+![Untitled.png](assets/ue-高级地形材质/027-5bbcc051.png)
 
 
-![Untitled.png](assets/ue-高级地形材质/028-ec9c0dde.png)
+![Untitled.png](assets/ue-高级地形材质/028-a53dd3ee.png)
 
 
 当你屏幕上大部分是远景时候，能提供大物体之间的自阴影
 
 
-![Untitled.png](assets/ue-高级地形材质/029-63a6bc63.png)
+![Untitled.png](assets/ue-高级地形材质/029-d104a02b.png)
 
 
-![Untitled.png](assets/ue-高级地形材质/030-b5bf3a4f.png)
+![Untitled.png](assets/ue-高级地形材质/030-277b17ba.png)
 
 
 开启方法：
 
 
-![Untitled.png](assets/ue-高级地形材质/031-1abb5c5f.png)
+![Untitled.png](assets/ue-高级地形材质/031-3dd00853.png)
 
 
-![Untitled.png](assets/ue-高级地形材质/032-9a35b9f3.png)
+![Untitled.png](assets/ue-高级地形材质/032-6e1b27ae.png)
 
 
 注意地形上也需要开启Contact Shadow。
@@ -242,10 +242,10 @@ Displacement 这里主要控制地形高度的起伏，我们需要让地表的�
 只需要将物体输出连接到Runtime Virtual Texture Output即可，只是VT暂时没有Metallic，不支持金属哦。
 
 
-![Untitled.png](assets/ue-高级地形材质/033-cdc9b21f.png)
+![Untitled.png](assets/ue-高级地形材质/033-59005eb2.png)
 
 
-![Untitled.png](assets/ue-高级地形材质/034-eb2fec40.png)
+![Untitled.png](assets/ue-高级地形材质/034-d788822d.png)
 
 
 但是VT的缺点也暴露出了一点，那就是只有 XY，当遇到垂直高度的时候会拉伸。但是整体来说瑕不掩瑜，以上便是新流程地形制作总结。

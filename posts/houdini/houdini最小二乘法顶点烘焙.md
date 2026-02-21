@@ -20,7 +20,7 @@ source: "notion-sync"
 原理说明
 
 
-![Untitled.png](assets/houdini最小二乘法顶点烘焙/001-c93eff54.png)
+![Untitled.png](assets/houdini最小二乘法顶点烘焙/001-dc7d6fdc.png)
 
 
 出发点是这篇论文，d图是高模的烘焙结果，a 、b 、c ，分别是 (a)点采样方法、(b)平均三角形采样点、(c) 最小二乘法。
@@ -32,10 +32,10 @@ source: "notion-sync"
 这篇文章比较简洁的思路说明便是 **使用采样点得到高模与低模在同一位置的颜色，用最小二乘法残差平方和越小 ，两曲线越拟合的思路去通过梯度下降法一步一步的去迭代低模与高模两者之间颜色的残差平方和。**
 
 
-![Untitled.jpeg](assets/houdini最小二乘法顶点烘焙/002-39e930de.jpeg)
+![Untitled.jpeg](assets/houdini最小二乘法顶点烘焙/002-26d250d8.jpeg)
 
 
-![Untitled.jpeg](assets/houdini最小二乘法顶点烘焙/003-747fdd09.jpeg)
+![Untitled.jpeg](assets/houdini最小二乘法顶点烘焙/003-37a240bc.jpeg)
 
 
 首先我们要了解一下 点在三角形中的**重心坐标**概念，简单来说 一个三角形内的任意一点的颜色值，都是由三角形的三个顶点颜色值通过重心坐标插值而来的。
@@ -150,7 +150,7 @@ for(int i = 0; i < npoints(1); i++){
 这里我在低模的每个点中记录了影响当前点的采样点的颜色、采样点UV等。
 
 
-![QianJianTec1704635736839.png](assets/houdini最小二乘法顶点烘焙/004-e15ba1bc.png)
+![QianJianTec1704635736839.png](assets/houdini最小二乘法顶点烘焙/004-ca09377a.png)
 
 
 $l(p_{i} )$为采样点在低模的值，$h(p_{i} )$则为采样点在高模的值
@@ -162,19 +162,19 @@ $l(p_{i} )$为采样点在低模的值，$h(p_{i} )$则为采样点在高模的�
 最小二乘法有好几种解法，工程上我们常用梯度下降法，也是我用的最多的拟合算法，还有退火算法等。
 
 
-![QianJianTec1704183240465.png](assets/houdini最小二乘法顶点烘焙/005-c78fe1d7.png)
+![QianJianTec1704183240465.png](assets/houdini最小二乘法顶点烘焙/005-c641531b.png)
 
 
 梯度下降的核心便是这个公式。$eta$是所谓的学习率，也就是步进值，决定我们每次步进多少。是一个经验值。    $\bigtriangledown f(x)$是函数$f(x)$梯度。
 
 
-![Untitled.png](assets/houdini最小二乘法顶点烘焙/006-d89ec4d1.png)
+![Untitled.png](assets/houdini最小二乘法顶点烘焙/006-a90dc08b.png)
 
 
 现在我们只需要求得函数梯度，推导可得以下公式： （推导过程链接有）
 
 
-![QianJianTec1704645620734.png](assets/houdini最小二乘法顶点烘焙/007-668e2e12.png)
+![QianJianTec1704645620734.png](assets/houdini最小二乘法顶点烘焙/007-8f983ab5.png)
 
 
 $p_{A}$为低模上三角形上的点的，$B(i,A)$则为当前采样点到$p_{A}$的重心坐标。
