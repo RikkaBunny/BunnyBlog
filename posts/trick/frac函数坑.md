@@ -11,4 +11,4 @@ source: "notion-sync"
 Frac函数在正数部分正常，在负数部分， frac(-0.3) == 0.7  fract的返回值的值域是0-1
 
 
-![Untitled.png](assets/frac函数坑/001-fcba2d87.png)
+![Untitled.png](assets/frac函数坑/001-4aa23917.png)
