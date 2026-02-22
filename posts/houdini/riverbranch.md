@@ -74,10 +74,10 @@ for (int i=0; i<num_steps; i++)
 得到最终支流曲线之后，我们便可以遍历每条曲线生成支流，大致流程如下：
 
 
-![Untitled.png](assets/riverbranch/001-bdb71b12.png)
+![Untitled.png](assets/riverbranch/001-6eeaf4d4.png)
 
 
 这只是普通版本，如果需要更加不错的效果的话，我们还需要将支流循环中的 water_river HDA分为大中小三个不同参数hda 或者 将water_river HDA的参数与支流曲线绑定在 一定的范围内随机，根据当前支流曲线的状态 比如 长度、坡度、等等。来动态的选择使用哪种类型的HDA，再将结果输出，
 
 
-![Untitled.png](assets/riverbranch/002-3f60c99a.png)
+![Untitled.png](assets/riverbranch/002-efaf9233.png)

@@ -8,7 +8,7 @@ notion_url: "https://www.notion.so/Lake-6f9f4de14cbf41eea0f0171e3db91f96"
 database: "Houdini Technical"
 source: "notion-sync"
 ---
-![Lake.png](assets/lake/001-dcf49ccf.png)
+![Lake.png](assets/lake/001-1d1b7397.png)
 
 
 支持最小输入两个、最大输入3个分别为：**湖泊闭合曲线**、**地形、水面Mesh**
@@ -34,7 +34,7 @@ p.y = @height;
 我们可以使用heightfield_maskbyobject节点把水面投影一个mask在地形上，最简单的就是直接一个blur，然后根据参数的深度对地形做一个@height下降既可以，但是这样的地形特别容易与水面脱离，需要手动对水面做高度调节。第二种就是先把地形拍平@height=0;然后同样把水面投影在地形上，使用ConvertVolume提取地形mask的边缘，使用xyzdist获得距离，通过距离做高度下降mask。
 
 
-![Untitled.png](assets/lake/002-797f8513.png)
+![Untitled.png](assets/lake/002-46239c4a.png)
 
 
 使用这个拍平过后并高度下降过的地形与原地形做一个height add操作，便可以将下降高度传给原地形。(其实使用原地形下降也可以，这里使用拍平过后的地形主要是可以对地形高度做blur等额外操作)

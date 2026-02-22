@@ -17,7 +17,7 @@ loyout的复合输出中的lots group   、 高速公路 立交桥 、标志性�
 我们会先将高速公路提取处理，取它向上的面挤出一个几何体，将这个几何体体素化之后 Y轴中心为0，与体素化之后的标志性建筑合并转为 阻挡Mesh 后输出，我们再提取出城市布局底座 离 阻挡Mesh 比较近的块，与阻挡Mesh 进行boolean操作，最后未取出部分合并。去除一些比较小的块，并重新整理一下数据。
 
 
-![Untitled.png](assets/黑客帝国-lots/001-5e52c91c.png)
+![Untitled.png](assets/黑客帝国-lots/001-514ec24d.png)
 
 
 这下基本得到最基础的布局块，接下来有4种布局方式，我介绍3种
@@ -39,25 +39,25 @@ loyout的复合输出中的lots group   、 高速公路 立交桥 、标志性�
 多边形的周长与面积的比值，用来度量多边形的紧凑度。圆的周长面积比在所有的几何图形中是最小的。面积是缺陷特征的一个度量。面积只与缺陷的边界有关，而与其内部灰度级的变化无关。缺陷的周长在区别具有简单和复杂形状物体时特别有用。一个形状简单的物体用相对较短的周长来包围它所占有的面积。周长与面积比是用来描述缺陷形状的参数，当形状为圆时，周长与面积比最小，越呈长条状，周长与面积比越大）
 
 
-![Untitled.png](assets/黑客帝国-lots/002-d8729e4b.png)
+![Untitled.png](assets/黑客帝国-lots/002-a2ffebb9.png)
 
 
 布局拿到之后我们可以将loyout的复合输出中的city_metadata上的城市高度数据转递到新的布局块上。
 
 
-![Untitled.png](assets/黑客帝国-lots/003-95765e09.png)
+![Untitled.png](assets/黑客帝国-lots/003-49da295b.png)
 
 
 之后找到沿着街边的布局块，我们将这些块根据对应道路类型人行道宽度做出对应的收缩，主要是A道路与B道路 C道路的人行道是默认宽度，将道路与人行道生成出来与对应街边的块做一个boolean操作。
 
 
-![Untitled.png](assets/黑客帝国-lots/004-f1bac3ed.png)
+![Untitled.png](assets/黑客帝国-lots/004-4b0db8fa.png)
 
 
 将boolean之后的块整理过后，与输入HEIGHT OVERRIDE 做一个高度映射，就是如果当前建筑高度小于HEIGHT OVERRIDE的高度，那么当前建筑高度就等于HEIGHT OVERRIDE的高度。
 
 
-![Untitled.png](assets/黑客帝国-lots/005-f6662cce.png)
+![Untitled.png](assets/黑客帝国-lots/005-704ff703.png)
 
 
 之后便是给上布局块不同的建筑风格，这里有两种，一种纽约风格，一种传统风格。
@@ -89,10 +89,10 @@ split出来的中间的条，再按照头尾25米切一刀再同样split出来�
 再把中间的边(内边)，向内方向随机offset3米大小
 
 
-![Untitled.png](assets/黑客帝国-lots/006-c1181563.png)
+![Untitled.png](assets/黑客帝国-lots/006-ce802e9d.png)
 
 
-![Untitled.png](assets/黑客帝国-lots/007-60eaa2a5.png)
+![Untitled.png](assets/黑客帝国-lots/007-3ada42ea.png)
 
 
 传统风格：
@@ -101,10 +101,10 @@ split出来的中间的条，再按照头尾25米切一刀再同样split出来�
 通过 面片的面积与建筑高度来决定lot_subdivision的切割迭代次数，最后如果面积还是大于某个值我们还需要再切割一次。
 
 
-![Untitled.png](assets/黑客帝国-lots/008-6f8749a7.png)
+![Untitled.png](assets/黑客帝国-lots/008-23fcb1b3.png)
 
 
-![Untitled.png](assets/黑客帝国-lots/009-96a362d6.png)
+![Untitled.png](assets/黑客帝国-lots/009-c9c479e1.png)
 
 
 将两种风格的切割完的块合并输出，做一些数据处理，剔除比较小的块、找到内部块(没有一个边接触空地)等数据操作。
@@ -113,13 +113,13 @@ split出来的中间的条，再按照头尾25米切一刀再同样split出来�
 现在有些小块的形状还是太过不规则，我们将分离出不是4个点构成的块。使用提取做好的17中块用UV填充的方式布局在这些不规则的块中，合并4个点的块输出，
 
 
-![Untitled.png](assets/黑客帝国-lots/010-be5b8443.png)
+![Untitled.png](assets/黑客帝国-lots/010-a4be14f8.png)
 
 
 我们又要分离出沿着街边的布局块，垂直与道路的法线做一个随机的offset。让街边有些不规则的感觉。
 
 
-![Untitled.png](assets/黑客帝国-lots/011-29643f54.png)
+![Untitled.png](assets/黑客帝国-lots/011-39189c9e.png)
 
 
 用现在的块做一次与输入HEIGHT OVERRIDE 做一个高度映射。然后在做一次数据的清理，包括剔除一些比较狭长的块等。
@@ -128,7 +128,7 @@ split出来的中间的条，再按照头尾25米切一刀再同样split出来�
 之后我们需要引入 BDF 文件数据，我们将bdf信息赋予到每一个地块上，地块根据城市元数据分住宅与其他两种房子，如果是住宅在 属性带NYA的bdffile里面选择，如果是其他则在不带NYA的dbffile里面选择，但是其他类型的房子需要建筑的高与宽在当前选择的dbf所定义的高宽范围内，
 
 
-![Untitled.png](assets/黑客帝国-lots/012-fb36c807.png)
+![Untitled.png](assets/黑客帝国-lots/012-65f41a46.png)
 
 
 得到带有BDF信息的地块后，分离出没有UV布局的地块，不是纽约风格的块，不是超级细长的块，不是正方形的地块，面积大于629的地块，这些地块我们将赋予它们我们制作的预制形状。
@@ -137,7 +137,7 @@ split出来的中间的条，再按照头尾25米切一刀再同样split出来�
 有两种选择方法 一种是 根据BDF的最小宽度信息移除宽度不满足的预制片，在根据每个预制片的出现概率来选择，另一种是 直接根据自己定义的概率来选择。选择完之后与我们分离出的块合并输出。
 
 
-![Untitled.png](assets/黑客帝国-lots/013-6e9431e1.png)
+![Untitled.png](assets/黑客帝国-lots/013-678eaee9.png)
 
 
 拿到最终的地块之后，我们会分两大类五种方式
@@ -155,10 +155,10 @@ split出来的中间的条，再按照头尾25米切一刀再同样split出来�
 2类型是在地块面上根据ramp图，做出一阶一阶的矩形，每阶矩形在根据ramp做不同高度的挤出。
 
 
-![Untitled.png](assets/黑客帝国-lots/014-4b8a5af5.png)
+![Untitled.png](assets/黑客帝国-lots/014-2d65c29c.png)
 
 
-![Untitled.png](assets/黑客帝国-lots/015-578ccb9e.png)
+![Untitled.png](assets/黑客帝国-lots/015-ae4ffbc8.png)
 
 
 传统类型 3种分别是 一级挤出 、二级挤出 、三级挤出
@@ -170,7 +170,7 @@ split出来的中间的条，再按照头尾25米切一刀再同样split出来�
 二级与三级的区别在与自己分配的比例参数。
 
 
-![Untitled.png](assets/黑客帝国-lots/016-d76a4839.png)
+![Untitled.png](assets/黑客帝国-lots/016-f595774e.png)
 
 
 这样基本就得到了最基本的BDF建筑体，如果我们需要那种下层是一种BDF类型，上层是另一种BDF类型，我们需要把一些BDF的最底层就是第一级的挤出剔除出来，换一种新的建筑风格就可以。
@@ -179,4 +179,4 @@ split出来的中间的条，再按照头尾25米切一刀再同样split出来�
 然后我们就要判断建筑的正面和背面，主要是细分后用法线打射线到包围盒上，打中为正，自己@P+(v@N*0.001)打自己，打中为背面。得到的正面背面数据再传递回BDF建筑上。之后就是为BDF建筑计算一些之后要用的属性，根据BDF类型给上不同颜色即可输出。
 
 
-![Untitled.png](assets/黑客帝国-lots/017-212816a6.png)
+![Untitled.png](assets/黑客帝国-lots/017-e805b7de.png)

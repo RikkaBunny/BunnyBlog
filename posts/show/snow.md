@@ -8,13 +8,13 @@ notion_url: "https://www.notion.so/Snow-81b10a20bc4b4fbba36c6c3aef820de8"
 database: "Show Notes"
 source: "notion-sync"
 ---
-![Untitled.png](assets/snow/001-18582158.png)
+![Untitled.png](assets/snow/001-009de722.png)
 
 
-![3MDHIKZZGLFB45VA%294S.png](assets/snow/002-e9575daf.png)
+![3MDHIKZZGLFB45VA%294S.png](assets/snow/002-21a9e7f9.png)
 
 
-![1MS5LB36Y71NM4WWVHL.png](assets/snow/003-3a094f7f.png)
+![1MS5LB36Y71NM4WWVHL.png](assets/snow/003-769f0001.png)
 
 
-![Untitled.png](assets/snow/004-401890f8.png)
+![Untitled.png](assets/snow/004-cc3c96ea.png)

@@ -23,13 +23,13 @@ source: "notion-sync"
 我们可以在蓝图里面创建一个WaterBodyRiver的对象来一步一步的获取它的属性，我们知道我们要的深度这些属性是依附在Spline上，所以我们可以搜索这个对象关于Spline的一些属性
 
 
-![Untitled.png](assets/导出unreal自定义属性到houdini/001-10e302f5.png)
+![Untitled.png](assets/导出unreal自定义属性到houdini/001-a8544b89.png)
 
 
 可以看到有两个GetSpline，其实两个返回结果都一样，只不过一个是对象，一个方法。我们可以双击进入代码实现看见。
 
 
-![Untitled.png](assets/导出unreal自定义属性到houdini/002-bd066ff6.png)
+![Untitled.png](assets/导出unreal自定义属性到houdini/002-31bb2a24.png)
 
 
 然后再在蓝图中使用get等关键词查找或是查看相关变量都没有，我们在进入UE里面直接看看它的头文件有没有相关变量，我们发现这里并没有我们想要的数据，里面只有一个FWaterSplineCurveDefaults的结构体变量，通过F12查找，我们发现这个变量定义在一个WaterSplineMetaData的类，在往下翻发现河流的深度与宽度等属性都定义在这里。这就是我们所需要的数据拉。想知道这个类在哪里创建使用的，我们有两种常用的一种就直接Ctrl+F全局搜索，另一种就是断点其中一个比较Function并且触发它，通过调用堆栈一步步的索引找到。最终我们发现
@@ -38,28 +38,28 @@ source: "notion-sync"
 WaterSplineMetaData创建是在WaterBodyActor里面创建，子类River继承了它，所以没有在WaterBodyRiverActor.h里面发现这个对象。
 
 
-![Untitled.png](assets/导出unreal自定义属性到houdini/003-40271417.png)
+![Untitled.png](assets/导出unreal自定义属性到houdini/003-ef9a0d28.png)
 
 
 我们可以发现这里UWaterSplineMetadata并没有暴露给蓝图，所以我们可以像上面的SplineComponent在UPROPERTY里加上BlueprintReadOnly这个flag，我们需要读取就好。重新启动，我们便可以在蓝图里面得到WaterSplineMetadata，通过WaterSplineMetada便可以得到它的RiverWidth等属性（如果没有则去代码里面加上BlueprintReadOnly这个flag）。可以发现我们得到的Depth等信息是FInterpCurveFloat类型，这里我们直接封装一个解析函数
 
 
-![Untitled.png](assets/导出unreal自定义属性到houdini/004-1d105431.png)
+![Untitled.png](assets/导出unreal自定义属性到houdini/004-fdb988db.png)
 
 
-![Untitled.png](assets/导出unreal自定义属性到houdini/005-362651ce.png)
+![Untitled.png](assets/导出unreal自定义属性到houdini/005-478e2681.png)
 
 
 这样我们就可以得到河流的自定义属性，通过蓝图遍历我们选择的物体就可以得到我们需要的数据，这里我们需要保存我们需要的数据到CSV中，我们可以自己创建一个public的蓝图函数库类，自己封装一个保存Function。
 
 
-![Untitled.png](assets/导出unreal自定义属性到houdini/006-53ba581e.png)
+![Untitled.png](assets/导出unreal自定义属性到houdini/006-5ca1019c.png)
 
 
-![Untitled.png](assets/导出unreal自定义属性到houdini/007-3cbbcfed.png)
+![Untitled.png](assets/导出unreal自定义属性到houdini/007-68f0e149.png)
 
 
-![Untitled.png](assets/导出unreal自定义属性到houdini/008-d1a11d69.png)
+![Untitled.png](assets/导出unreal自定义属性到houdini/008-97e621f7.png)
 
 
 这样数据就保存好了。

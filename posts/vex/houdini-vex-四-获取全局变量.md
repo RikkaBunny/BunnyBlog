@@ -15,7 +15,7 @@ source: "notion-sync"
 
 1. 有些是可以通过"$"获取的，有些不行：
 
-    ![9148742-b9b3578a9ba6fcf0.webp](assets/houdini-vex-四-获取全局变量/001-4741e1f3.webp)
+    ![9148742-b9b3578a9ba6fcf0.webp](assets/houdini-vex-四-获取全局变量/001-be2bcc1c.webp)
 
 - 这里有些可以有些不可以，比如$E可以，而当前帧就得用@Frame来获取
 
@@ -23,77 +23,77 @@ source: "notion-sync"
 
 1. 简单的动力学网络：
 
-    ![9148742-61673f2ce8b24fcf.webp](assets/houdini-vex-四-获取全局变量/002-3eebd787.webp)
+    ![9148742-61673f2ce8b24fcf.webp](assets/houdini-vex-四-获取全局变量/002-9d2e6b46.webp)
 
 2. 解算开始帧改为24帧：
 
-    ![9148742-3af1e4bc5c4edd52.webp](assets/houdini-vex-四-获取全局变量/003-83849bec.webp)
+    ![9148742-3af1e4bc5c4edd52.webp](assets/houdini-vex-四-获取全局变量/003-59968857.webp)
 
 3. 进入dopnet节点：
 
-    ![9148742-418e11bb19bae0df.webp](assets/houdini-vex-四-获取全局变量/004-fba4ee66.webp)
+    ![9148742-418e11bb19bae0df.webp](assets/houdini-vex-四-获取全局变量/004-522f970b.webp)
 
 4. emptyobject节点用来存放动力学数据
 
-    ![Untitled.png](assets/houdini-vex-四-获取全局变量/005-f120c18d.png)
+    ![Untitled.png](assets/houdini-vex-四-获取全局变量/005-033f118b.png)
 
 5. 见了一个sopgeo节点，里面存放了一个box
 
-![Untitled.png](assets/houdini-vex-四-获取全局变量/006-dc4c3327.png)
+![Untitled.png](assets/houdini-vex-四-获取全局变量/006-5d767832.png)
 
 1. 用geometrywrangle节点去解算它：
 
-![Untitled.png](assets/houdini-vex-四-获取全局变量/007-65532326.png)
+![Untitled.png](assets/houdini-vex-四-获取全局变量/007-631006e1.png)
 
 - 这种紫色节点是一种解算器：
 
-    ![9148742-6f97e521a46614b5.webp](assets/houdini-vex-四-获取全局变量/008-9d20100d.webp)
+    ![9148742-6f97e521a46614b5.webp](assets/houdini-vex-四-获取全局变量/008-7bc60fd7.webp)
 
 
 7.使用multisolver节点去解算动力学对象：
 
 
-    ![9148742-56c81e9b7a42ee64.webp](assets/houdini-vex-四-获取全局变量/009-6ec761b5.webp)
+    ![9148742-56c81e9b7a42ee64.webp](assets/houdini-vex-四-获取全局变量/009-6c796453.webp)
 
 1. @SimFrame：当前解算到了第几帧 （只能在动力学里面用）
 - 把第一行注释去掉，移动到第24帧(因为咱们刚刚将解算开始帧设为第24帧)
 
-    ![9148742-d270dee9524359b7.webp](assets/houdini-vex-四-获取全局变量/010-4745de9e.webp)
+    ![9148742-d270dee9524359b7.webp](assets/houdini-vex-四-获取全局变量/010-9d391117.webp)
 
 - 在multisolver节点右键Spreadsheet...
 
-    ![9148742-737b6bab0f80325b.webp](assets/houdini-vex-四-获取全局变量/011-c5f24af8.webp)
+    ![9148742-737b6bab0f80325b.webp](assets/houdini-vex-四-获取全局变量/011-a0b9d66d.webp)
 
 - 找到sopgeo节点里的box：
 
-    ![9148742-7464fadbbae47baf.webp](assets/houdini-vex-四-获取全局变量/012-e9edc776.webp)
+    ![9148742-7464fadbbae47baf.webp](assets/houdini-vex-四-获取全局变量/012-4c729950.webp)
 
 - 可以看到box的y轴位置变为了2，因为我们把第24帧设为了开始的第一帧，所以当我们移动到第25帧时，也就是第二帧：
 
-    ![9148742-6af5df750191e771.webp](assets/houdini-vex-四-获取全局变量/013-1cfde4ee.webp)
+    ![9148742-6af5df750191e771.webp](assets/houdini-vex-四-获取全局变量/013-1cdbf057.webp)
 
 1. @SimTime：当前解算到了第几秒
 - 点右下角可以更改帧率：
 
-    ![9148742-cc4a1fba4397a02c.webp](assets/houdini-vex-四-获取全局变量/014-0c1e7801.webp)
+    ![9148742-cc4a1fba4397a02c.webp](assets/houdini-vex-四-获取全局变量/014-180151bd.webp)
 
 - 更改FPS为24：
 
-    ![9148742-8f7c5fd4e8d5e074.webp](assets/houdini-vex-四-获取全局变量/015-8d09d7bd.webp)
+    ![9148742-8f7c5fd4e8d5e074.webp](assets/houdini-vex-四-获取全局变量/015-050df61f.webp)
 
 - 查看：从24帧到48帧，刚好一秒钟时间（一帧是(1/FPS)秒，FPS=24，(48-24)/FPS=1秒）
 
-    ![9148742-8ea7df448e80d417.webp](assets/houdini-vex-四-获取全局变量/016-70178db4.webp)
+    ![9148742-8ea7df448e80d417.webp](assets/houdini-vex-四-获取全局变量/016-b9e351ce.webp)
 
 1. @TimeInc：时间增量
 - y值的计算：(62-36)_1/FPS,FPS=24,所以(62-36)_1/24=1.08333，每帧增加0.04
 第36帧时：
 
-    ![9148742-203cd822a324e9cf.webp](assets/houdini-vex-四-获取全局变量/017-58d157b5.webp)
+    ![9148742-203cd822a324e9cf.webp](assets/houdini-vex-四-获取全局变量/017-f8e18e37.webp)
 
 
     
 第62帧时：
 
 
-    ![9148742-0702b7fce578d5da.webp](assets/houdini-vex-四-获取全局变量/018-e2c042a0.webp)
+    ![9148742-0702b7fce578d5da.webp](assets/houdini-vex-四-获取全局变量/018-d754049a.webp)
