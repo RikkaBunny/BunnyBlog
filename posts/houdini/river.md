@@ -8,7 +8,7 @@ notion_url: "https://www.notion.so/River-8cf486d6c18b4baaa1d22164f5943566"
 database: "Houdini Technical"
 source: "notion-sync"
 ---
-![Water.drawio.png](assets/river/001-cc2b801f.png)
+![Water.drawio.png](assets/river/001-56e0efd7.png)
 
 
 ## 输入输出：
@@ -18,7 +18,7 @@ source: "notion-sync"
 输入与输出有
 
 
-![Image.png](assets/river/002-fcf2b01f.png)
+![Image.png](assets/river/002-c54fa3f7.png)
 
 
 ![image](data:image/png;base64,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)
@@ -37,19 +37,19 @@ source: "notion-sync"
 首先去曲线进行resample细分，保证曲线密度均匀，使用jitter在xz平面抖动曲线，把曲线吸附地形与水面上，比较曲线0point与@numpt-1高度，确定曲线头尾，保证水流从高到底流向。如果有输入3其他水面，提取输入3水面中的引流线与曲线的头尾点做距离判断，如果距离过近认为两条河流相交将曲线自动吸附再其他河流曲线上。
 
 
-![%E9%9A%8F%E6%9C%BA%E6%8A%96%E5%8A%A8.gif](assets/river/003-02736acb.gif)
+![%E9%9A%8F%E6%9C%BA%E6%8A%96%E5%8A%A8.gif](assets/river/003-f45df454.gif)
 
 
 为了避免曲线在太过陡峭的地形在生成河流，我们可以循环对河流曲线做沿着地形坡向滑动操作避开陡峭区域。
 
 
-![CurverSlide.gif](assets/river/004-e2aa84a1.gif)
+![CurverSlide.gif](assets/river/004-7e84d8c4.gif)
 
 
 最后还需要贴合地形与水面一次，并且保证曲线从高到低，上一个点的高度必须大于或等于下一个点。
 
 
-![Untitled.png](assets/river/005-69e9656a.png)
+![Untitled.png](assets/river/005-5940610b.png)
 
 
 ### 生成瀑布：
@@ -58,31 +58,31 @@ source: "notion-sync"
 进入生成瀑布节点可以先使用resample均匀曲线密度，然后根据曲线坡度(斜率)选择瀑布，直接用Group节点就能实现，
 
 
-![Untitled.png](assets/river/006-30731477.png)
+![Untitled.png](assets/river/006-214b5b12.png)
 
 
 通过指定瀑布的起点和终点得到两两配对的瀑布点
 
 
-![Untitled.png](assets/river/007-468797ce.png)
+![Untitled.png](assets/river/007-bab35807.png)
 
 
 根据瀑布的起始点与终止点，我们可以得到当前瀑布端的长度和位置，我们可以根据需求删除过短和距离过近的瀑布，之后我们需要调节瀑布的坡度，就是再曲线上滑动瀑布终止点位置，这个对于生成的瀑布只能做到全局调节他们的坡度
 
 
-![Curver.gif](assets/river/008-91a1d5bd.gif)
+![Curver.gif](assets/river/008-6c24a2d3.gif)
 
 
 之后我们还需要支持人工设置瀑布，一个Multiparm Block(List)来存瀑布参照
 
 
-![Untitled.png](assets/river/009-bc533ba5.png)
+![Untitled.png](assets/river/009-2481d149.png)
 
 
 使用循环遍历来应用上每一个瀑布，保证最后瀑布终止点不低于河流最低点，最后保证每个瀑布高度不低于一个阈值既可。
 
 
-![Untitled.png](assets/river/010-1fc727fc.png)
+![Untitled.png](assets/river/010-822b8795.png)
 
 
 ### 设置河流属性：
@@ -91,10 +91,10 @@ source: "notion-sync"
 我们需要模拟流水侵蚀的两种主要形式(溯源侵蚀可以不做):下蚀、侧蚀作用：
 
 
-![Untitled.png](assets/river/011-3fee0c60.png)
+![Untitled.png](assets/river/011-4a87416d.png)
 
 
-![Untitled.png](assets/river/012-2536de6e.png)
+![Untitled.png](assets/river/012-a5f81253.png)
 
 
 下蚀很容易，就只需要根据侵蚀力度加深河流深度既可，侧蚀的话需要先定义一个 -1到1 的noise，用来向左或者向右扭曲河道。需要注意的是侧蚀操作要避免河流的瀑布区域还有头和尾扭曲。
@@ -108,13 +108,13 @@ v@depthDir = normalize(cross(forward, right));
 ```
 
 
-![Untitled.png](assets/river/013-e1ea8054.png)
+![Untitled.png](assets/river/013-38d807c9.png)
 
 
 设置完这些之后，我们可以设置河流的宽度以及深度，这里我喜欢通过Ramp图参数以及一些额外的noise来控制整条河流的宽度与深度，注意河流的宽度还和河流的斜率有关，这里我们为了模拟水流越平缓越宽阔、越陡峭越细窄的特点还需要乘以一个河流的坡度。
 
 
-![Untitled.png](assets/river/014-0b17056d.png)
+![Untitled.png](assets/river/014-c8bb0f13.png)
 
 
 这里ramp大小可以超过0到1.
@@ -126,25 +126,25 @@ v@depthDir = normalize(cross(forward, right));
 这里要注意看看我们参数列表
 
 
-![Untitled.png](assets/river/015-5f46c384.png)
+![Untitled.png](assets/river/015-b3513eab.png)
 
 
 河道我们可以理解为**一个拥有八个顶点的线段，一共四个宽度控制，0、7点为河流的总宽度，1、6点为河岸宽度，2、5点为河面宽度，3、4点为河底宽度**，线段通过copytopoints生成在河流曲线上，通过河流曲线顶点上的pscale参数控制线段大小(顶点处当前河流宽度)，
 
 
-![Untitled.png](assets/river/016-cac98418.png)
+![Untitled.png](assets/river/016-b1db4eea.png)
 
 
 ### 曲线重叠修复：
 
 
-![Untitled.png](assets/river/017-e667dc7a.png)
+![Untitled.png](assets/river/017-4fac971a.png)
 
 
 思路主要是用找到曲线自身相交的点，提取相交打结的点，把点均匀分布在离相交点最近的两个点之间。
 
 
-![Untitled.png](assets/river/018-79687857.png)
+![Untitled.png](assets/river/018-2ad49d65.png)
 
 
 使用intersectionanalysis节点就能得到相交的点，打开PrimitiveUVW就能得到相加uv范围。你得到相交点 uv之后，你就有一个 uv 区间。
@@ -209,7 +209,7 @@ for(int i = 0; i < npoints(0); i++){
 注意如果要计算线段UV，使用UVTexture节点需要把textuerType改为Rows&Columns.
 
 
-![Untitled.png](assets/river/019-677d1b5f.png)
+![Untitled.png](assets/river/019-b43b3196.png)
 
 
 ### 设置河道曲线：
@@ -241,7 +241,7 @@ float depth = chramp("floodplain_height",@curveu);
 我们需要遍历每条河道曲线，去设置他的宽度。注意我们需要把宽度控制在上一级宽度之下，0以上。河流宽度 > 河道宽度 > 河面宽度 > 河底宽度.
 
 
-![Untitled.png](assets/river/020-9b45d0b8.png)
+![Untitled.png](assets/river/020-c164490b.png)
 
 
 ### 下挖河道：
@@ -250,14 +250,14 @@ float depth = chramp("floodplain_height",@curveu);
 设置完每条曲线的长度值之后，我们就要开始下挖河道辣，3、4点为河底，所以我们只需要把这两个点沿深度下降方向即可(属性在设置河流曲线属性存储)。顺便把曲线的0、7点设置权重为1(这个权重值主要是后面与地形融合的权重)。
 
 
-![Untitled.png](assets/river/021-54aeab8e.png)
+![Untitled.png](assets/river/021-bdd7ac17.png)
 
 
 挖完河道之后我们可以使用Skin节点把曲线转换为我们需要的河道Mesh，给上Normal节点，现在的河道Mesh还过于简单啦，我们还需要使用remesh或者subdivide细分一下mesh，到达同等密度网格时，remesh的消耗要大于subdivide，但是remesh细分不规则网格效果比subdivide要好的多，这里我们结合一下，我使用的是 先remesh一次密度为2或者1都可，smoothing暂时为0(需要和水面高度保持，现在不能形变网格)，remesh之后接一次subdivide，depth为1或者2都可以，这样得到的网格颗粒度都比较均匀，注意在remesh之前我们需要使用clean节点保持网格的干净，剔除可能错误的值 比如：nan
 接下来我们就要考虑网格的平滑和不规则的噪声，这里我使用一个attribblur和mountain来操作，但是，这两个操作使我们的网格不太可控，容易出现水面高出河道网格的现象，为此我们需要做一个权重来控制网格形变的大小，权重大小可以根据水片曲线边缘的两条曲线与地形mesh的距离得到(P.y等与0)，根据权重lerp原始未形变的河道和形变过后的河道，既可保证河道高于水片。
 
 
-![Untitled.png](assets/river/022-a10379cc.png)
+![Untitled.png](assets/river/022-b679d299.png)
 
 
 ### 下挖地形：
@@ -311,7 +311,7 @@ if (hitprim >= 0)
 在设置完河道线段之后，使用skin的columns后，提取线段的所有2号、5号点组成的曲线，也就是河面，再次skin得到河面线段，现在的河道线段只有两个端点生成的mesh太过稀疏，为了mesh的密度均匀(密度均匀shader做WPO效果比较好)，我们可以对河面每条线段做resample操作，这里的resample可以自动适配也可以固定数目。自动适配就用measure计算每条线段的长度，通过attribpromote可以得到平均长度，再通过参数取得我们之前resample河流曲线的间隔密度。有了这两个参数就可以算出resample的值啦。
 
 
-![Untitled.png](assets/river/023-0231c6ec.png)
+![Untitled.png](assets/river/023-c9285196.png)
 
 
 ### 设置河面属性：
@@ -374,4 +374,4 @@ detail("../length/", "perimeter", 0) / detail("../width/","perimeter", 0) * uv.x
 最终输出的时候我们可以地形和水面merge起来输出到 output0来显示，实际数据用output1与output2传递，这里我把顺便把输出节点颜色改变一下，使用相同颜色对应相同颜色连接。就此我们的河流HDA完成。
 
 
-![Untitled.png](assets/river/024-9e820df4.png)
+![Untitled.png](assets/river/024-f3f55bde.png)

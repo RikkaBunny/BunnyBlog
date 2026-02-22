@@ -8,7 +8,7 @@ notion_url: "https://www.notion.so/Flowmap-efb1d71b0c4d4550bccfe13b84e90f84"
 database: "Houdini Technical"
 source: "notion-sync"
 ---
-![Flowmap.drawio.png](assets/flowmap/001-2ed6ee38.png)
+![Flowmap.drawio.png](assets/flowmap/001-e71512c6.png)
 
 
 ### 输入输出：
@@ -23,7 +23,7 @@ source: "notion-sync"
 核心处理流程：
 
 
-![Untitled.png](assets/flowmap/002-91a17ee2.png)
+![Untitled.png](assets/flowmap/002-5c7d5478.png)
 
 
 //////////////////////////////////////////////foreach_begin/////////////////////////////////////////////
@@ -53,7 +53,7 @@ if (dist > ch("MaxDist"))
 我们计算白沫等信息只需要(1-A)水的网格信息，并不需要（1-A）水面的UV，如果（1-A）的UV信息带入计算，可能在计算flowmap结果会出错。这里我并不打算删除(1-A)的UV信息(删掉后续操作可能会出现奇怪错误)，而是将(1-A)的UV信息设为0。
 
 
-![Untitled.png](assets/flowmap/003-498c0ab7.png)
+![Untitled.png](assets/flowmap/003-c1480948.png)
 
 
 接下来就是使用remesh来重新控制网格密度，这里remesh的大小参数可以之间Link到水面A的remesh参数大小，让两边参数统一、密度统一，remesh之后还是使用一个subdivide细分一次既可。再使用一个Group节点标记当前Mesh为TransitionMesh就可以和水面A merge起来进行下一步操作了。（merge起来细分会使两边网格合并比较麻烦，所以分开细分）
@@ -72,7 +72,7 @@ if (dist > ch("MaxDist"))
 再使用Flowamp_guide来根据引流线计算流向信息，flowmap_guide节点里面其实很简单就是计算引流线的切线属性v，通过attribtransfer转移到网格上。
 
 
-![Untitled.png](assets/flowmap/004-9a61c592.png)
+![Untitled.png](assets/flowmap/004-e3eb3915.png)
 
 
 这里值得注意的是需要注意以下attribtransfer的conditions下的参数，如流向线影响范围、强度等参数需要暴露在HDA面板。我这边是通一开始水面类型判断决定不同类型水面用不同参数。
@@ -85,16 +85,16 @@ if (dist > ch("MaxDist"))
 生成河流碰撞信息我们通常使用flowmap_obstacle,里面的逻辑也很简单，
 
 
-![Untitled.png](assets/flowmap/005-73275b84.png)
+![Untitled.png](assets/flowmap/005-82f47b67.png)
 
 
 就是先生成体素，因为体素比较容易拿到梯度向量，然后直接在vop里面采当前位置的梯度作为v的方向，blur之后与原向量v相加既可以。
 
 
-![Untitled.png](assets/flowmap/006-1afbc9d6.png)
+![Untitled.png](assets/flowmap/006-083a5840.png)
 
 
-![%E6%A2%AF%E5%BA%A6%E5%8F%AF%E8%A7%86%E5%8C%96.gif](assets/flowmap/007-ad8e1c5b.gif)
+![%E6%A2%AF%E5%BA%A6%E5%8F%AF%E8%A7%86%E5%8C%96.gif](assets/flowmap/007-0328160a.gif)
 
 
 flowmap_obstacle知道怎么算了，我们就要处理我们的输入物体了，
@@ -126,7 +126,7 @@ if (hit > 0)
 ```
 
 
-![Untitled.png](assets/flowmap/008-963fda38.png)
+![Untitled.png](assets/flowmap/008-c72830c5.png)
 
 1. 生成白沫
 
@@ -136,7 +136,7 @@ if (hit > 0)
 得到地形碰撞的白沫与碰撞物的白沫首先需要我们提取地形与水面 、碰撞物与水面的相交线。使用intersectionanalysis节点既可获得。
 
 
-![Untitled.png](assets/flowmap/009-01815a37.png)
+![Untitled.png](assets/flowmap/009-2df1e9a7.png)
 
 
 拿到相交线之后，我们便可以使用nearpoint找到最近的相交线上的点，根据distance(p, @P)得到与相交线距离，并通过 P-@P向量与当前流向v向量做点乘既可得到与水面方向做强度衰减。
@@ -218,7 +218,7 @@ vector col = v@v * 0.5 + 0.5;
 最后连上一个clean，就可以使用maps_baker输出flowmap贴图啦(数据贴图 Gamma通常为1)
 
 
-![Untitled.png](assets/flowmap/010-4187ffb2.png)
+![Untitled.png](assets/flowmap/010-0c29123c.png)
 
 
 (输出路径使用引用，不要使用Python动态设置输出路径，这样需要这个Node设为Editor)
@@ -227,13 +227,13 @@ vector col = v@v * 0.5 + 0.5;
 为了定制A通道数据我们需要进maps_baker里面更改一些东西
 
 
-![Untitled.png](assets/flowmap/011-d3dad5fc.png)
+![Untitled.png](assets/flowmap/011-e7277936.png)
 
 
 **注意 需要图片输出的预乘Alpha改为Unpremulitiplied**
 
 
-![Untitled.png](assets/flowmap/012-a90053a6.png)
+![Untitled.png](assets/flowmap/012-e1bc1b62.png)
 
 
 ### 碰撞水花设置：

@@ -11,7 +11,7 @@ source: "notion-sync"
 一、节点参数的定义：能够在属性面板中看到的参数
 
 
-![9148742-fc3e30bed348ce2a.webp](assets/houdini-vex-五-读取节点参数/001-3ce0f20c.webp)
+![9148742-fc3e30bed348ce2a.webp](assets/houdini-vex-五-读取节点参数/001-af4eace6.webp)
 
 
 二、既叫做节点参数，也叫做通道
@@ -19,31 +19,31 @@ source: "notion-sync"
 
 1. ch也就是channel(通道)的缩写
 
-    ![9148742-294bcef4b46c64e1.webp](assets/houdini-vex-五-读取节点参数/002-26da9b98.webp)
+    ![9148742-294bcef4b46c64e1.webp](assets/houdini-vex-五-读取节点参数/002-17e76c05.webp)
 
 2. 写完vex代码，点击右侧的按钮，在下侧就会生成刚刚写的通道：
 
-    ![9148742-1c610524da774412.webp](assets/houdini-vex-五-读取节点参数/003-d1b891dd.webp)
+    ![9148742-1c610524da774412.webp](assets/houdini-vex-五-读取节点参数/003-7036ac4f.webp)
 
 3. 测测前面写的：打印代码的值，看看是不是和通道中的值相同
 
-    ![9148742-2fcca578458a0369.webp](assets/houdini-vex-五-读取节点参数/004-238d1430.webp)
+    ![9148742-2fcca578458a0369.webp](assets/houdini-vex-五-读取节点参数/004-6e131ffc.webp)
 
 
 四、chramp()的用法以及注意事项
 
 1. 以@P.x的值作为输入，经过下面的映射处理，再输出给@P.y的值
 
-    ![9148742-67ffce4d9c43ce84.webp](assets/houdini-vex-五-读取节点参数/005-71d47814.webp)
+    ![9148742-67ffce4d9c43ce84.webp](assets/houdini-vex-五-读取节点参数/005-6d5c1480.webp)
 
 - ramp需要自变量的范围在0-1之间，超出范围会循环
 1. fit函数可以把一个范围映射到另一个范围：这里我们把@P.x的值映射到0到1之间，最小值用min通道表示，最大值用max通道表示：
 
-    ![9148742-d25395fe8700e0b2.webp](assets/houdini-vex-五-读取节点参数/006-cba63247.webp)
+    ![9148742-d25395fe8700e0b2.webp](assets/houdini-vex-五-读取节点参数/006-02b44fa1.webp)
 
 2. chf函数的其他用法：
 
-    ![9148742-19ff6bc76475c765.webp](assets/houdini-vex-五-读取节点参数/007-7347c5a5.webp)
+    ![9148742-19ff6bc76475c765.webp](assets/houdini-vex-五-读取节点参数/007-bd828cc6.webp)
 
 - 可以用来找绝对路径的参数值
 - 可以用来找相对路径的参数值（../表示当前节点的上一级）
@@ -51,39 +51,39 @@ source: "notion-sync"
 五、可以通过鼠标拖动通道到场景视图中，切换到选择工具或者移动工具可以改变滑条的值：
 
 
-![9148742-e878cc0b992f9ecd.webp](assets/houdini-vex-五-读取节点参数/008-cd93bb3b.webp)
+![9148742-e878cc0b992f9ecd.webp](assets/houdini-vex-五-读取节点参数/008-4373190f.webp)
 
 - 点这里调节手柄大小：
 
-    ![9148742-8a918addbcc23ea5.webp](assets/houdini-vex-五-读取节点参数/009-da635b0a.webp)
+    ![9148742-8a918addbcc23ea5.webp](assets/houdini-vex-五-读取节点参数/009-a59ebf09.webp)
 
 - 如果滑块没效果，点击这里设置手柄的参数：
 
-    ![9148742-5982412efd48b11f.webp](assets/houdini-vex-五-读取节点参数/010-dfbe24e8.webp)
+    ![9148742-5982412efd48b11f.webp](assets/houdini-vex-五-读取节点参数/010-b5e18e62.webp)
 
 
     1）可以设置范围：
 
 
-    ![9148742-ed7323596d0afd89.webp](assets/houdini-vex-五-读取节点参数/011-303ca90c.webp)
+    ![9148742-ed7323596d0afd89.webp](assets/houdini-vex-五-读取节点参数/011-951cb944.webp)
 
 - 如果不想看到滑条，可以在移动工具处右键隐藏：
 
-    ![9148742-db4e4667ad82efd4.webp](assets/houdini-vex-五-读取节点参数/012-d27979e0.webp)
+    ![9148742-db4e4667ad82efd4.webp](assets/houdini-vex-五-读取节点参数/012-34b38d09.webp)
 
 
     六、返回矢量的chramp函数
 
 - chramp函数默认返回的是浮点类型，用vector函数框起来后，返回的就是矢量类型：
 
-    ![9148742-c67ce4f4b9c69709.webp](assets/houdini-vex-五-读取节点参数/013-eea3c168.webp)
+    ![9148742-c67ce4f4b9c69709.webp](assets/houdini-vex-五-读取节点参数/013-e275cc17.webp)
 
 - 把chramp也限定到0-1之间：
 
-    ![9148742-ce05350fef8936fd.webp](assets/houdini-vex-五-读取节点参数/014-069ecd95.webp)
+    ![9148742-ce05350fef8936fd.webp](assets/houdini-vex-五-读取节点参数/014-5cd4c9ca.webp)
 
 
     七、ch的其他用法
 
 
-    ![9148742-26ac8f2bd204e690.webp](assets/houdini-vex-五-读取节点参数/015-2d52e7c5.webp)
+    ![9148742-26ac8f2bd204e690.webp](assets/houdini-vex-五-读取节点参数/015-785ffb30.webp)
