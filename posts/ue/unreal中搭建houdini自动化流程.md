@@ -20,7 +20,7 @@ source: "notion-sync"
     基于V2版本的改动，我们就可以在UE中实现一套我们自己的流水线。
 
 
-![Untitled.png](assets/unreal中搭建houdini自动化流程/001-7e3b9253.png)
+![Untitled.png](assets/unreal中搭建houdini自动化流程/001-ab6afb99.png)
 
 
 这里分为C++层级流水线，蓝图层级流水线，houdini层级流水线，C++层级流水线我已经做成插件可以直接调用，Houdini HDA层级和我们平时制作HDA一样。这里我们着重介绍一下蓝图流水线该怎么玩以及Houdini在蓝图中的调用。
@@ -30,13 +30,13 @@ source: "notion-sync"
 首先我们创建一个蓝图，我们需要开启一个HoudiniEngineSession。使用 Create Session或者 Restart Session都可以。(区别就是Restart会清一波缓存)
 
 
-![Untitled.png](assets/unreal中搭建houdini自动化流程/002-686258f8.png)
+![Untitled.png](assets/unreal中搭建houdini自动化流程/002-d1940f8a.png)
 
 
 在当前场景中创建一个HDA的Actor，我们可以使用Process HDA或者Instantiate Asset这里推荐使用Process HDA，因为Process HDA是Instantiate Asset的封装，自带了很多调节参数。比如生成位置，HDA的参数设置、HDA的输入口、是否自动Cook、是否自动Bake等等。可以自己去看注释。
 
 
-![Untitled.png](assets/unreal中搭建houdini自动化流程/003-1d8e617a.png)
+![Untitled.png](assets/unreal中搭建houdini自动化流程/003-a05bb820.png)
 
 
 这里使用未封装的Instantiate Asset，一步一步设置。
@@ -62,10 +62,10 @@ source: "notion-sync"
     通过Process HDA或者Instantiate Asset生成的HDA会封装在`UHoudiniPublicAPIAssetWrapper`的Object。这个类允许我们对生成的HDA Actor进行设置参数、输入、烹饪、烘焙和访问输出来操作实例化的HDA。
 
 
-![Untitled.png](assets/unreal中搭建houdini自动化流程/004-0be19335.png)
+![Untitled.png](assets/unreal中搭建houdini自动化流程/004-2068086e.png)
 
 
-![Untitled.png](assets/unreal中搭建houdini自动化流程/005-016601db.png)
+![Untitled.png](assets/unreal中搭建houdini自动化流程/005-8476933b.png)
 
 
 Asset Wrapper这个东西十分重要，一个Asset Wrapper就相当于是一个实例化的HDA。
@@ -74,7 +74,7 @@ Asset Wrapper这个东西十分重要，一个Asset Wrapper就相当于是一个
 如果我们场景里面已经有了我们预先配置好的HDA Actor那么我们可以这样拿到它的Asset Wrapper
 
 
-![Untitled.png](assets/unreal中搭建houdini自动化流程/006-907adbb0.png)
+![Untitled.png](assets/unreal中搭建houdini自动化流程/006-46e09ff5.png)
 
 
 有了Asset Wrapper一切就好说了，Asset Wrapper就是一个实例化的HDA，我们可以为它设置一系列的东西，首先，我们要设置好Asset Wrapper的回调函数。因为Houdini Cook是异步操纵，与主线程无关，所以我们不知道Houdini何时Cook完成，何时烘焙完成，这时候就需要用到回调函数。
@@ -89,13 +89,13 @@ Asset Wrapper这个东西十分重要，一个Asset Wrapper就相当于是一个
 通常我们就用这几个，PDG那几个回调同理。添加一个Custom Event。
 
 
-![Untitled.png](assets/unreal中搭建houdini自动化流程/007-f3d5ce61.png)
+![Untitled.png](assets/unreal中搭建houdini自动化流程/007-8ec93bcb.png)
 
 
 有了回调之后，我们就可以在`OnPreInstantiationDelegate`回调的时候`设置参数拉。`
 
 
-![Untitled.png](assets/unreal中搭建houdini自动化流程/008-e262df8b.png)
+![Untitled.png](assets/unreal中搭建houdini自动化流程/008-298de249.png)
 
 - `SetFloatParameterValue`
 - `GetFloatParameterValue`
@@ -110,16 +110,16 @@ Asset Wrapper这个东西十分重要，一个Asset Wrapper就相当于是一个
 参数设置好之后，我们还需要设置HDA的输入。
 
 
-![Untitled.png](assets/unreal中搭建houdini自动化流程/009-7798df80.png)
+![Untitled.png](assets/unreal中搭建houdini自动化流程/009-6daa880e.png)
 
 
 创建一个空的输入类。
 
 
-![Untitled.png](assets/unreal中搭建houdini自动化流程/010-423e9826.png)
+![Untitled.png](assets/unreal中搭建houdini自动化流程/010-a944deb2.png)
 
 
-![Untitled.png](assets/unreal中搭建houdini自动化流程/011-d4b52ecb.png)
+![Untitled.png](assets/unreal中搭建houdini自动化流程/011-befd9109.png)
 
 
 Create Empty Input创建输入类就相当于HDA面板上的输入口，确立好输入类型，填充好这个输入的所需要的 Actors或者Assets 。将我们创建的输入类 设置到HDA的指定输入口。
@@ -128,16 +128,16 @@ Create Empty Input创建输入类就相当于HDA面板上的输入口，确立�
 一切配置完毕，我们只需要Cook或者Build，我们配置好的HDA(Asset Wrapper )，
 
 
-![Untitled.png](assets/unreal中搭建houdini自动化流程/012-8a387818.png)
+![Untitled.png](assets/unreal中搭建houdini自动化流程/012-440e63c6.png)
 
 
 如果我们还需要Bake出来的结果。那么我们还要在设置一下Bake相关。当cook完之后，回调函数就会自动调用Bake。Bake相关设置也对应HDA面板上的设置。
 
 
-![Untitled.png](assets/unreal中搭建houdini自动化流程/013-f6ac6cd2.png)
+![Untitled.png](assets/unreal中搭建houdini自动化流程/013-b0e2452e.png)
 
 
-![Untitled.png](assets/unreal中搭建houdini自动化流程/014-da67c085.png)
+![Untitled.png](assets/unreal中搭建houdini自动化流程/014-9aa859cd.png)
 
 
     这套流程下来就会，自动配置好一个你需要的HDA，配合上蓝图节点一些其他操作，比如重新导入FBX呀，导入贴图呀，等等系列需要手工的操作步骤封装起来，将实际流程包装为一个黑盒。实际操作人员就可以避免复杂的配置(包括看到Houdini)，实现一键完成等操作。
@@ -149,7 +149,7 @@ Create Empty Input创建输入类就相当于HDA面板上的输入口，确立�
     我们最终的目的是做出一个自动化流程与手动化兼备的流程。这里自动化可以参考常用的[**Jenkins**](https://www.bing.com/ck/a?!=&p=fee1a43ccc3a5e1aJmltdHM9MTY5MDA3MDQwMCZpZ3VpZD0zMTdlNGIzNC03M2IwLTY4MWQtMzc1Yy00NGNkNzI5ZTY5MmImaW5zaWQ9NTE4OA&ptn=3&hsh=3&fclid=317e4b34-73b0-681d-375c-44cd729e692b&psq=jenkins&u=a1aHR0cHM6Ly93d3cuamVua2lucy5pby8&ntb=1)**，**Windows的任务计划程序，以及Github的Actions功能(我自己的网站便是使用这个功能每晚自动抓取数据)。
 
 
-![Untitled.png](assets/unreal中搭建houdini自动化流程/015-3d6900dd.png)
+![Untitled.png](assets/unreal中搭建houdini自动化流程/015-0099c32d.png)
 
 
 通常包括一个触发器（分为事件触发与定时触发）和执行程序脚本（Windows上通常用bat文件），所以，我们只需要将我们整个Pipeline流程封装成bat文件去执行既可以。

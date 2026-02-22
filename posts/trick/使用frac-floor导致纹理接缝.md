@@ -14,7 +14,7 @@ source: "notion-sync"
 使用世界坐标做贴图UV时，使用了Frac函数使世界空间UV转换到0到1平铺。发现出现uv 0-1跳转，出现接缝。
 
 
-![v2-a0c8c94a7039ffb9f48ae2c151cc22c2_720w.jpg](assets/使用frac-floor导致纹理接缝/001-4d1a5427.jpg)
+![v2-a0c8c94a7039ffb9f48ae2c151cc22c2_720w.jpg](assets/使用frac-floor导致纹理接缝/001-7ab2ddfe.jpg)
 
 
 **原因：**
