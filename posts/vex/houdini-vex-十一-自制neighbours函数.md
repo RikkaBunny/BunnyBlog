@@ -12,7 +12,7 @@ source: "notion-sync"
 ，则会返回一个数组，装着1、4、6
 
 
-![9148742-d39cb21a1d052495.webp](assets/houdini-vex-十一-自制neighbours函数/001-3574e53c.webp)
+![9148742-d39cb21a1d052495.webp](assets/houdini-vex-十一-自制neighbours函数/001-a98dda29.webp)
 
 
 二、自制neighbours函数

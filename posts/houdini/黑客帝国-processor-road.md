@@ -14,19 +14,19 @@ source: "notion-sync"
 拿到道路线段之后，我们先要计算与得到一些数据给之后的解算用，首先我们计算交叉路口每个点的属性，包括每个点法线与其他点法线的最大角度，最小角度，与水平轴的角度，用最大角度作为顺序属性等等。
 
 
-![Untitled.png](assets/黑客帝国-processor-road/001-ef50d1e8.png)
+![Untitled.png](assets/黑客帝国-processor-road/001-563c57e7.png)
 
 
 再把道路相近的点融合变成一个交叉路一个点，这个点取所以点的交叉路口数最大值，道路宽度最大值。不同宽度给上不同颜色。分离出大于三个分支的、边缘有其他点的、角落点的道路相交点给之后的交叉路口解算器用，  分离出的点 叫点 S 吧
 
 
-![Untitled.png](assets/黑客帝国-processor-road/002-4958252b.png)
+![Untitled.png](assets/黑客帝国-processor-road/002-bfb0e6af.png)
 
 
 道路交叉解算器这边先拿到原始的道路线段数据将每一段道路从中间分为两段，每段都和 分离出的点S 在同样位置width米内就保留否则剔除，遍历每条分割后的道路线段。(width为路的宽度属性)
 
 
-![Untitled.png](assets/黑客帝国-processor-road/003-81ad7579.png)
+![Untitled.png](assets/黑客帝国-processor-road/003-48c12a79.png)
 
 
 为每个分割后的道路线段的交叉路交点copytopoints一个box，box的
@@ -37,16 +37,16 @@ scale={@width,1,@perimeter}
 将copy的点云与copy得到的模型一起输出。
 
 
-![Untitled.png](assets/黑客帝国-processor-road/004-57a4fe34.png)
+![Untitled.png](assets/黑客帝国-processor-road/004-69b83eff.png)
 
 
 可以看出有些地方的交叉路口没有贴合，我们需要修复一下他们，就是用他们没有相交的地方提取处理做个凸包就能得到 交叉路口修复块模型。
 
 
-![Untitled.png](assets/黑客帝国-processor-road/005-38c381ad.png)
+![Untitled.png](assets/黑客帝国-processor-road/005-4db4f674.png)
 
 
-![Untitled.png](assets/黑客帝国-processor-road/006-cfd75503.png)
+![Untitled.png](assets/黑客帝国-processor-road/006-4a2334a7.png)
 
 
 从交叉路口解算器，可以得到两个主要的东西 一个是 交叉路口点云与copy得到的模型(粗模 表范围)，两个都有作用 ，先说点云。
@@ -55,7 +55,7 @@ scale={@width,1,@perimeter}
 点云每一个点在当前位置向法线方向生成一块road长度为@perimeter-3宽度为@width，剩下3m的长度，点云会移动@P += @N*(@perimeter-3);后再生成（3m的宽度主要就是马路口的人行道）。移动前的点云和移动后的点云会合并为新的点云集合。
 
 
-![Untitled.png](assets/黑客帝国-processor-road/007-8562d6bb.png)
+![Untitled.png](assets/黑客帝国-processor-road/007-dc91ba08.png)
 
 
 点云copy得到的模型的作用主要就是标记路口的范围，之后就可以专心搞道路的块，道路线段为 整个道路线段 去掉在 交叉路口的块。
@@ -76,13 +76,13 @@ scale={@width,1,@perimeter}
 循环每一个blockCode中的第一个点根据附上对应的属性 用road_block_maker产生出对应类型的路模型。
 
 
-![Untitled.png](assets/黑客帝国-processor-road/008-67bcff4a.png)
+![Untitled.png](assets/黑客帝国-processor-road/008-c65f0978.png)
 
 
 最后给一个可视化输出到input0，可视化就是直接用得到的点云与自己产生的道路模型，做撒点输出可视化(模拟ue里面撒点)
 
 
-![Untitled.png](assets/黑客帝国-processor-road/009-2e0f0d55.png)
+![Untitled.png](assets/黑客帝国-processor-road/009-8b562cd0.png)
 
 
 输出0就是可视化   输出1就是点云   输出2车道线与人行道线(车道线和人行道线由道路产生器直接产生)   输出3是路口数据   输出4是产生模型集合  输出5是交叉路口修复块模型

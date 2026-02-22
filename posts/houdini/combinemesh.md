@@ -8,7 +8,7 @@ notion_url: "https://www.notion.so/CombineMesh-8dc1e5e15734423eb4c9ae2705d4fd82"
 database: "Houdini Technical"
 source: "notion-sync"
 ---
-![CombineMesh.drawio.png](assets/combinemesh/001-429c137b.png)
+![CombineMesh.drawio.png](assets/combinemesh/001-673ed295.png)
 
 
 ### 输入：
@@ -32,7 +32,7 @@ source: "notion-sync"
 这里我们可以先使用remesh节点Adaptive功能，这样会得到一个Mesh密度自适应的结果，
 
 
-![Untitled.png](assets/combinemesh/002-6104235f.png)
+![Untitled.png](assets/combinemesh/002-d403f18a.png)
 
 
 (houdini18以后Remesh节点布局有些许变化，功能一样，但是需要自行指定一个自适应属性)
@@ -71,7 +71,7 @@ source: "notion-sync"
 这一步我们需要使用foreach feedback来循环遍历每一个水面，因为每个水面都对其他水面产生影响，所以我们也需要使用delete节点来根据Index区分当前操作水面与其他水面，我们可以通过Group的Include by Edges功能得到网格边缘顶点。
 
 
-![Untitled.png](assets/combinemesh/003-6776db2b.png)
+![Untitled.png](assets/combinemesh/003-aa83193f.png)
 
 
 通过xyzdist()函数便可以保留与当前操作水面相近的顶点啦。
@@ -80,7 +80,7 @@ source: "notion-sync"
 随后，我们便可以使用这些顶点作为foreach的数据遍历端(Fetch Piece or Point)，当前操作水面作为数据回滚端(Fetch Feedback)，这样就能根据相近顶点数循环Feedback遍历当前操作水面啦。
 
 
-![Untitled.png](assets/combinemesh/004-980f83f5.png)
+![Untitled.png](assets/combinemesh/004-8c7f6d03.png)
 
 
 第一步我们需要找到相近顶点(顶点A)与当前操作水面(水面B)相接的prim。我们可以使用xyzdist()来判断是否相接。如果相接则保留下相接prim序号。
@@ -145,7 +145,7 @@ if(p0 == p1){
 得到这条边之后，我们就可以使用EdgeDivide节点用来在这条边上生成一个正确的顶点。(如果自己生成顶点的话，需要考虑顶点顺序、属性插值等等，测试下来这种方式比较简单方便)
 
 
-![Untitled.png](assets/combinemesh/005-db2a0e45.png)
+![Untitled.png](assets/combinemesh/005-223b9186.png)
 
 
 生成的顶点@ptnum = @numpt-1；我们可以设置它的Pos，让生成的顶点位置等于顶点A的位置。
@@ -157,13 +157,13 @@ if(p0 == p1){
 当我们处理完之后，我们可以得到这样的Mesh。
 
 
-![Untitled.png](assets/combinemesh/006-0c3fe8f2.png)
+![Untitled.png](assets/combinemesh/006-4fc10410.png)
 
 
 我们可以在这个Mesh下使用divide节点用来得到一个正确的结果。(三角化这一步引擎也可以帮我们做)
 
 
-![Untitled.png](assets/combinemesh/007-acd65071.png)
+![Untitled.png](assets/combinemesh/007-f3b9472b.png)
 
 
 得到顶点衔接处理过后的Mesh，我们便可以把Mesh输入时的Tag Copy过来，重新进行一个Pack起来设置Tag输出的操作。
@@ -178,7 +178,7 @@ if(p0 == p1){
 我们需要更加不同类型水面，使用它的Tag来标记它为第几条河的Index，我们就可以在参数面板上指定第几条河流与第几条河流混合。
 
 
-![Untitled.png](assets/combinemesh/008-ded69421.png)
+![Untitled.png](assets/combinemesh/008-4cfb86b6.png)
 
 
 操作方面，我们只需要把对应Index的河流或者湖泊提取出来使用xyzdist()，找到相近的部分，分别标记一个渐变的顶点色，

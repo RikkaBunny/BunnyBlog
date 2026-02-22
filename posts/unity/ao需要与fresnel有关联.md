@@ -11,10 +11,10 @@ source: "notion-sync"
 因为AO表示为物体表面的 遮挡关系或者说是裂缝处阴影 ，当我们视角为掠视角时候，这时候遮挡关系会被遮挡(就是看不见裂缝)，AO效果将被减弱 ， 注意要用 顶点法线与视向量。
 
 
-![Untitled.png](assets/ao需要与fresnel有关联/001-728f8ba0.png)
+![Untitled.png](assets/ao需要与fresnel有关联/001-ef57c893.png)
 
 
-![Untitled.png](assets/ao需要与fresnel有关联/002-04cb64d8.png)
+![Untitled.png](assets/ao需要与fresnel有关联/002-eed75b44.png)
 
 
-![Untitled.png](assets/ao需要与fresnel有关联/003-9283ccbb.png)
+![Untitled.png](assets/ao需要与fresnel有关联/003-67db132f.png)

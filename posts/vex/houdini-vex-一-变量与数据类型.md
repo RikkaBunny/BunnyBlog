@@ -11,15 +11,15 @@ source: "notion-sync"
 1. 首先创建一个box，选中该节点按i进入
 2. 创建attribute wrangle节点，连到box节点
 
-    ![9148742-c59a9a7380c0f397.webp](assets/houdini-vex-一-变量与数据类型/001-83b5ef05.webp)
+    ![9148742-c59a9a7380c0f397.webp](assets/houdini-vex-一-变量与数据类型/001-dc8cc3cc.webp)
 
 3. 选中attribute wrangle节点，然后按P打开参数面板，在红色区域输入vex代码：
 
-    ![9148742-1f34eb6f971d1d11.webp](assets/houdini-vex-一-变量与数据类型/002-0867d690.webp)
+    ![9148742-1f34eb6f971d1d11.webp](assets/houdini-vex-一-变量与数据类型/002-07293f51.webp)
 
 4. 你也可以鼠标点击红色区域，按ALT+E打开vex代码编辑器：
 
-    ![9148742-115aca6baba13e9b.webp](assets/houdini-vex-一-变量与数据类型/003-7ed56594.webp)
+    ![9148742-115aca6baba13e9b.webp](assets/houdini-vex-一-变量与数据类型/003-1f4b30a7.webp)
 
 
 ---
@@ -42,7 +42,7 @@ source: "notion-sync"
 二、一些注意事项
 
 
-![9148742-f1038288a3bc1727.webp](assets/houdini-vex-一-变量与数据类型/004-220f4dcb.webp)
+![9148742-f1038288a3bc1727.webp](assets/houdini-vex-一-变量与数据类型/004-5d16cf6c.webp)
 
 1. 变量名可以用下划线
 2. 变量名可以有数字，但不能放开头
