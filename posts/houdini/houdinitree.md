@@ -14,7 +14,7 @@ source: "notion-sync"
 首先先上操作部分：
 
 
-![2.png](assets/houdinitree/001-b9afb819.png)
+![2.png](assets/houdinitree/001-5d5cee78.png)
 
 
 
@@ -24,14 +24,14 @@ source: "notion-sync"
 类型为tube
 
 
-![3.png](assets/houdinitree/002-d2450232.png)
+![3.png](assets/houdinitree/002-e3e89a54.png)
 
 
 
 勾选Apply Tube Texture Coordinates 会自动计划uv
 
 
-![4.png](assets/houdinitree/003-a2611011.png)
+![4.png](assets/houdinitree/003-26bffa61.png)
 
 
 这里先创建一个骨干树枝，含义为：(最下面有语法介绍，防止枯燥先不讲语法)
@@ -52,26 +52,26 @@ source: "notion-sync"
 接下看计算包围盒Y轴大小，每个点Y轴高度/最高点Y轴高度得到一个0-1的ramp。
 
 
-![5.png](assets/houdinitree/004-a44ac579.png)
+![5.png](assets/houdinitree/004-dceb9020.png)
 
 
 在撒点范围内撒树枝生成点，
 
 
-![6.png](assets/houdinitree/005-602a1c57.png)
+![6.png](assets/houdinitree/005-740ee9de.png)
 
 
 制作树枝：
 
 
-![7.png](assets/houdinitree/006-3fd8801c.png)
+![7.png](assets/houdinitree/006-9fd86a14.png)
 
 
 
  J为第一个输入口的物体。
 
 
-![8.gif](assets/houdinitree/007-b51e7607.gif)
+![8.gif](assets/houdinitree/007-0888cd68.gif)
 
 
 
@@ -81,25 +81,25 @@ source: "notion-sync"
 使用CopyToPoint把树枝生成在主树干的ScatterPoint上
 
 
-![9.png](assets/houdinitree/008-7452c9c1.png)
+![9.png](assets/houdinitree/008-19460e7f.png)
 
 
 法线传递：
 
 
-![10.png](assets/houdinitree/009-07c23ea4.png)
+![10.png](assets/houdinitree/009-48d2d114.png)
 
 
 先使用凸包构建一个mesh之后将mesh转换为VDB体素(平滑mesh)再将体素转换为mesh，连接remesh细分网格之后在smooth平滑一下，最后计算包围盒法线。使用包围盒法线转导到树mesh点上。
 
 
-![11.png](assets/houdinitree/010-9bfab0d8.png)
+![11.png](assets/houdinitree/010-d221d114.png)
 
 
-![12.png](assets/houdinitree/011-458a4b80.png)
+![12.png](assets/houdinitree/011-6507a3f3.png)
 
 
-![13..png](assets/houdinitree/012-12b1a9e9.png)
+![13..png](assets/houdinitree/012-b5a0049d.png)
 
 
 (预览有点错误，渲染结果正确的)
@@ -108,7 +108,7 @@ source: "notion-sync"
 最后在使用上PDG：
 
 
-![14.gif](assets/houdinitree/013-9fd91a2c.gif)
+![14.gif](assets/houdinitree/013-8e5ee092.gif)
 
 
 一分钟就可以得到50颗不同的树 QwQ
@@ -145,7 +145,7 @@ L-system 是一系列不同形式的语法规则，它的自然递归规则产�
 迭代过程：
 
 
-![15.png](assets/houdinitree/014-8da1f37d.png)
+![15.png](assets/houdinitree/014-3ff9f87f.png)
 
 
 L-system 规则的一般形式为:
@@ -169,10 +169,10 @@ L-system 规则的一般形式为:
 分支：在L-systems中，使用方括号([])创建分支。放在方括号内的任何L-System命令都由一个新的L-System独立于主字符串执行。
 
 
-![16.png](assets/houdinitree/015-45a9ae28.png)
+![16.png](assets/houdinitree/015-0f70d0ca.png)
 
 
-![17.png](assets/houdinitree/016-e2af0636.png)
+![17.png](assets/houdinitree/016-2dc7b722.png)
 
 
 概率：
@@ -193,10 +193,10 @@ f：     不画线就往前走。
 -：    向左旋转  参数面板Values下Angle  度。
 
 
-![18.png](assets/houdinitree/017-3e5dc296.png)
+![18.png](assets/houdinitree/017-582cf530.png)
 
 
-![19.png](assets/houdinitree/018-9d85794c.png)
+![19.png](assets/houdinitree/018-1f2c639f.png)
 
 
 
@@ -206,22 +206,22 @@ angle为90°
 替换表达式       A=F+A
 
 
-![20.png](assets/houdinitree/019-9931bc2c.png)
+![20.png](assets/houdinitree/019-3efb843d.png)
 
 
 到目前为止所描述的系统生成平面几何。要在3D中移动L-System，您可以使用&(向上俯仰)、^(向下俯仰)、\\(顺时针滚动)和/(逆时针滚动)命令。例如，初始 Premise FFFA和Rule A=“[&FFFA] //// [&FFFA] /// [&FFFA] [&FFFA]”。
 
 
-![21.png](assets/houdinitree/020-a911ddcf.png)
+![21.png](assets/houdinitree/020-21d570c8.png)
 
 
 不同迭代次数的结果使用   
 
 
-![22.png](assets/houdinitree/021-a7466bca.png)
+![22.png](assets/houdinitree/021-03989f43.png)
 
 
-![23.png](assets/houdinitree/022-c150e534.png)
+![23.png](assets/houdinitree/022-d5b0a8d0.png)
 
 
 A= " [&FFFA] //// [&FFFA] //// [&FFFA] 能看到有重复冗余部分，所以
@@ -236,7 +236,7 @@ Rule 2    B= &FFFA     也是同样的效果。
 注意，双规则系统需要两倍的代才能产生相同的结果。这是因为每一代执行一个规则替换。
 
 
-![24.png](assets/houdinitree/023-eb112559.png)
+![24.png](assets/houdinitree/023-01c1a3e3.png)
 
 
 命令参数：
@@ -248,7 +248,7 @@ F(l,w,s,d)
 向前移动(创建几何体)距离l 宽度w  竖向分割数s  横向分割数d
 
 
-![25.png](assets/houdinitree/024-5961d2c8.png)
+![25.png](assets/houdinitree/024-a278a3b8.png)
 
 
 T(g)
@@ -383,7 +383,7 @@ $(x,y,z)
 分支结束
 
 
-![26.png](assets/houdinitree/025-812f4a5e.png)
+![26.png](assets/houdinitree/025-450d3802.png)
 
 
 

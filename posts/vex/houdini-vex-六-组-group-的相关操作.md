@@ -13,19 +13,19 @@ source: "notion-sync"
 - 等于1是建组，等于0是移除出去
 - 这里我们对顶点的y值大于0的点打组到了up组，并对顶点序号是4的点移除出了up组
 
-    ![9148742-93996a739a78fa0b.webp](assets/houdini-vex-六-组-group-的相关操作/001-71f34e28.webp)
+    ![9148742-93996a739a78fa0b.webp](assets/houdini-vex-六-组-group-的相关操作/001-970ae564.webp)
 
 - 可以在spreadsheet中看到group分组
 
-    ![9148742-3ec5be702bda44ed.webp](assets/houdini-vex-六-组-group-的相关操作/002-c6315270.webp)
+    ![9148742-3ec5be702bda44ed.webp](assets/houdini-vex-六-组-group-的相关操作/002-d2e2b006.webp)
 
 - 如果你在spreadsheet中看不到group，勾选group attributes
 
-    ![9148742-97c1423dc2de219e.webp](assets/houdini-vex-六-组-group-的相关操作/003-4f88142a.webp)
+    ![9148742-97c1423dc2de219e.webp](assets/houdini-vex-六-组-group-的相关操作/003-9dba32d2.webp)
 
 - 我们也可以对组进行判断操作：
 
-    ![9148742-7763e6b6ff9e083d.webp](assets/houdini-vex-六-组-group-的相关操作/004-c66df31d.webp)
+    ![9148742-7763e6b6ff9e083d.webp](assets/houdini-vex-六-组-group-的相关操作/004-efe7d36d.webp)
 
 
     1）这里我们判断，如果是up组，则颜色为绿色；否则为紫色
@@ -35,14 +35,14 @@ source: "notion-sync"
 
 1. setpointgroup函数：把点添加到组中，或从组中移除
 
-    ![9148742-be85956afc3a7c8e.webp](assets/houdini-vex-六-组-group-的相关操作/005-2271a2f4.webp)
+    ![9148742-be85956afc3a7c8e.webp](assets/houdini-vex-六-组-group-的相关操作/005-8677518f.webp)
 
 
     1）把第0个输入端的顶点序号放进up组（1是放进，0是移除）
 
 2. setpointgroup函数其他用法：多了最后一个参数--模式
 
-    ![9148742-ac0d157ee01bca81.webp](assets/houdini-vex-六-组-group-的相关操作/006-8a79a381.webp)
+    ![9148742-ac0d157ee01bca81.webp](assets/houdini-vex-六-组-group-的相关操作/006-b5fa2e7e.webp)
 
 
     1）toggle模式下，会切换当前的状态：如果当前的点在组里，会被切换到不在组里的状态；如果当前的点不在组里，会被切换到在组里的状态
@@ -50,13 +50,13 @@ source: "notion-sync"
 3. inpointgroup函数：判断点在不在组里面
 - 判断0号输入端中的顶点是否在up组，在组内，则返回1；否则返回0
 
-    ![9148742-b99429c387d4c85d.webp](assets/houdini-vex-六-组-group-的相关操作/007-5a18d2a8.webp)
+    ![9148742-b99429c387d4c85d.webp](assets/houdini-vex-六-组-group-的相关操作/007-5638050a.webp)
 
 1. npointsgroup函数：返回该组中的多少点
 - 0号输入端中有多少顶点是up组中的
 
-    ![9148742-9fe468d017ebbc90.webp](assets/houdini-vex-六-组-group-的相关操作/008-a5c07190.webp)
+    ![9148742-9fe468d017ebbc90.webp](assets/houdini-vex-六-组-group-的相关操作/008-9c9e5455.webp)
 
 1. expandpointgroup函数：把组中的元素都列出来
 
-    ![9148742-8d06de251b12ec92.webp](assets/houdini-vex-六-组-group-的相关操作/009-a15d1a97.webp)
+    ![9148742-8d06de251b12ec92.webp](assets/houdini-vex-六-组-group-的相关操作/009-9e551f29.webp)
