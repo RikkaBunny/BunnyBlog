@@ -11,13 +11,13 @@ source: "notion-sync"
 下载完RenderDoc之后，unity Game视图自动有LoadRenderDoc菜单，
 
 
-![Untitled.png](assets/renderdocdebugunity/001-068fdfd6.png)
+![Untitled.png](assets/renderdocdebugunity/001-951a9f2d.png)
 
 
 点击加载就可以，加载完成点击截帧就可以啦。
 
 
-![Untitled.png](assets/renderdocdebugunity/002-7548f11d.png)
+![Untitled.png](assets/renderdocdebugunity/002-2d66864e.png)
 
 
 调试我们的shader了 ,这时候要注意的一个点就是我们要在我们的shader里面加上一句宏
