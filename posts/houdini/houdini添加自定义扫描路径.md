@@ -11,7 +11,7 @@ source: "notion-sync"
 打开houdini.env 
 
 
-![Untitled.png](assets/houdini添加自定义扫描路径/001-649e4564.png)
+![Untitled.png](assets/houdini添加自定义扫描路径/001-991302f8.png)
 
 
 HOUDINI_OTLSCAN_PATH = ;&
