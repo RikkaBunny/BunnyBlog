@@ -8,4 +8,4 @@ notion_url: "https://www.notion.so/houdini-97729aa0fe4745ab933841beca93fc71"
 database: "Trick Notes"
 source: "notion-sync"
 ---
-![Untitled.png](assets/houdini黑盒创建/001-4a75a42c.png)
+![Untitled.png](assets/houdini黑盒创建/001-ae4a5663.png)

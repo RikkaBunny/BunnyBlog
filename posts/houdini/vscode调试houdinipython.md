@@ -83,13 +83,13 @@ Effects Software\Houdini 18.0.499\python27\lib\site-packages\local.pth`
 VSCode 里面创建好 Workspace 后给你的工作空间按下图方式设置远程 Python 调试配置
 
 
-![Untitled.png](assets/vscode调试houdinipython/001-ba03a3c6.png)
+![Untitled.png](assets/vscode调试houdinipython/001-05fb7750.png)
 
 
 配置文件内容如下:
 
 
-![Untitled.png](assets/vscode调试houdinipython/002-b7e9ec96.png)
+![Untitled.png](assets/vscode调试houdinipython/002-68459e56.png)
 
 
 端口号和IP可根据自己情况配置。
@@ -111,7 +111,7 @@ debugpy.wait_for_client()
 执行 `wait_for_client` 后 Python 将卡死等待调试器 Attach，这时候就可以在 VSCode 里面 F5 了。如果VSCode里面设置有断点，断点将起效果:
 
 
-![Untitled.png](assets/vscode调试houdinipython/003-c9776679.png)
+![Untitled.png](assets/vscode调试houdinipython/003-dd1d9fb2.png)
 
 
 ## 5 一些说明
