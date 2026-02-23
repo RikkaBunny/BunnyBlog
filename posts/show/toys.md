@@ -8,7 +8,7 @@ notion_url: "https://www.notion.so/Toys-5f2529c4e8644d599e7adfafa25459c0"
 database: "Show Notes"
 source: "notion-sync"
 ---
-![Untitled.png](assets/toys/001-19fd0d40.png)
+![Untitled.png](assets/toys/001-596e4dfc.png)
 
 
-![Untitled.png](assets/toys/002-52661041.png)
+![Untitled.png](assets/toys/002-d7aa944f.png)
