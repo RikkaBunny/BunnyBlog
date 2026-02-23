@@ -8,4 +8,4 @@ notion_url: "https://www.notion.so/Mandelbrot_Fractal-762d5f5ad4664d3b8cab916768
 database: "Show Notes"
 source: "notion-sync"
 ---
-![Untitled.gif](assets/mandelbrot_fractal/001-b2c3445e.gif)
+![Untitled.gif](assets/mandelbrot_fractal/001-99051fad.gif)
