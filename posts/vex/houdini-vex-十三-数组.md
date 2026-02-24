@@ -11,7 +11,7 @@ source: "notion-sync"
 一、创建数组
 
 
-![9148742-6e2e1cc87aa3e358.webp](assets/houdini-vex-十三-数组/001-03a0b485.webp)
+![9148742-6e2e1cc87aa3e358.webp](assets/houdini-vex-十三-数组/001-bf24d554.webp)
 
 - 可以用纯数字创建数组
 
