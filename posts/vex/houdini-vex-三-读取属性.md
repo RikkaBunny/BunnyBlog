@@ -40,13 +40,13 @@ color = detail(1,"Cd");
 
 1. 查看一个节点存在哪些属性，可以通过attribute vop节点查看：这些就是存在的全局属性，可以通过@+红色框选的这些全局属性获取这些本身存在的属性
 
-    ![9148742-944ee2837e2be598.webp](assets/houdini-vex-三-读取属性/001-d0173f95.webp)
+    ![9148742-944ee2837e2be598.webp](assets/houdini-vex-三-读取属性/001-5e3983a4.webp)
 
 
     1）例子：
 
 
-    ![9148742-c33fdda8dfa29972.webp](assets/houdini-vex-三-读取属性/002-efbe42da.webp)
+    ![9148742-c33fdda8dfa29972.webp](assets/houdini-vex-三-读取属性/002-d2ed9408.webp)
 
 
 四、特别的：体积，不同于位置点、顶点、面的读取属性
@@ -54,12 +54,12 @@ color = detail(1,"Cd");
 1. 读取方式：@+体积名称，来读取体素值
 1）例子：
 
-    ![9148742-58e27290ed32864b.webp](assets/houdini-vex-三-读取属性/003-c04fc987.webp)
+    ![9148742-58e27290ed32864b.webp](assets/houdini-vex-三-读取属性/003-61945d30.webp)
 
 2. 测试：
 1）新建一个box节点，选中按i进入，连上isooffset节点，修改属性：name改为density，uniform sampling divs改为5：
 
-    ![9148742-8592f7c7464a6fc9.webp](assets/houdini-vex-三-读取属性/004-7180787d.webp)
+    ![9148742-8592f7c7464a6fc9.webp](assets/houdini-vex-三-读取属性/004-6dbe6692.webp)
 
 
     
@@ -69,16 +69,16 @@ color = detail(1,"Cd");
     2）在isooffset节点上长按鼠标中键：可以查看到是刚刚采样细分的2次方
 
 
-    ![9148742-ebe7e818882fa223.webp](assets/houdini-vex-三-读取属性/005-f8deadc1.webp)
+    ![9148742-ebe7e818882fa223.webp](assets/houdini-vex-三-读取属性/005-a5b109a4.webp)
 
 
 3）连上volum wrangle节点进行vex代码
 
 
-![9148742-dffaa9d4841dfe96.webp](assets/houdini-vex-三-读取属性/006-f2b14214.webp)
+![9148742-dffaa9d4841dfe96.webp](assets/houdini-vex-三-读取属性/006-29d45082.webp)
 
 
 五、注意事项
 
 
-![9148742-472630fdae761279.webp](assets/houdini-vex-三-读取属性/007-b68a495b.webp)
+![9148742-472630fdae761279.webp](assets/houdini-vex-三-读取属性/007-b0c0aebe.webp)

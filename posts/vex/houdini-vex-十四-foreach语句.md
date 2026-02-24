@@ -11,7 +11,7 @@ source: "notion-sync"
 一、简单的foreach
 
 
-![9148742-9db0043e03aeccbe.webp](assets/houdini-vex-十四-foreach语句/001-29142f01.webp)
+![9148742-9db0043e03aeccbe.webp](assets/houdini-vex-十四-foreach语句/001-c64e0ddc.webp)
 
 - 代码：
 
