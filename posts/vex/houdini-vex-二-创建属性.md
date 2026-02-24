@@ -84,7 +84,7 @@ int @id =8;//错误`
 
 1. 将attribute wrangle节点的Run Over选项修改为Detail(only once)--只运行一次，因为我们创建属性只需要创建一次就够了
 
-    ![9148742-221514f203e44a43.webp](assets/houdini-vex-二-创建属性/001-c32cb867.webp)
+    ![9148742-221514f203e44a43.webp](assets/houdini-vex-二-创建属性/001-b4857b30.webp)
 
 2. 添加属性方法：
 
@@ -142,51 +142,51 @@ setprimattrib(0,"Cd",3,{1,0,0});`
 
 1. 首先
 
-    ![9148742-8f3e62ee8c1104ab.webp](assets/houdini-vex-二-创建属性/002-c7be6089.webp)
+    ![9148742-8f3e62ee8c1104ab.webp](assets/houdini-vex-二-创建属性/002-7edbfb8d.webp)
 
 2. 通过这四个按键，分别查不同级别的数据
 
-    ![9148742-527f53e6637c5e76.webp](assets/houdini-vex-二-创建属性/003-003f1b4d.webp)
+    ![9148742-527f53e6637c5e76.webp](assets/houdini-vex-二-创建属性/003-7971b6e5.webp)
 
 3. 我们输入以下vex代码：
 
-    ![9148742-93ddb2a3a5ca607a.webp](assets/houdini-vex-二-创建属性/004-85b009fa.webp)
+    ![9148742-93ddb2a3a5ca607a.webp](assets/houdini-vex-二-创建属性/004-c5d7b6fd.webp)
 
 4. 我们查了下顶点，和setvertexattrib(0,"Cd",3,3,{1,0,0})相对应
 
-    ![9148742-93f4a8c39843c1bb.webp](assets/houdini-vex-二-创建属性/005-49d70443.webp)
+    ![9148742-93f4a8c39843c1bb.webp](assets/houdini-vex-二-创建属性/005-120c3eec.webp)
 
 - 貌似位置点的找不出变化的值，可能是被覆盖了？
 
 四、Attributes to Create
 
 
-![9148742-d636e1fa451c75e7.webp](assets/houdini-vex-二-创建属性/006-f0a93775.webp)
+![9148742-d636e1fa451c75e7.webp](assets/houdini-vex-二-创建属性/006-87d4e3c0.webp)
 
 1. 只允许创建指定属性，默认 * 允许所有属性创建
 2. 可以防止因为打字错误而创建出错误的属性
 3. 测试：
 1.首先新建一个attribute wrangle节点：
 
-    ![9148742-698c803cc3f753ce.webp](assets/houdini-vex-二-创建属性/007-2eff5d5e.webp)
+    ![9148742-698c803cc3f753ce.webp](assets/houdini-vex-二-创建属性/007-1b72d78f.webp)
 
 
     2.输入指定属性：
 
 
-    ![9148742-c8c4753a88f52c1f.webp](assets/houdini-vex-二-创建属性/008-dbd0ad8f.webp)
+    ![9148742-c8c4753a88f52c1f.webp](assets/houdini-vex-二-创建属性/008-263d2dce.webp)
 
 
     3.输入vex语句：
 
 
-    ![9148742-4725ca0d089451a1.webp](assets/houdini-vex-二-创建属性/009-ad920073.webp)
+    ![9148742-4725ca0d089451a1.webp](assets/houdini-vex-二-创建属性/009-0bd258b1.webp)
 
 
     4.查看属性：在attribute wrangle节点上，长按鼠标中键：
 
 
-    ![9148742-15ec470293c0c1d5.webp](assets/houdini-vex-二-创建属性/010-658f0b7a.webp)
+    ![9148742-15ec470293c0c1d5.webp](assets/houdini-vex-二-创建属性/010-9bc1daf4.webp)
 
 - 可以发现我们创建的小写cd属性没有创建出来，但是被指定的属性却可以被创建
 
@@ -197,4 +197,4 @@ setprimattrib(0,"Cd",3,{1,0,0});`
 3. 一般用简写形式创建属性，除非你需要上述功能
 4. 例子：
 
-    ![9148742-116d52c7cbd0cd15.webp](assets/houdini-vex-二-创建属性/011-e9cb5b18.webp)
+    ![9148742-116d52c7cbd0cd15.webp](assets/houdini-vex-二-创建属性/011-347ac864.webp)

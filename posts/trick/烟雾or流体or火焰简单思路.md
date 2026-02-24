@@ -14,16 +14,16 @@ source: "notion-sync"
 把物体移动移动轨迹记录下来，做历史帧叠加然后衰减，像做雪和草一样，然后对历史叠加帧没帧做一个偏移(向上或者向下 ，模仿重力下落或者往上飘的感觉)，对历史叠加帧做noise扭曲使其看起来更像火焰或者流体，最后blur一下就好了
 
 
-![Untitled.png](assets/烟雾or流体or火焰简单思路/001-79e231d2.png)
+![Untitled.png](assets/烟雾or流体or火焰简单思路/001-b6e7eb12.png)
 
 
-![Untitled.png](assets/烟雾or流体or火焰简单思路/002-c5dceb25.png)
+![Untitled.png](assets/烟雾or流体or火焰简单思路/002-a12c9ef1.png)
 
 
-![Untitled.png](assets/烟雾or流体or火焰简单思路/003-5fa052b8.png)
+![Untitled.png](assets/烟雾or流体or火焰简单思路/003-f9014bde.png)
 
 
-![Untitled.png](assets/烟雾or流体or火焰简单思路/004-c207d121.png)
+![Untitled.png](assets/烟雾or流体or火焰简单思路/004-241d4b1d.png)
 
 
-![Untitled.png](assets/烟雾or流体or火焰简单思路/005-49a05dee.png)
+![Untitled.png](assets/烟雾or流体or火焰简单思路/005-f7580682.png)

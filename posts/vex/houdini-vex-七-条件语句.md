@@ -13,28 +13,28 @@ source: "notion-sync"
 - 非0就是真
 - 判断条件写成浮点会有警告
 
-    ![9148742-ee652ece72ffe60b.webp](assets/houdini-vex-七-条件语句/001-1ffdd041.webp)
+    ![9148742-ee652ece72ffe60b.webp](assets/houdini-vex-七-条件语句/001-451ffe6e.webp)
 
 - 或 or ||
 - 且 and &&
 - 非 not !
 
-    ![9148742-4cbb1d604bcb3045.webp](assets/houdini-vex-七-条件语句/002-33218c30.webp)
+    ![9148742-4cbb1d604bcb3045.webp](assets/houdini-vex-七-条件语句/002-15761c33.webp)
 
 - 花括号{}
 
-    ![9148742-8dcf5ad5db80b803.webp](assets/houdini-vex-七-条件语句/003-cf2e18ee.webp)
+    ![9148742-8dcf5ad5db80b803.webp](assets/houdini-vex-七-条件语句/003-61dd3406.webp)
 
 - if...else...
 
-    ![9148742-3562276f9e272471.webp](assets/houdini-vex-七-条件语句/004-fe3cc78e.webp)
+    ![9148742-3562276f9e272471.webp](assets/houdini-vex-七-条件语句/004-72f7584d.webp)
 
 - else if
 
-    ![9148742-4342b3264c85d7aa.webp](assets/houdini-vex-七-条件语句/005-5bce1dfd.webp)
+    ![9148742-4342b3264c85d7aa.webp](assets/houdini-vex-七-条件语句/005-382d7e99.webp)
 
 - 三目运算符：
 - 写法：语句1？语句2：语句3
 - 如果语句1为真，则执行语句2；否则执行语句3
 
-    ![9148742-88d777ed5290bd91.webp](assets/houdini-vex-七-条件语句/006-708f2d3e.webp)
+    ![9148742-88d777ed5290bd91.webp](assets/houdini-vex-七-条件语句/006-fb922ad5.webp)
