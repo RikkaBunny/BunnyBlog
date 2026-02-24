@@ -11,7 +11,7 @@ source: "notion-sync"
 打开这三个宏：
 
 
-![Untitled.png](assets/renderdoc_debugue/001-c19c9861.png)
+![Untitled.png](assets/renderdoc_debugue/001-3d7555af.png)
 
 
 UE427\Engine\Config\ConsoleVariables.ini

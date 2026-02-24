@@ -8,25 +8,25 @@ notion_url: "https://www.notion.so/Houdini-VEX-VOP-Snippet-VEX-75df352e0b214cf0b
 database: "Houdini Notes"
 source: "notion-sync"
 ---
-![9148742-69b15c23ef2cf20f.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/001-9b4c83b2.webp)
+![9148742-69b15c23ef2cf20f.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/001-9fe5e57a.webp)
 
 
-![9148742-8a9d26c46479cc56.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/002-7f863aa0.webp)
+![9148742-8a9d26c46479cc56.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/002-a53eca59.webp)
 
 
-![9148742-6cbea0e9e8522bf5.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/003-598e4b5a.webp)
+![9148742-6cbea0e9e8522bf5.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/003-311ede8f.webp)
 
 
-![9148742-d9d866d9ed3e9514.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/004-3c7c10f5.webp)
+![9148742-d9d866d9ed3e9514.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/004-ca5f0e64.webp)
 
 
-![9148742-a14c35e73d1baaac.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/005-d0e12b53.webp)
+![9148742-a14c35e73d1baaac.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/005-583bb7e7.webp)
 
 
-![9148742-6be5d40ce3731974.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/006-18c1333a.webp)
+![9148742-6be5d40ce3731974.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/006-10036851.webp)
 
 
-![9148742-fbdbc6f129c5fc58.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/007-89a45a4c.webp)
+![9148742-fbdbc6f129c5fc58.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/007-cc2e9f9a.webp)
 
 
 一、VOP中使用Snippet写VEX
@@ -124,17 +124,17 @@ source: "notion-sync"
 继续添加点乘，映射
 
 
-    ![9148742-bd62cedf530853d4.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/008-bb221fac.webp)
+    ![9148742-bd62cedf530853d4.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/008-b64f1087.webp)
 
 
-    ![9148742-5cf65615601e4b03.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/009-81f3c58b.webp)
+    ![9148742-5cf65615601e4b03.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/009-dbc9e738.webp)
 
 
     
 修改代码，让用户控制的maxAngle从0-180映射到1到-1
 
 
-    ![9148742-69c3b34db08c29a3.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/010-2ee20266.webp)
+    ![9148742-69c3b34db08c29a3.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/010-48a04ebe.webp)
 
 
-    ![9148742-f8aab48c2e3b429a.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/011-1b755055.webp)
+    ![9148742-f8aab48c2e3b429a.webp](assets/houdini-vex-二十一-vop中使用snippet写vex/011-ff6a4716.webp)
