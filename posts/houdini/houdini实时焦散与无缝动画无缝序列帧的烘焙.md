@@ -14,13 +14,13 @@ source: "notion-sync"
 这里以实时焦散为例子，制作一个焦散的无缝贴图，最后做成序列帧使用。
 
 
-[%E7%84%A6%E6%95%A3.mp4](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/a3fe2b9b-3b8f-444f-8cd4-06cd6a24b174/%E7%84%A6%E6%95%A3.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466W6NNAXAE%2F20260224%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260224T121621Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjECsaCXVzLXdlc3QtMiJIMEYCIQC8z%2FbZJxL%2BV0fVUhJeulNqoGv%2BkD%2BbGt%2B9D8l%2BjLp4yAIhAP6ZitryqQ6hXYsgrO7ZiWXv5sj8X95xynAjmmfl3dlRKogECPT%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1Igz0BZo9jAVyn2Ak%2BHsq3AOVTCAUGHcPGrmyR4VQjRx3uYSIGyYEI4UF4aEC8Qh0P6ultX7SYTSDPScfS%2FmSeu3ByGGXAVBWSfaZf2p2M5V82Au2MYouyqA0W%2BuPnMcldOoDc%2FJqARZ6ISditzHarQ30ObGCxbbYUGb2O86U5BThoU1KyiPWITI6q2HE2hh5ifJyFadXVfrMCh3sRXkzOICOo2oVA3Ezz5iMjQTEGh9CNF0K7mnl1m%2FntyWsyNL1weheuy5dDoYPo9P1jeLbr%2BdZGNLdOzrI0d2Dpw7mUbjrU91N6MW2cIhNiUNqWUgNnYxPWGuQg2gggGDisdW4ZmIwQR4f4ExiNLYEIbbkKgUrFxt7oIGXsrs1oN6XixNXmTB%2B54bNrlCJyfkwuAfBNfg1%2BpOq0smZM6i6WkPndy4KLoFneOYY9t31tJNuxz%2FZYsazFPjPLmQSvFmBnp5TaTM0njUcuExJiprPY5P6nNCnZgY2d7dv%2BKr1sI0gaBTg3K%2Balj1tD7SOR4vYSwG3z7c9yhu8xGRXq9DSa7vOeDxgrgOqNj2jC6uUT6T6N51Vj%2B8gmYgvYId44xOZgO2nroqpywnSiRUXYpxwW%2FIRfWDMEnJRJVgmcmnlKWvxy4Uk%2B6LIWXC%2BvFJrIeFaGjDnjvbMBjqkAQD1EmfQQtqrhPOHovfphGEc9p64hFCCqiE%2BkmHpfdTqjyKsKb2brQeo%2Fy8bCPx67De7fHmL1gyMevU5tTzu1hNg5LiTj2ItiObRDMZHbR4cDr3S52jtGZIH8ud6yj%2BHfqUJ8aWa399XXxa8L%2BRewNIIqf1CjARP8hgfdZW%2Bl6uEjd%2BZPONNetZga%2FHbAvsGptYlcLmJ%2BMOmJAxqHJBvFD68St%2FO&X-Amz-Signature=bd6469fbea16c6dc8b9d2468b519fcf5c97f230eca9cea6a28baa2c8ebe666b4&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+[%E7%84%A6%E6%95%A3.mp4](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/a3fe2b9b-3b8f-444f-8cd4-06cd6a24b174/%E7%84%A6%E6%95%A3.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466UU4IRQWM%2F20260224%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260224T151625Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEC8aCXVzLXdlc3QtMiJHMEUCIGsVukMEhDwVzR%2F5UgfWRp9Dl4kZiqurva4WK7JtJ5kcAiEA03gZa7FZzvRn7%2FlHm4cK5JOkm5ms5r3GMyK6fxLXHtYqiAQI%2BP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDOFDib3vlYWSb%2BCBFircA0PI%2BEE7RDjFk1FgL%2Fp5cUhenB%2BCdY9N533ebstbuCYov7vzOmg5plaoVeWolpQuhceUB2uOEg2fu5o9J254KYedbm%2Btds3ukbemlgRMe2KS4pHvpHdKSTVI4AAL%2FJmQeoVi2T6z6ThqIrt3dcnHY51Qgf8FbI5mnbCus2hstY1Ytci9rnw45Z%2FPWJxKopm3Shk%2FdPAkUR1Mimn7zw18IrKCX0dA%2FvKiOc3%2BPvY9KNRCHJhWn5ljwSQtCe5NDbjGzRwx0ed2L%2FG8QZBgxFdqYxCaxVrT2r7tMOAsLqjgAwQv8dvahpeio%2FqY0zc5qC9Ezt%2F1nNLcOujqIhodAp9j0RhH56De3urdBDOuQuXR923b7gBY4DnFfYxEFaDszR0KPRmLDA%2FJT4%2B81rxqI9j2UK3vI3AiPWWLK3y%2Bw7Ey73oTKYMq5CWJiphNWXeJf91zSgIvPJ1vY8lTP6U3HC9kXgySrgZybi7psAPzq%2FzHFbvXc6vLCfvs3nBbSeIxbTdxLUfavaGulyl3yondPvsyuhOJBS4JQzAQHT40TSUgvgt4N8XtzOmtBiUyYksOqSeahm%2Fqs8wXR0nFfdLhz01MOqn0vJyIvW56X0rnRcB6NuV6BcWD7yAo2xdHsW7nMID69swGOqUBREx3d2iW%2BvhQpSO1ttjr%2B72xLhf28AhflqiIarLugso0t6Xh%2F4BXpRKNlb%2Ba2m2%2Fa8FKusAv6WQe0qQW74mS4EwMjUY3XJO%2Bequp8hrCyBiUBVOK4AzLXUnXi%2FWkRGCQbidybnQAi93kbV6E0PQyQMc9sa54KeR9d0sNS%2FVqxDO424FbgNJumTjFqit6Io7f%2BAjCTbUqTTSwx2uFZI3jQ8GA5gDr&X-Amz-Signature=8f20b718b640bb847d5c8184ebb425202004b0dc04a8d3fffcb49b8b7792d97f&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
 
 
 焦散的原理就是水的折射形成的，那么我们只需要在houdini里面把光在水中发生折射打到地面这个过程写出来就好。
 
 
-![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/001-175c0c41.png)
+![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/001-92ae5f33.png)
 
 
 这里我用grid创建了一个水面，在给这个水面给上uv，并且将水面细分一下，这里细分出来的每一个顶点都是我们光线的入射点，所以细分出的顶点数量越密集结果会越好，这里我给的细分为0.05到0.01之间，使用Mountain节点来简单的模拟水面波动(之后可以用ocean那一套)
@@ -29,7 +29,7 @@ source: "notion-sync"
 有了水面之后我们还需要给一个水底，直接用grid创建一个平面当作水底接收光线。等下就可以将水底接收的光线保存下来，保存下来的结果就是焦散啦。
 
 
-![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/002-bde6b056.png)
+![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/002-2be82cff.png)
 
 
 接下来便是使用vex来计算焦散来，输入0为水面，输入1为水底，假设光线入射方向为正上方先下（0，-1，0）。使用refract计算入射光线与法线的折射角度，IOR为1/1.33。
@@ -52,19 +52,19 @@ if(pr != -1){
 ```
 
 
-![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/003-35012a72.png)
+![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/003-656df68c.png)
 
 
 之后再按照水底的位置与大小 创建一个一样大小的2D volume，这个volume就是等下我们要传入cop里面做贴图使用。
 
 
-![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/004-4e6eb203.png)
+![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/004-18ca4aba.png)
 
 
 那么怎么把这些点转移到volum上勒，这里我们可以用volume rasterize particles ，嗯顾名思义就是用通过点云来光栅化volume，参数主要有三个，一个是我们需要写到那个属性，这里我们volume创建的属性为density，那么我们便写入density中。下面coverage scale一个是点云粒子强度缩放，particle scale为点云粒子范围强度缩放(这个值就用我们前面水面 remesh的密度就好)。
 
 
-![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/005-a90b6977.png)
+![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/005-3cba15ed.png)
 
 
 接下来我们便可以将这个2D volume 传入到Cop中输出图片，也可以再传入前对这个volume 做一些 增加对比度呀 模糊之类的自定义操作。
@@ -79,19 +79,19 @@ if(pr != -1){
 有缝与无缝的本质其实就是一段连续的波形突然的变化剧烈，其实栅格化之后只能说离散后结果比较平滑变化不大，而出现有接缝的原因是波形两端值不一样导致两个像素之间跳变。解决方法便是用一段没有接缝的函数波形去替换有跳变的这一段曲线。
 
 
-![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/006-82162100.png)
+![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/006-0e29c496.png)
 
 
-![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/007-36062d7a.png)
+![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/007-d2e2a50f.png)
 
 
 这是一个图像转化为波形大概是这样，Tile 2次
 
 
-![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/008-f5c3d518.png)
+![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/008-cc4f3395.png)
 
 
-![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/009-676041a8.png)
+![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/009-d2a72364.png)
 
 
 可以看见波形之间明显的跳变。
@@ -100,19 +100,19 @@ if(pr != -1){
 我们可以在跳变处插入一段连续的波形，当将要产生跳变的时候，我们过渡到没有跳变的波形上。我们还需要定义一个权重W来插值两个波形。
 
 
-![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/010-aa98b427.png)
+![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/010-7ea621eb.png)
 
 
 最终跳变区域波形将会变为一个平滑的过渡
 
 
-![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/011-098b292d.png)
+![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/011-d3db5d57.png)
 
 
 将波形连续起来
 
 
-![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/012-3b8f501f.png)
+![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/012-8d5a1d34.png)
 
 
 便从一个跳变的函数变为连续的啦。反应到贴图上：
@@ -121,37 +121,37 @@ if(pr != -1){
 原贴图平铺两次（原函数两个周期）
 
 
-![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/013-ed6566fa.png)
+![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/013-657c6797.png)
 
 
 衔接贴图（插值函数，其实就是原函数 offset半个周期既可）
 
 
-![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/014-f7a57b22.png)
+![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/014-720b980d.png)
 
 
 权重函数
 
 
-![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/015-c62a4932.png)
+![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/015-8842155c.png)
 
 
 然后做一个权重混合（因为blend的0与1输入反了，所以我们勾选一下 Invert Blend Mask翻转一下）
 
 
-![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/016-ea50cb51.png)
+![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/016-2fecf44c.png)
 
 
 最后我们在截取一下中间的图像
 
 
-![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/017-a054d27a.png)
+![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/017-ddf0585f.png)
 
 
 在tile试一下，确实没有跳变接缝啦。
 
 
-![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/018-a88be52a.png)
+![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/018-254fdc8e.png)
 
 
 如果 垂直也有接缝的话，可以在垂直做一次混合操作，上面全是原理，实际操作其实很简单，就是当前贴图offset偏移一下，在贴图tile跳变处淡入淡出偏移过后的贴图即可。操作可以简单粗暴随意实现。
@@ -166,16 +166,16 @@ if(pr != -1){
 我们可以使用TimeShift 来偏移我们的 波周期
 
 
-![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/019-9988283c.png)
+![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/019-211bdab4.png)
 
 
 在1到64帧的时间 一个波形的周期为 32->63 1-> 32  ,另一个波的周期为1 ->63 ,
 
 
-[%E6%97%A0%E7%BC%9D%E5%8A%A8%E7%94%BB.mp4](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/bff36743-77e9-46cf-abe5-3fb830f9de97/%E6%97%A0%E7%BC%9D%E5%8A%A8%E7%94%BB.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466W6NNAXAE%2F20260224%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260224T121622Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjECsaCXVzLXdlc3QtMiJIMEYCIQC8z%2FbZJxL%2BV0fVUhJeulNqoGv%2BkD%2BbGt%2B9D8l%2BjLp4yAIhAP6ZitryqQ6hXYsgrO7ZiWXv5sj8X95xynAjmmfl3dlRKogECPT%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1Igz0BZo9jAVyn2Ak%2BHsq3AOVTCAUGHcPGrmyR4VQjRx3uYSIGyYEI4UF4aEC8Qh0P6ultX7SYTSDPScfS%2FmSeu3ByGGXAVBWSfaZf2p2M5V82Au2MYouyqA0W%2BuPnMcldOoDc%2FJqARZ6ISditzHarQ30ObGCxbbYUGb2O86U5BThoU1KyiPWITI6q2HE2hh5ifJyFadXVfrMCh3sRXkzOICOo2oVA3Ezz5iMjQTEGh9CNF0K7mnl1m%2FntyWsyNL1weheuy5dDoYPo9P1jeLbr%2BdZGNLdOzrI0d2Dpw7mUbjrU91N6MW2cIhNiUNqWUgNnYxPWGuQg2gggGDisdW4ZmIwQR4f4ExiNLYEIbbkKgUrFxt7oIGXsrs1oN6XixNXmTB%2B54bNrlCJyfkwuAfBNfg1%2BpOq0smZM6i6WkPndy4KLoFneOYY9t31tJNuxz%2FZYsazFPjPLmQSvFmBnp5TaTM0njUcuExJiprPY5P6nNCnZgY2d7dv%2BKr1sI0gaBTg3K%2Balj1tD7SOR4vYSwG3z7c9yhu8xGRXq9DSa7vOeDxgrgOqNj2jC6uUT6T6N51Vj%2B8gmYgvYId44xOZgO2nroqpywnSiRUXYpxwW%2FIRfWDMEnJRJVgmcmnlKWvxy4Uk%2B6LIWXC%2BvFJrIeFaGjDnjvbMBjqkAQD1EmfQQtqrhPOHovfphGEc9p64hFCCqiE%2BkmHpfdTqjyKsKb2brQeo%2Fy8bCPx67De7fHmL1gyMevU5tTzu1hNg5LiTj2ItiObRDMZHbR4cDr3S52jtGZIH8ud6yj%2BHfqUJ8aWa399XXxa8L%2BRewNIIqf1CjARP8hgfdZW%2Bl6uEjd%2BZPONNetZga%2FHbAvsGptYlcLmJ%2BMOmJAxqHJBvFD68St%2FO&X-Amz-Signature=166c9cf9ef507bbbc780244e88e30a3f2dfe8aa9f1b5bb8fc40b893ff99d8fff&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+[%E6%97%A0%E7%BC%9D%E5%8A%A8%E7%94%BB.mp4](https://prod-files-secure.s3.us-west-2.amazonaws.com/826ac7c4-16ea-47db-b704-f30f496469c3/bff36743-77e9-46cf-abe5-3fb830f9de97/%E6%97%A0%E7%BC%9D%E5%8A%A8%E7%94%BB.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466UU4IRQWM%2F20260224%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260224T151626Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEC8aCXVzLXdlc3QtMiJHMEUCIGsVukMEhDwVzR%2F5UgfWRp9Dl4kZiqurva4WK7JtJ5kcAiEA03gZa7FZzvRn7%2FlHm4cK5JOkm5ms5r3GMyK6fxLXHtYqiAQI%2BP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDOFDib3vlYWSb%2BCBFircA0PI%2BEE7RDjFk1FgL%2Fp5cUhenB%2BCdY9N533ebstbuCYov7vzOmg5plaoVeWolpQuhceUB2uOEg2fu5o9J254KYedbm%2Btds3ukbemlgRMe2KS4pHvpHdKSTVI4AAL%2FJmQeoVi2T6z6ThqIrt3dcnHY51Qgf8FbI5mnbCus2hstY1Ytci9rnw45Z%2FPWJxKopm3Shk%2FdPAkUR1Mimn7zw18IrKCX0dA%2FvKiOc3%2BPvY9KNRCHJhWn5ljwSQtCe5NDbjGzRwx0ed2L%2FG8QZBgxFdqYxCaxVrT2r7tMOAsLqjgAwQv8dvahpeio%2FqY0zc5qC9Ezt%2F1nNLcOujqIhodAp9j0RhH56De3urdBDOuQuXR923b7gBY4DnFfYxEFaDszR0KPRmLDA%2FJT4%2B81rxqI9j2UK3vI3AiPWWLK3y%2Bw7Ey73oTKYMq5CWJiphNWXeJf91zSgIvPJ1vY8lTP6U3HC9kXgySrgZybi7psAPzq%2FzHFbvXc6vLCfvs3nBbSeIxbTdxLUfavaGulyl3yondPvsyuhOJBS4JQzAQHT40TSUgvgt4N8XtzOmtBiUyYksOqSeahm%2Fqs8wXR0nFfdLhz01MOqn0vJyIvW56X0rnRcB6NuV6BcWD7yAo2xdHsW7nMID69swGOqUBREx3d2iW%2BvhQpSO1ttjr%2B72xLhf28AhflqiIarLugso0t6Xh%2F4BXpRKNlb%2Ba2m2%2Fa8FKusAv6WQe0qQW74mS4EwMjUY3XJO%2Bequp8hrCyBiUBVOK4AzLXUnXi%2FWkRGCQbidybnQAi93kbV6E0PQyQMc9sa54KeR9d0sNS%2FVqxDO424FbgNJumTjFqit6Io7f%2BAjCTbUqTTSwx2uFZI3jQ8GA5gDr&X-Amz-Signature=078028cf9b42b7258bf1a173f9ed13cdb56cc3f186fcc183733f62904ab3951f&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
 
 
 一个最简单的设置，基于64帧，这个可以直接用Labs的make_loop节点也行。
 
 
-![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/020-6cc9b47d.png)
+![Untitled.png](assets/houdini实时焦散与无缝动画无缝序列帧的烘焙/020-c39fa37c.png)
