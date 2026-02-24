@@ -11,31 +11,31 @@ source: "notion-sync"
 一、while循环语句
 
 
-![9148742-b269962744773f63.webp](assets/houdini-vex-八-循环语句/001-e2fd1a4d.webp)
+![9148742-b269962744773f63.webp](assets/houdini-vex-八-循环语句/001-f7905041.webp)
 
 - attribute wrangle节点本身就是个循环：
 
-    ![9148742-3f91feb2e980ae01.webp](assets/houdini-vex-八-循环语句/002-6d96a66e.webp)
+    ![9148742-3f91feb2e980ae01.webp](assets/houdini-vex-八-循环语句/002-a3a6b41f.webp)
 
 - 一共是0-7号顶点，八个顶点，每个顶点执行一遍上面的while循环语句，满足条件的0123执行了七次，4567执行了0次，所以输出窗口是77770000
 
-    ![9148742-74129e25f6a055de.webp](assets/houdini-vex-八-循环语句/003-050af649.webp)
+    ![9148742-74129e25f6a055de.webp](assets/houdini-vex-八-循环语句/003-74b05cc0.webp)
 
 
     二、do while循环语句
 
 
-    ![9148742-9ed2b0a0d2317816.webp](assets/houdini-vex-八-循环语句/004-35df75b5.webp)
+    ![9148742-9ed2b0a0d2317816.webp](assets/houdini-vex-八-循环语句/004-c23efcbd.webp)
 
 - 用while语句达到和do while语句相同的效果：
 
-    ![9148742-4902fae234f114f0.webp](assets/houdini-vex-八-循环语句/005-ce0b8257.webp)
+    ![9148742-4902fae234f114f0.webp](assets/houdini-vex-八-循环语句/005-cfd086a6.webp)
 
 
     三、for循环语句
 
 
-    ![9148742-d465458fd88a3594.webp](assets/houdini-vex-八-循环语句/006-7ab0122c.webp)
+    ![9148742-d465458fd88a3594.webp](assets/houdini-vex-八-循环语句/006-e979b561.webp)
 
 - @numpt：总顶点数量
 - point函数：读取点的属性，上图中是读取0号输入端的第i个顶点的位置属性
