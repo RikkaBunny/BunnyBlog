@@ -8,10 +8,10 @@ notion_url: "https://www.notion.so/Desert-a47b77f606f6475cba884aec570708a9"
 database: "Show Notes"
 source: "notion-sync"
 ---
-![Untitled.png](assets/desert/001-0d163721.png)
+![Untitled.png](assets/desert/001-7d518d41.png)
 
 
-![Untitled.jpeg](assets/desert/002-5061cc12.jpeg)
+![Untitled.jpeg](assets/desert/002-6ebe94b4.jpeg)
 
 
-![Untitled.png](assets/desert/003-46332e2a.png)
+![Untitled.png](assets/desert/003-2539cd50.png)
