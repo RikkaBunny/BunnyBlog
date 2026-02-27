@@ -12,16 +12,16 @@ source: "notion-sync"
 二、只有prim和detail有intrinsic属性
 
 
-![9148742-797da39ae5b0ce6a.webp](assets/houdini-vex-十二-intrinsic属性/001-913b5912.webp)
+![9148742-797da39ae5b0ce6a.webp](assets/houdini-vex-十二-intrinsic属性/001-f5060b3e.webp)
 
 
 三、solidembed节点：将模型变成四边形网格
 
 
-![9148742-0bb5bce3b9cfc797.webp](assets/houdini-vex-十二-intrinsic属性/002-0d9cf30a.webp)
+![9148742-0bb5bce3b9cfc797.webp](assets/houdini-vex-十二-intrinsic属性/002-13546471.webp)
 
 
-![9148742-41b08a8fb85b5e93.webp](assets/houdini-vex-十二-intrinsic属性/003-ec08916d.webp)
+![9148742-41b08a8fb85b5e93.webp](assets/houdini-vex-十二-intrinsic属性/003-acea050c.webp)
 
 
 四、读取的方法一：prim函数
@@ -54,7 +54,7 @@ measuredvolume 测量出来的体积
 六、读取的方法三：在组里写，满足这个组的才会alpha变成0
 
 
-![9148742-e07276eb26b55cea.webp](assets/houdini-vex-十二-intrinsic属性/004-4dbff554.webp)
+![9148742-e07276eb26b55cea.webp](assets/houdini-vex-十二-intrinsic属性/004-e88ed11b.webp)
 
 - ch('threshold')是用esc键下面的波浪线那个按键括起来的
 
@@ -69,11 +69,11 @@ setprimintrinsic(0,'transform',0,trans);//该属性负责旋转和缩放`
 八、写的方法二：先pack节点打包，然后会多出来一些intrinsic属性，再通过setprimintrinsic函数控制这些intrinsic属性
 
 
-![9148742-04a59845d1743319.webp](assets/houdini-vex-十二-intrinsic属性/005-5a17c4b1.webp)
+![9148742-04a59845d1743319.webp](assets/houdini-vex-十二-intrinsic属性/005-fcf44907.webp)
 
 - 这些intrinsic属性都可以控制：
 
-    ![9148742-d6186b8b43ad95db.webp](assets/houdini-vex-十二-intrinsic属性/006-8a7f9ade.webp)
+    ![9148742-d6186b8b43ad95db.webp](assets/houdini-vex-十二-intrinsic属性/006-88e787ab.webp)
 
 - 代码：
 
@@ -84,13 +84,13 @@ setprimintrinsic(0,'pivot',0, set(0,chf('height'),0) );//轴心点`
 九、写的方法三：通过isooffset节点先转化成体积，然后通过setprimintrinsic函数控制体积独有的intrinsic属性
 
 
-![9148742-5331993cfbfee537.webp](assets/houdini-vex-十二-intrinsic属性/007-da0c8cbf.webp)
+![9148742-5331993cfbfee537.webp](assets/houdini-vex-十二-intrinsic属性/007-c2d4f364.webp)
 
 - 读写同理，都可以找到这些intrinsic属性
 - 不同种的prim有不同的intrinsic属性
 十、写的方法四：先convertvdb节点转化，再跟上面同理
 
-    ![9148742-cc011a8c25c27329.webp](assets/houdini-vex-十二-intrinsic属性/008-312f8539.webp)
+    ![9148742-cc011a8c25c27329.webp](assets/houdini-vex-十二-intrinsic属性/008-663387c3.webp)
 
 - 代码：
 
