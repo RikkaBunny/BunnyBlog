@@ -17,7 +17,7 @@ source: "notion-sync"
 得到boudingbox有两种简单方式，一个就是bound节点，另一个就是Labs的multi_bounding_box节点
 
 
-![Untitled.png](assets/splitwatermesh/001-aa5e3533.png)
+![Untitled.png](assets/splitwatermesh/001-8a5bb831.png)
 
 
 这部分其实很简单主要是根据我们地形具体streaming的包围盒大小，作为我们裁剪使用的boundbox，遍历每个包围盒，然后嵌套遍历每条河流， 对每条河流做Boolean操作，取Intersect部分，这样就可以得到根据地形Cell划分的水面Mesh，最基础的功能这里就已经实现啦。
@@ -26,22 +26,22 @@ source: "notion-sync"
 这时候按5键可以看到我们UV大概会只占据0-1之间的一部分。
 
 
-![Untitled.png](assets/splitwatermesh/002-e4f8ffc3.png)
+![Untitled.png](assets/splitwatermesh/002-7cf21397.png)
 
 
 _**注意有时候按5键，界面是黑的什么都出不来，这时候我们可能需要刷新下界面，heightfield有时候显示出错，同理也可以使用刷新既可。**_
 
 
-![Untitled.png](assets/splitwatermesh/003-9468b062.png)
+![Untitled.png](assets/splitwatermesh/003-27d31324.png)
 
 
 当我们UV只占0-1之间一部分时候，有些精度就浪费了，这时候我们可以通过uvtransform来把uv自动移动与缩放。
 
 
-![Untitled.png](assets/splitwatermesh/004-151003ac.png)
+![Untitled.png](assets/splitwatermesh/004-c0aeceb8.png)
 
 
-![Untitled.png](assets/splitwatermesh/005-8d26c8b1.png)
+![Untitled.png](assets/splitwatermesh/005-9ce4516c.png)
 
 
 第一步，以uv的X最小值为轴点，向X的方向移动 负X最小值。
